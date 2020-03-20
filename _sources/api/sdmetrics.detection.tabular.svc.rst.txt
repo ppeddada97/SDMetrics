@@ -1,0 +1,7 @@
+sdmetrics.detection.tabular.svc module
+======================================
+
+.. automodule:: sdmetrics.detection.tabular.svc
+   :members:
+   :undoc-members:
+   :show-inheritance:

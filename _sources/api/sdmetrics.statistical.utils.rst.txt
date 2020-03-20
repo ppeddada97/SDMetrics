@@ -1,0 +1,7 @@
+sdmetrics.statistical.utils module
+==================================
+
+.. automodule:: sdmetrics.statistical.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

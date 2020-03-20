@@ -1,0 +1,1516 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Writing Custom Metrics" href="2_writing_metrics.html" />
+    <link rel="prev" title="Overview" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/header_light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Generating-Synthetic-Datasets">Generating Synthetic Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Evaluation-with-SDMetrics">Evaluation with SDMetrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2_writing_metrics.html">Writing Custom Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_writing_metrics.html#Generic-Metric">Generic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_writing_metrics.html#Statistic-Metric">Statistic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/sdmetrics.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.detection.html#module-sdmetrics.detection">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.statistical.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.statistical.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.statistical.html#module-sdmetrics.statistical">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#module-sdmetrics">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/tutorials/1_getting_started.ipynb" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Getting-Started">
+<h1>Getting Started<a class="headerlink" href="#Getting-Started" title="Permalink to this headline">¶</a></h1>
+<p>In this post, we’ll demonstrate some of the core functionality of the <strong>SDMetrics</strong> library by using it to evaluate a synthetic dataset.</p>
+<div class="section" id="Generating-Synthetic-Datasets">
+<h2>Generating Synthetic Datasets<a class="headerlink" href="#Generating-Synthetic-Datasets" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>SDV</strong> library provides tools for generating synthetic relational databases. Let’s start by loading the Walmart dataset and generating a synthetic copy with 20 rows in the root table.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sdv import load_demo
+
+metadata, real_tables = load_demo(&quot;walmart&quot;, metadata=True)
+for table_name, df in real_tables.items():
+    print(&quot;&gt;&quot;, table_name)
+    print(df.head().to_string(index=False))
+    print()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&gt; stores
+ Store Type    Size
+     1    A  151315
+     2    A  202307
+     3    B   37392
+     4    A  205863
+     5    B   34875
+
+&gt; features
+ Store       Date  Temperature  Fuel_Price  MarkDown1  MarkDown2  MarkDown3  MarkDown4  MarkDown5         CPI  Unemployment  IsHoliday
+     1 2010-02-05        42.31       2.572        NaN        NaN        NaN        NaN        NaN  211.096358         8.106      False
+     1 2010-02-12        38.51       2.548        NaN        NaN        NaN        NaN        NaN  211.242170         8.106       True
+     1 2010-02-19        39.93       2.514        NaN        NaN        NaN        NaN        NaN  211.289143         8.106      False
+     1 2010-02-26        46.63       2.561        NaN        NaN        NaN        NaN        NaN  211.319643         8.106      False
+     1 2010-03-05        46.50       2.625        NaN        NaN        NaN        NaN        NaN  211.350143         8.106      False
+
+&gt; depts
+ Store  Dept       Date  Weekly_Sales  IsHoliday
+     1     1 2010-02-05      24924.50      False
+     1     1 2010-02-12      46039.49       True
+     1     1 2010-02-19      41595.55      False
+     1     1 2010-02-26      19403.54      False
+     1     1 2010-03-05      21827.90      False
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sdv import SDV
+
+sdv = SDV()
+sdv.fit(metadata, real_tables)
+
+fake_tables = sdv.sample_all(20)
+for table_name, df in fake_tables.items():
+    print(&quot;&gt;&quot;, table_name)
+    print(df.head().to_string(index=False))
+    print()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/kevz/anaconda3/lib/python3.7/site-packages/numpy/core/fromnumeric.py:56: FutureWarning: Series.nonzero() is deprecated and will be removed in a future version.Use Series.to_numpy().nonzero() instead
+  return getattr(obj, method)(*args, **kwds)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&gt; stores
+Type    Size  Store
+   A  136019      0
+   B  161965      1
+   A  172436      2
+   A  123278      3
+   A  157759      4
+
+&gt; depts
+                         Date  Weekly_Sales  Store  Dept  IsHoliday
+2011-11-13 01:20:52.383595264  28228.944102      0   104      False
+2009-11-10 21:41:59.829368320  -4865.654563      0    27      False
+2012-04-11 21:56:54.126845184  29996.711646      0    29      False
+2010-04-19 08:01:46.326443520  19070.903559      0    56      False
+2011-05-09 14:29:55.166524672  18887.952724      0    43      False
+
+&gt; features
+                         Date    MarkDown1  Store  IsHoliday  MarkDown4    MarkDown3  Fuel_Price  Unemployment  Temperature    MarkDown5    MarkDown2         CPI
+2012-06-21 14:49:12.694771968          NaN      0      False        NaN          NaN    2.616784      6.666517    59.790618          NaN          NaN  201.083573
+2011-06-24 00:31:24.721776128          NaN      0      False        NaN  2007.682469    2.972034      8.407531    54.932017  3142.977472  2167.095362  200.719514
+2010-12-01 16:36:27.690835200  2239.012012      0      False        NaN          NaN    3.307051           NaN    57.449500  1190.927372          NaN  230.584624
+2013-08-31 04:04:58.289238016          NaN      0      False        NaN  3900.921772    3.453200      9.404316    92.034894          NaN  5809.309683  175.435366
+2011-11-16 22:48:43.729312768          NaN      0      False        NaN  1233.847146    2.949335     10.419103    57.710878  6691.643717          NaN  211.022780
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Evaluation-with-SDMetrics">
+<h2>Evaluation with SDMetrics<a class="headerlink" href="#Evaluation-with-SDMetrics" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have (1) a metadata object, (2) a set of real tables, and (3) a set of fake tables, we can pass them to <strong>SDMetrics</strong> for evaluation. The simplest way to get started with <strong>SDMetrics</strong> is to use the <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> function which generates a report with the default metrics.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sdmetrics import evaluate
+report = evaluate(metadata, real_tables, fake_tables)
+report
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/kevz/anaconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  &#34;of iterations.&#34;, ConvergenceWarning)
+/Users/kevz/anaconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  &#34;of iterations.&#34;, ConvergenceWarning)
+/Users/kevz/anaconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  &#34;of iterations.&#34;, ConvergenceWarning)
+/Users/kevz/anaconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  &#34;of iterations.&#34;, ConvergenceWarning)
+/Users/kevz/anaconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  &#34;of iterations.&#34;, ConvergenceWarning)
+/Users/kevz/anaconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:757: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  &#34;of iterations.&#34;, ConvergenceWarning)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;sdmetrics.MetricsReport at 0x1233b9e90&gt;
+</pre></div></div>
+</div>
+<p>The metrics report can provide an <strong>overall score</strong>. This is a single scalar value which you can pass to an optimization routine (i.e. to tune some hyperparameters in your model).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>print(report.overall())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-44.4848254534212
+</pre></div></div>
+</div>
+<p>Furthermore, the metrics report can also provide some key highlights. This shows the problem areas where your model performs especially poorly - for example, the below highlights suggest that our model is very bad at modeling the <code class="docutils literal notranslate"><span class="pre">MarkDownX</span></code> columns since the kstest has detected that the distributions look quite different between the real and synthetic versions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>report.highlights()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Columns</th>
+      <th>Goal</th>
+      <th>Misc. Tags</th>
+      <th>Name</th>
+      <th>Tables</th>
+      <th>Unit</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>column:Weekly_Sales</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:depts</td>
+      <td>p-value</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>column:Dept</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:depts</td>
+      <td>p-value</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>column:MarkDown1</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.635895e-13</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>column:MarkDown4</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>3.100767e-37</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>column:MarkDown3</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.724286e-143</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>column:Fuel_Price</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>2.259047e-21</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>column:Unemployment</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.817258e-45</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>column:Temperature</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>2.434418e-22</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>column:MarkDown5</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.620263e-10</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>column:MarkDown2</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.899937e-103</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>column:CPI</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>3.906796e-99</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>In addition, you will also be able to generate a visualization of the metrics.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>%matplotlib inline
+report.visualize().savefig(&quot;../resources/visualize.png&quot;);
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_1_getting_started_11_0.png" src="../_images/tutorials_1_getting_started_11_0.png" />
+</div>
+</div>
+<p>Finally, you can also print a detailed report containing all of the metrics that were computed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>report.details()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Columns</th>
+      <th>Goal</th>
+      <th>Misc. Tags</th>
+      <th>Name</th>
+      <th>Tables</th>
+      <th>Unit</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td></td>
+      <td>Goal.MAXIMIZE</td>
+      <td>child:depts</td>
+      <td>foreign-key</td>
+      <td>table:stores</td>
+      <td>binary</td>
+      <td>1.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td></td>
+      <td>Goal.MAXIMIZE</td>
+      <td>child:features</td>
+      <td>foreign-key</td>
+      <td>table:stores</td>
+      <td>binary</td>
+      <td>1.000000e+00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>detection:auroc</td>
+      <td>logistic</td>
+      <td>table:stores</td>
+      <td>auroc</td>
+      <td>8.015873e-01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>child:depts,detection:auroc</td>
+      <td>logistic</td>
+      <td>table:stores</td>
+      <td>auroc</td>
+      <td>7.980783e-01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>child:features,detection:auroc</td>
+      <td>logistic</td>
+      <td>table:stores</td>
+      <td>auroc</td>
+      <td>8.201162e-01</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>detection:auroc</td>
+      <td>logistic</td>
+      <td>table:depts</td>
+      <td>auroc</td>
+      <td>7.853227e-01</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>detection:auroc</td>
+      <td>logistic</td>
+      <td>table:features</td>
+      <td>auroc</td>
+      <td>8.270256e-01</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>column:Type</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate</td>
+      <td>chisquare</td>
+      <td>table:stores</td>
+      <td>p-value</td>
+      <td>9.610881e-01</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>column:IsHoliday</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate</td>
+      <td>chisquare</td>
+      <td>table:depts</td>
+      <td>p-value</td>
+      <td>9.631733e-01</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>column:IsHoliday</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate</td>
+      <td>chisquare</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>8.905500e-01</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>column:Size</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate</td>
+      <td>kstest</td>
+      <td>table:stores</td>
+      <td>p-value</td>
+      <td>4.500551e-01</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>column:Weekly_Sales</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:depts</td>
+      <td>p-value</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>column:Dept</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:depts</td>
+      <td>p-value</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>column:MarkDown1</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.635895e-13</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>column:MarkDown4</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>3.100767e-37</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>column:MarkDown3</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.724286e-143</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>column:Fuel_Price</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>2.259047e-21</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>column:Unemployment</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.817258e-45</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>column:Temperature</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>2.434418e-22</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>column:MarkDown5</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.620263e-10</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>column:MarkDown2</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>1.899937e-103</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>column:CPI</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate,priority:high</td>
+      <td>kstest</td>
+      <td>table:features</td>
+      <td>p-value</td>
+      <td>3.906796e-99</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>column:Weekly_Sales,column:Dept</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:depts</td>
+      <td>entropy</td>
+      <td>3.349454e-01</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>column:MarkDown1,column:MarkDown4</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.433785e-01</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>column:MarkDown3,column:MarkDown1</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.723890e-01</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>column:Fuel_Price,column:MarkDown1</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>5.136991e-01</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>column:MarkDown1,column:Unemployment</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.754742e-01</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>column:MarkDown1,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.355174e-01</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>column:MarkDown1,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.196438e-02</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>column:MarkDown1,column:MarkDown2</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.141553e-01</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>column:MarkDown3,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>4.692481e-01</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>column:Fuel_Price,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>4.266049e-01</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>column:Unemployment,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>5.092660e-01</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>column:Temperature,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>3.509170e-02</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>column:MarkDown2,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>5.606368e-01</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>column:CPI,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.356723e+00</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>column:MarkDown1,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.196438e-02</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>column:MarkDown4,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>4.796316e-02</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>column:MarkDown3,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.162326e-01</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>column:Fuel_Price,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.044426e-01</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>column:Unemployment,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.221267e-01</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>column:Temperature,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>3.509170e-02</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>column:MarkDown2,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>3.509650e-02</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>column:CPI,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>9.364360e-01</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>column:MarkDown1,column:MarkDown2</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.141553e-01</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>column:MarkDown2,column:MarkDown4</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.237272e-01</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>column:MarkDown3,column:MarkDown2</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>3.943416e-01</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>column:Fuel_Price,column:MarkDown2</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.075923e-01</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>column:Unemployment,column:MarkDown2</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.845909e-01</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>column:MarkDown2,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>5.606368e-01</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>column:MarkDown2,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>3.509650e-02</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>column:MarkDown2,column:CPI</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.049823e+00</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>column:MarkDown1,column:CPI</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.367469e+00</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>column:CPI,column:MarkDown4</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.246950e+00</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>column:MarkDown3,column:CPI</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.103919e+00</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>column:Fuel_Price,column:CPI</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>4.254507e+00</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>column:Unemployment,column:CPI</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>4.086756e+00</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>column:CPI,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.356723e+00</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>column:CPI,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>9.364360e-01</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>column:MarkDown2,column:CPI</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.049823e+00</td>
+    </tr>
+  </tbody>
+</table>
+<p>95 rows × 7 columns</p>
+</div></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="2_writing_metrics.html" class="btn btn-neutral float-right" title="Writing Custom Metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, MIT Data To AI Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

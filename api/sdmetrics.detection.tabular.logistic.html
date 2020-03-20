@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.sdmetrics module &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  <title>sdmetrics.detection.tabular.logistic module &mdash; SDMetrics 0.1.0.dev0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Contributing" href="../contributing.html" />
-    <link rel="prev" title="sdmetrics.statistical.utils module" href="sdmetrics.statistical.utils.html" /> 
+    <link rel="next" title="sdmetrics.detection.tabular.svc module" href="sdmetrics.detection.tabular.svc.html" />
+    <link rel="prev" title="sdmetrics.detection.tabular.base module" href="sdmetrics.detection.tabular.base.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,13 +103,13 @@
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="sdmetrics.detection.html">sdmetrics.detection package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.detection.html#subpackages">Subpackages</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="sdmetrics.detection.html">sdmetrics.detection package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="sdmetrics.detection.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sdmetrics.detection.html#module-sdmetrics.detection">Module contents</a></li>
 </ul>
 </li>
@@ -121,8 +121,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">sdmetrics.sdmetrics module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#module-sdmetrics">Module contents</a></li>
@@ -196,14 +196,18 @@
         
           <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
         
-      <li>sdmetrics.sdmetrics module</li>
+          <li><a href="sdmetrics.detection.html">sdmetrics.detection package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.detection.tabular.html">sdmetrics.detection.tabular package</a> &raquo;</li>
+        
+      <li>sdmetrics.detection.tabular.logistic module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.sdmetrics.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.detection.tabular.logistic.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -241,8 +245,91 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="module-sdmetrics.sdmetrics">
-<span id="sdmetrics-sdmetrics-module"></span><h1>sdmetrics.sdmetrics module<a class="headerlink" href="#module-sdmetrics.sdmetrics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-sdmetrics.detection.tabular.logistic">
+<span id="sdmetrics-detection-tabular-logistic-module"></span><h1>sdmetrics.detection.tabular.logistic module<a class="headerlink" href="#module-sdmetrics.detection.tabular.logistic" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.logistic.LogisticDetector" title="sdmetrics.detection.tabular.logistic.LogisticDetector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogisticDetector</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="sdmetrics.detection.tabular.logistic.LogisticDetector">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.detection.tabular.logistic.</code><code class="sig-name descname">LogisticDetector</code><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/logistic.html#LogisticDetector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.logistic.LogisticDetector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.detection.tabular.base.html#sdmetrics.detection.tabular.base.TabularDetector" title="sdmetrics.detection.tabular.base.TabularDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.detection.tabular.base.TabularDetector</span></code></a></p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.logistic.LogisticDetector.fit" title="sdmetrics.detection.tabular.logistic.LogisticDetector.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, y)</p></td>
+<td><p>This function trains a sklearn pipeline with a robust scalar and a logistic regression classifier.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.logistic.LogisticDetector.predict_proba" title="sdmetrics.detection.tabular.logistic.LogisticDetector.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</p></td>
+<td><p>This function predicts the probability that each of the samples comes from the synthetic dataset.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.logistic.LogisticDetector.name" title="sdmetrics.detection.tabular.logistic.LogisticDetector.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.detection.tabular.logistic.LogisticDetector.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/logistic.html#LogisticDetector.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.logistic.LogisticDetector.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function trains a sklearn pipeline with a robust scalar
+and a logistic regression classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.ndarray</em>) – The numerical features (i.e. transformed rows).</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – The binary classification target.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.detection.tabular.logistic.LogisticDetector.name">
+<code class="sig-name descname">name</code><em class="property"> = 'logistic'</em><a class="headerlink" href="#sdmetrics.detection.tabular.logistic.LogisticDetector.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.detection.tabular.logistic.LogisticDetector.predict_proba">
+<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/logistic.html#LogisticDetector.predict_proba"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.logistic.LogisticDetector.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function predicts the probability that each of the samples
+comes from the synthetic dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>np.ndarray</em>) – The numerical features (i.e. transformed rows).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The probability that the class is 1.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -253,10 +340,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sdmetrics.detection.tabular.svc.html" class="btn btn-neutral float-right" title="sdmetrics.detection.tabular.svc module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sdmetrics.statistical.utils.html" class="btn btn-neutral float-left" title="sdmetrics.statistical.utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sdmetrics.detection.tabular.base.html" class="btn btn-neutral float-left" title="sdmetrics.detection.tabular.base module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,19 @@
+sdmetrics.statistical.univariate package
+========================================
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.statistical.univariate.base
+   sdmetrics.statistical.univariate.cstest
+   sdmetrics.statistical.univariate.kstest
+
+Module contents
+---------------
+
+.. automodule:: sdmetrics.statistical.univariate
+   :members:
+   :undoc-members:
+   :show-inheritance:

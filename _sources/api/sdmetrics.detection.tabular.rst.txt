@@ -1,0 +1,19 @@
+sdmetrics.detection.tabular package
+===================================
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.detection.tabular.base
+   sdmetrics.detection.tabular.logistic
+   sdmetrics.detection.tabular.svc
+
+Module contents
+---------------
+
+.. automodule:: sdmetrics.detection.tabular
+   :members:
+   :undoc-members:
+   :show-inheritance:

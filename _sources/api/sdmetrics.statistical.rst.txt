@@ -1,0 +1,25 @@
+sdmetrics.statistical package
+=============================
+
+Subpackages
+-----------
+
+.. toctree::
+
+   sdmetrics.statistical.bivariate
+   sdmetrics.statistical.univariate
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.statistical.utils
+
+Module contents
+---------------
+
+.. automodule:: sdmetrics.statistical
+   :members:
+   :undoc-members:
+   :show-inheritance:

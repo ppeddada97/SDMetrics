@@ -13,7 +13,7 @@
 
   
   
-    <link rel="shortcut icon" href="_static/dai-logo-white.ico"/>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
   
   
   
@@ -27,6 +27,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="_static/searchtools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -51,12 +52,12 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> SDMetrics
+            <a href="index.html">
           
 
           
             
-            <img src="_static/dai-logo-white-200.png" class="logo" alt="Logo"/>
+            <img src="_static/header_light.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -82,19 +83,43 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">SDMetrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#install">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="readme.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readme.html#install-with-pip">Install with pip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/1_getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/1_getting_started.html#Generating-Synthetic-Datasets">Generating Synthetic Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/1_getting_started.html#Evaluation-with-SDMetrics">Evaluation with SDMetrics</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#quickstart">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#what-s-next">What’s next?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/2_writing_metrics.html">Writing Custom Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/2_writing_metrics.html#Generic-Metric">Generic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/2_writing_metrics.html#Statistic-Metric">Statistic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/sdmetrics.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.detection.html#module-sdmetrics.detection">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#module-sdmetrics.statistical">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>

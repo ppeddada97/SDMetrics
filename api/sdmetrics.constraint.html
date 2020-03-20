@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.sdmetrics module &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  <title>sdmetrics.constraint package &mdash; SDMetrics 0.1.0.dev0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Contributing" href="../contributing.html" />
-    <link rel="prev" title="sdmetrics.statistical.utils module" href="sdmetrics.statistical.utils.html" /> 
+    <link rel="next" title="sdmetrics.detection package" href="sdmetrics.detection.html" />
+    <link rel="prev" title="sdmetrics package" href="sdmetrics.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,9 +103,9 @@
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sdmetrics.constraint package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-sdmetrics.constraint">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="sdmetrics.detection.html">sdmetrics.detection package</a><ul>
@@ -121,8 +121,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">sdmetrics.sdmetrics module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#module-sdmetrics">Module contents</a></li>
@@ -196,14 +196,14 @@
         
           <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
         
-      <li>sdmetrics.sdmetrics module</li>
+      <li>sdmetrics.constraint package</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.sdmetrics.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.constraint.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -241,8 +241,46 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="module-sdmetrics.sdmetrics">
-<span id="sdmetrics-sdmetrics-module"></span><h1>sdmetrics.sdmetrics module<a class="headerlink" href="#module-sdmetrics.sdmetrics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sdmetrics-constraint-package">
+<h1>sdmetrics.constraint package<a class="headerlink" href="#sdmetrics-constraint-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-sdmetrics.constraint">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sdmetrics.constraint" title="Permalink to this headline">¶</a></h2>
+<p>This module implements constraint checking which makes sure the statistical
+properties of the synthetic data match the specified metadata.</p>
+<p><strong>Functions</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.constraint.metrics" title="sdmetrics.constraint.metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics</span></code></a>(metadata, real_tables, synthetic_tables)</p></td>
+<td><p>This function takes in (1) a <cite>sdv.Metadata</cite> object which describes a set of relational tables, (2) a set of “real” tables corresponding to the metadata, and (3) a set of “synthetic” tables corresponding to the metadata.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="sdmetrics.constraint.metrics">
+<code class="sig-prename descclassname">sdmetrics.constraint.</code><code class="sig-name descname">metrics</code><span class="sig-paren">(</span><em class="sig-param">metadata</em>, <em class="sig-param">real_tables</em>, <em class="sig-param">synthetic_tables</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/constraint.html#metrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.constraint.metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes in (1) a <cite>sdv.Metadata</cite> object which describes a set of
+relational tables, (2) a set of “real” tables corresponding to the metadata,
+and (3) a set of “synthetic” tables corresponding to the metadata. It yields
+a sequence of <cite>Metric</cite> objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata</strong> (<em>sdv.Metadata</em>) – The Metadata object from SDV.</p></li>
+<li><p><strong>real_tables</strong> (<em>dict</em>) – A dictionary mapping table names to dataframes.</p></li>
+<li><p><strong>synthetic_tables</strong> (<em>dict</em>) – A dictionary mapping table names to dataframes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>Metric</em> – The next metric.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -253,10 +291,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sdmetrics.detection.html" class="btn btn-neutral float-right" title="sdmetrics.detection package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sdmetrics.statistical.utils.html" class="btn btn-neutral float-left" title="sdmetrics.statistical.utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sdmetrics.html" class="btn btn-neutral float-left" title="sdmetrics package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

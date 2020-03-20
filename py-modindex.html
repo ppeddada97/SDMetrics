@@ -13,7 +13,7 @@
 
   
   
-    <link rel="shortcut icon" href="_static/dai-logo-white.ico"/>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
   
   
   
@@ -27,6 +27,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -53,12 +54,12 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> SDMetrics
+            <a href="index.html">
           
 
           
             
-            <img src="_static/dai-logo-white-200.png" class="logo" alt="Logo"/>
+            <img src="_static/header_light.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -84,19 +85,43 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">SDMetrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#overview">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#install">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="readme.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readme.html#install-with-pip">Install with pip</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/1_getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/1_getting_started.html#Generating-Synthetic-Datasets">Generating Synthetic Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/1_getting_started.html#Evaluation-with-SDMetrics">Evaluation with SDMetrics</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#quickstart">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="readme.html#what-s-next">What’s next?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/2_writing_metrics.html">Writing Custom Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/2_writing_metrics.html#Generic-Metric">Generic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/2_writing_metrics.html#Statistic-Metric">Statistic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/sdmetrics.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.detection.html#module-sdmetrics.detection">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#module-sdmetrics.statistical">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#submodules">Submodules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>
@@ -205,7 +230,87 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.constraint.html#module-sdmetrics.constraint"><code class="xref">sdmetrics.constraint</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.detection.html#module-sdmetrics.detection"><code class="xref">sdmetrics.detection</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.detection.tabular.html#module-sdmetrics.detection.tabular"><code class="xref">sdmetrics.detection.tabular</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.detection.tabular.base.html#module-sdmetrics.detection.tabular.base"><code class="xref">sdmetrics.detection.tabular.base</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.detection.tabular.logistic.html#module-sdmetrics.detection.tabular.logistic"><code class="xref">sdmetrics.detection.tabular.logistic</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.detection.tabular.svc.html#module-sdmetrics.detection.tabular.svc"><code class="xref">sdmetrics.detection.tabular.svc</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="api/sdmetrics.sdmetrics.html#module-sdmetrics.sdmetrics"><code class="xref">sdmetrics.sdmetrics</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.html#module-sdmetrics.statistical"><code class="xref">sdmetrics.statistical</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.bivariate.html#module-sdmetrics.statistical.bivariate"><code class="xref">sdmetrics.statistical.bivariate</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.bivariate.base.html#module-sdmetrics.statistical.bivariate.base"><code class="xref">sdmetrics.statistical.bivariate.base</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.bivariate.continuous.html#module-sdmetrics.statistical.bivariate.continuous"><code class="xref">sdmetrics.statistical.bivariate.continuous</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.bivariate.discrete.html#module-sdmetrics.statistical.bivariate.discrete"><code class="xref">sdmetrics.statistical.bivariate.discrete</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.univariate.html#module-sdmetrics.statistical.univariate"><code class="xref">sdmetrics.statistical.univariate</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.univariate.base.html#module-sdmetrics.statistical.univariate.base"><code class="xref">sdmetrics.statistical.univariate.base</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.univariate.cstest.html#module-sdmetrics.statistical.univariate.cstest"><code class="xref">sdmetrics.statistical.univariate.cstest</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.univariate.kstest.html#module-sdmetrics.statistical.univariate.kstest"><code class="xref">sdmetrics.statistical.univariate.kstest</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/sdmetrics.statistical.utils.html#module-sdmetrics.statistical.utils"><code class="xref">sdmetrics.statistical.utils</code></a></td><td>
        <em></em></td></tr>
    </table>
 

@@ -1,0 +1,7 @@
+sdmetrics.statistical.univariate.cstest module
+==============================================
+
+.. automodule:: sdmetrics.statistical.univariate.cstest
+   :members:
+   :undoc-members:
+   :show-inheritance:

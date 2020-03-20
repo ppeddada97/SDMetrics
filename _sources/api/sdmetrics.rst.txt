@@ -1,6 +1,15 @@
 sdmetrics package
 =================
 
+Subpackages
+-----------
+
+.. toctree::
+
+   sdmetrics.constraint
+   sdmetrics.detection
+   sdmetrics.statistical
+
 Submodules
 ----------
 

@@ -1,0 +1,7 @@
+sdmetrics.statistical.bivariate.discrete module
+===============================================
+
+.. automodule:: sdmetrics.statistical.bivariate.discrete
+   :members:
+   :undoc-members:
+   :show-inheritance:

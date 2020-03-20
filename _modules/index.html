@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.sdmetrics module &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  <title>Overview: module code &mdash; SDMetrics 0.1.0.dev0 documentation</title>
   
 
   
@@ -37,9 +37,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Contributing" href="../contributing.html" />
-    <link rel="prev" title="sdmetrics.statistical.utils module" href="sdmetrics.statistical.utils.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,31 +99,31 @@
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/sdmetrics.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="sdmetrics.detection.html">sdmetrics.detection package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.detection.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.detection.html#module-sdmetrics.detection">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.detection.html#module-sdmetrics.detection">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.statistical.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.statistical.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.statistical.html#module-sdmetrics.statistical">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.statistical.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.statistical.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.statistical.html#module-sdmetrics.statistical">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">sdmetrics.sdmetrics module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#module-sdmetrics">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#module-sdmetrics">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
@@ -194,18 +192,10 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
-        
-      <li>sdmetrics.sdmetrics module</li>
+      <li>Overview: module code</li>
     
     
       <li class="wy-breadcrumbs-aside">
-        
-            
-            
-              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.sdmetrics.rst" class="fa fa-github"> Edit on GitHub</a>
-            
-          
         
       </li>
     
@@ -217,48 +207,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="module-sdmetrics.sdmetrics">
-<span id="sdmetrics-sdmetrics-module"></span><h1>sdmetrics.sdmetrics module<a class="headerlink" href="#module-sdmetrics.sdmetrics" title="Permalink to this headline">¶</a></h1>
-</div>
-
+  <h1>All modules for which code is available</h1>
+<ul><li><a href="sdmetrics.html">sdmetrics</a></li>
+<ul><li><a href="sdmetrics/constraint.html">sdmetrics.constraint</a></li>
+<li><a href="sdmetrics/detection.html">sdmetrics.detection</a></li>
+<ul><li><a href="sdmetrics/detection/tabular/base.html">sdmetrics.detection.tabular.base</a></li>
+<li><a href="sdmetrics/detection/tabular/logistic.html">sdmetrics.detection.tabular.logistic</a></li>
+<li><a href="sdmetrics/detection/tabular/svc.html">sdmetrics.detection.tabular.svc</a></li>
+</ul><li><a href="sdmetrics/statistical.html">sdmetrics.statistical</a></li>
+<ul><li><a href="sdmetrics/statistical/bivariate/base.html">sdmetrics.statistical.bivariate.base</a></li>
+<li><a href="sdmetrics/statistical/bivariate/continuous.html">sdmetrics.statistical.bivariate.continuous</a></li>
+<li><a href="sdmetrics/statistical/bivariate/discrete.html">sdmetrics.statistical.bivariate.discrete</a></li>
+<li><a href="sdmetrics/statistical/univariate/base.html">sdmetrics.statistical.univariate.base</a></li>
+<li><a href="sdmetrics/statistical/univariate/cstest.html">sdmetrics.statistical.univariate.cstest</a></li>
+<li><a href="sdmetrics/statistical/univariate/kstest.html">sdmetrics.statistical.univariate.kstest</a></li>
+<li><a href="sdmetrics/statistical/utils.html">sdmetrics.statistical.utils</a></li>
+</ul></ul></ul>
 
            </div>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="sdmetrics.statistical.utils.html" class="btn btn-neutral float-left" title="sdmetrics.statistical.utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

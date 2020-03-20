@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.sdmetrics module &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  <title>sdmetrics.statistical.utils module &mdash; SDMetrics 0.1.0.dev0 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Contributing" href="../contributing.html" />
-    <link rel="prev" title="sdmetrics.statistical.utils module" href="sdmetrics.statistical.utils.html" /> 
+    <link rel="next" title="sdmetrics.sdmetrics module" href="sdmetrics.sdmetrics.html" />
+    <link rel="prev" title="sdmetrics.statistical.univariate.kstest module" href="sdmetrics.statistical.univariate.kstest.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,7 +103,7 @@
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
 </ul>
@@ -113,16 +113,16 @@
 <li class="toctree-l4"><a class="reference internal" href="sdmetrics.detection.html#module-sdmetrics.detection">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="sdmetrics.statistical.html">sdmetrics.statistical package</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="sdmetrics.statistical.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sdmetrics.statistical.html#submodules">Submodules</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="sdmetrics.statistical.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sdmetrics.statistical.html#module-sdmetrics.statistical">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">sdmetrics.sdmetrics module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#module-sdmetrics">Module contents</a></li>
@@ -196,14 +196,16 @@
         
           <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
         
-      <li>sdmetrics.sdmetrics module</li>
+          <li><a href="sdmetrics.statistical.html">sdmetrics.statistical package</a> &raquo;</li>
+        
+      <li>sdmetrics.statistical.utils module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.sdmetrics.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.statistical.utils.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -241,8 +243,40 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="module-sdmetrics.sdmetrics">
-<span id="sdmetrics-sdmetrics-module"></span><h1>sdmetrics.sdmetrics module<a class="headerlink" href="#module-sdmetrics.sdmetrics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-sdmetrics.statistical.utils">
+<span id="sdmetrics-statistical-utils-module"></span><h1>sdmetrics.statistical.utils module<a class="headerlink" href="#module-sdmetrics.statistical.utils" title="Permalink to this headline">¶</a></h1>
+<p><strong>Functions</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.utils.frequencies" title="sdmetrics.statistical.utils.frequencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frequencies</span></code></a>(real, fake)</p></td>
+<td><p>Given two iterators containing categorical data, this transforms it into observed/expected frequencies which can be used for statistical tests.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="sdmetrics.statistical.utils.frequencies">
+<code class="sig-prename descclassname">sdmetrics.statistical.utils.</code><code class="sig-name descname">frequencies</code><span class="sig-paren">(</span><em class="sig-param">real</em>, <em class="sig-param">fake</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/utils.html#frequencies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.utils.frequencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given two iterators containing categorical data, this transforms it into
+observed/expected frequencies which can be used for statistical tests. It
+adds a regularization term to handle cases where the fake data contains
+values that don’t exist in the real data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>real</strong> (<em>list</em>) – A list of hashable objects.</p></li>
+<li><p><strong>fake</strong> (<em>list</em>) – A list of hashable objects.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>(list, list)</em> – The observed and expected frequencies (as a percent).</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
@@ -253,10 +287,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sdmetrics.sdmetrics.html" class="btn btn-neutral float-right" title="sdmetrics.sdmetrics module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sdmetrics.statistical.utils.html" class="btn btn-neutral float-left" title="sdmetrics.statistical.utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sdmetrics.statistical.univariate.kstest.html" class="btn btn-neutral float-left" title="sdmetrics.statistical.univariate.kstest module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
