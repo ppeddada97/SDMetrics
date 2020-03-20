@@ -1,0 +1,17 @@
+sdmetrics package
+=================
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.sdmetrics
+
+Module contents
+---------------
+
+.. automodule:: sdmetrics
+   :members:
+   :undoc-members:
+   :show-inheritance:
