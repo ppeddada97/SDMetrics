@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started" href="tutorials/1_getting_started.html" /> 
+    <link rel="next" title="Overview" href="readme.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,8 +82,10 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#quickstart">Quickstart</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -103,19 +105,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.constraint.html">sdmetrics.constraint package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.constraint.html#module-sdmetrics.constraint">Module contents</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.detection.html#module-sdmetrics.detection">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#module-sdmetrics.statistical">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -124,7 +121,6 @@
 <li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#module-sdmetrics">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
@@ -246,16 +242,41 @@ modeled after.</p>
 </div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>To get started with <strong>SDMetrics</strong>, run the following commands to install the library in development mode:</p>
+<p>To get started with <strong>SDMetrics</strong>, run the following commands to install the library
+in development mode:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:k15z/SDMetrics.git
 <span class="nb">cd</span> SDMetrics
 make install
 </pre></div>
 </div>
-<p>You should now be able to run the tests with <cite>make test</cite> to verify that the installation was successful.</p>
+<p>You should now be able to run the tests with <cite>make test</cite> to verify that the
+installation was successful.</p>
+</div>
+<div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>Let’s run the demo code from <strong>SDV</strong> to generate a simple synthetic dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sdv</span> <span class="kn">import</span> <span class="n">load_demo</span><span class="p">,</span> <span class="n">SDV</span>
+<span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span> <span class="o">=</span> <span class="n">load_demo</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sdv</span> <span class="o">=</span> <span class="n">SDV</span><span class="p">()</span>
+<span class="n">sdv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">)</span>
+<span class="n">fake_tables</span> <span class="o">=</span> <span class="n">sdv</span><span class="o">.</span><span class="n">sample_all</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now that we have a synthetic dataset, we can evaluate it using <strong>SDMetrics</strong> by
+calling the <cite>evaluate</cite> function which returns an instance of <cite>MetricsReport</cite>
+with the default metrics:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sdmetrics</span> <span class="kn">import</span> <span class="n">evaluate</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">fake_tables</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This report object provides a variety of functionality, from computing an overall
+quality score to generating visualizations for exploring the metrics. To learn
+more, check out the API Reference for <a class="reference internal" href="api/sdmetrics.html#sdmetrics.MetricsReport" title="sdmetrics.MetricsReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.MetricsReport</span></code></a>.</p>
 <div class="toctree-wrapper compound">
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#quickstart">Quickstart</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -294,7 +315,7 @@ make install
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tutorials/1_getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="readme.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

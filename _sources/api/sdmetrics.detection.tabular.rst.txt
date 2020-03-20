@@ -1,6 +1,11 @@
 sdmetrics.detection.tabular package
 ===================================
 
+.. automodule:: sdmetrics.detection.tabular
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Submodules
 ----------
 
@@ -9,11 +14,3 @@ Submodules
    sdmetrics.detection.tabular.base
    sdmetrics.detection.tabular.logistic
    sdmetrics.detection.tabular.svc
-
-Module contents
----------------
-
-.. automodule:: sdmetrics.detection.tabular
-   :members:
-   :undoc-members:
-   :show-inheritance:

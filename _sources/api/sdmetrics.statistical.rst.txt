@@ -1,6 +1,11 @@
 sdmetrics.statistical package
 =============================
 
+.. automodule:: sdmetrics.statistical
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Subpackages
 -----------
 
@@ -15,11 +20,3 @@ Submodules
 .. toctree::
 
    sdmetrics.statistical.utils
-
-Module contents
----------------
-
-.. automodule:: sdmetrics.statistical
-   :members:
-   :undoc-members:
-   :show-inheritance:

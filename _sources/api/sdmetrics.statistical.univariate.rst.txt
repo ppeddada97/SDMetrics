@@ -1,6 +1,11 @@
 sdmetrics.statistical.univariate package
 ========================================
 
+.. automodule:: sdmetrics.statistical.univariate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Submodules
 ----------
 
@@ -9,11 +14,3 @@ Submodules
    sdmetrics.statistical.univariate.base
    sdmetrics.statistical.univariate.cstest
    sdmetrics.statistical.univariate.kstest
-
-Module contents
----------------
-
-.. automodule:: sdmetrics.statistical.univariate
-   :members:
-   :undoc-members:
-   :show-inheritance:

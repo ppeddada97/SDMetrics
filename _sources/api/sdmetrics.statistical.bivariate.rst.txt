@@ -1,6 +1,11 @@
 sdmetrics.statistical.bivariate package
 =======================================
 
+.. automodule:: sdmetrics.statistical.bivariate
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Submodules
 ----------
 
@@ -9,11 +14,3 @@ Submodules
    sdmetrics.statistical.bivariate.base
    sdmetrics.statistical.bivariate.continuous
    sdmetrics.statistical.bivariate.discrete
-
-Module contents
----------------
-
-.. automodule:: sdmetrics.statistical.bivariate
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,9 +1,6 @@
 sdmetrics.constraint package
 ============================
 
-Module contents
----------------
-
 .. automodule:: sdmetrics.constraint
    :members:
    :undoc-members:

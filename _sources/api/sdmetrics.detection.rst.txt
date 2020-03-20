@@ -1,17 +1,14 @@
 sdmetrics.detection package
 ===========================
 
+.. automodule:: sdmetrics.detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Subpackages
 -----------
 
 .. toctree::
 
    sdmetrics.detection.tabular
-
-Module contents
----------------
-
-.. automodule:: sdmetrics.detection
-   :members:
-   :undoc-members:
-   :show-inheritance:
