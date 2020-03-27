@@ -107,6 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -520,7 +521,7 @@ class CSTest(UnivariateMetric):
     dtypes = [&quot;object&quot;, &quot;bool&quot;]
 
     @staticmethod
-    def metric(real_column, fake_column):
+    def metric(real_column, synthetic_column):
         &quot;&quot;&quot;This function uses the Chi-squared test to compare the distributions
         of the two categorical columns. It returns the resulting p-value so that
         a small value indicates that we can reject the null hypothesis (i.e. and
@@ -528,13 +529,13 @@ class CSTest(UnivariateMetric):
 
         Arguments:
             real_column (np.ndarray): The values from the real database.
-            fake_column (np.ndarray): The values from the fake database.
+            synthetic_column (np.ndarray): The values from the fake database.
 
         Returns:
             (str, Goal, str, tuple): A tuple containing (value, goal, unit, domain)
             which corresponds to the fields in a Metric object.
         &quot;&quot;&quot;
-        f_obs, f_exp = frequencies(real_column, fake_column)
+        f_obs, f_exp = frequencies(real_column, synthetic_column)
         statistic, pvalue = chisquare(f_obs, f_exp)
         return pvalue, Goal.MAXIMIZE, &quot;p-value&quot;, (0.0, 1.0)
 

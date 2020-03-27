@@ -107,6 +107,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -291,11 +292,11 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.bivariate.BivariateMetric.metric" title="sdmetrics.statistical.bivariate.BivariateMetric.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a>(real, fake)</p></td>
-<td><p>This function is expected to perform a statistical test on the two samples, each of which is two-dimensional, and return a tuple containing (value, goal, unit, domain).</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.bivariate.BivariateMetric.metric" title="sdmetrics.statistical.bivariate.BivariateMetric.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a>(real_2d, synthetic_2d)</p></td>
+<td><p>This function is expected to perform a statistical test on the two samples, each of which contains two columns, and return a tuple containing (value, goal, unit, domain).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.statistical.bivariate.BivariateMetric.metrics" title="sdmetrics.statistical.bivariate.BivariateMetric.metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics</span></code></a>(metadata, real_tables, synthetic_tables)</p></td>
-<td><p></p></td>
+<td><p>This function iterates over all the pairs of columns in all the tables and, if the data types match, it yields the Metric.</p></td>
 </tr>
 </tbody>
 </table>
@@ -338,16 +339,16 @@
 
 <dl class="method">
 <dt id="sdmetrics.statistical.bivariate.BivariateMetric.metric">
-<em class="property">static </em><code class="sig-name descname">metric</code><span class="sig-paren">(</span><em class="sig-param">real</em>, <em class="sig-param">fake</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/bivariate/base.html#BivariateMetric.metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.bivariate.BivariateMetric.metric" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">metric</code><span class="sig-paren">(</span><em class="sig-param">real_2d</em>, <em class="sig-param">synthetic_2d</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/bivariate/base.html#BivariateMetric.metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.bivariate.BivariateMetric.metric" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function is expected to perform a statistical test on the two
-samples, each of which is two-dimensional, and return a tuple containing
+samples, each of which contains two columns, and return a tuple containing
 (value, goal, unit, domain). See the Metric object for what these fields
 represent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>real_column</strong> (<em>np.ndarray</em>) – The values from the real database.</p></li>
-<li><p><strong>fake_column</strong> (<em>np.ndarray</em>) – The values from the fake database.</p></li>
+<li><p><strong>real_2d</strong> (<em>np.ndarray</em>) – Two columns from the real database.</p></li>
+<li><p><strong>synthetic_2d</strong> (<em>np.ndarray</em>) – Two columns from the synthetic database.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -363,7 +364,21 @@ which corresponds to the fields in a Metric object.</p>
 <dl class="method">
 <dt id="sdmetrics.statistical.bivariate.BivariateMetric.metrics">
 <code class="sig-name descname">metrics</code><span class="sig-paren">(</span><em class="sig-param">metadata</em>, <em class="sig-param">real_tables</em>, <em class="sig-param">synthetic_tables</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/bivariate/base.html#BivariateMetric.metrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.bivariate.BivariateMetric.metrics" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This function iterates over all the pairs of columns in all the tables
+and, if the data types match, it yields the Metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata</strong> (<em>sdv.Metadata</em>) – The Metadata object from SDV.</p></li>
+<li><p><strong>real_tables</strong> (<em>dict</em>) – A dictionary mapping table names to dataframes.</p></li>
+<li><p><strong>synthetic_tables</strong> (<em>dict</em>) – A dictionary mapping table names to dataframes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>Metric</em> – The next metric.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
@@ -398,8 +413,8 @@ which corresponds to the fields in a Metric object.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.bivariate.DiscreteDivergence.metric" title="sdmetrics.statistical.bivariate.DiscreteDivergence.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a>(real, fake)</p></td>
-<td><p>This function is expected to perform a statistical test on the two samples, each of which is two-dimensional, and return a tuple containing (value, goal, unit, domain).</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.bivariate.DiscreteDivergence.metric" title="sdmetrics.statistical.bivariate.DiscreteDivergence.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a>(real, synthetic)</p></td>
+<td><p>This function is expected to perform a statistical test on the two samples, each of which contains two columns, and return a tuple containing (value, goal, unit, domain).</p></td>
 </tr>
 </tbody>
 </table>
@@ -410,16 +425,16 @@ which corresponds to the fields in a Metric object.</p>
 
 <dl class="method">
 <dt id="sdmetrics.statistical.bivariate.DiscreteDivergence.metric">
-<em class="property">static </em><code class="sig-name descname">metric</code><span class="sig-paren">(</span><em class="sig-param">real</em>, <em class="sig-param">fake</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/bivariate/discrete.html#DiscreteDivergence.metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.bivariate.DiscreteDivergence.metric" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">metric</code><span class="sig-paren">(</span><em class="sig-param">real</em>, <em class="sig-param">synthetic</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/bivariate/discrete.html#DiscreteDivergence.metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.bivariate.DiscreteDivergence.metric" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function is expected to perform a statistical test on the two
-samples, each of which is two-dimensional, and return a tuple containing
+samples, each of which contains two columns, and return a tuple containing
 (value, goal, unit, domain). See the Metric object for what these fields
 represent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>real_column</strong> (<em>np.ndarray</em>) – The values from the real database.</p></li>
-<li><p><strong>fake_column</strong> (<em>np.ndarray</em>) – The values from the fake database.</p></li>
+<li><p><strong>real_2d</strong> (<em>np.ndarray</em>) – Two columns from the real database.</p></li>
+<li><p><strong>synthetic_2d</strong> (<em>np.ndarray</em>) – Two columns from the synthetic database.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -465,7 +480,7 @@ which corresponds to the fields in a Metric object.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.bivariate.ContinuousDivergence.metric" title="sdmetrics.statistical.bivariate.ContinuousDivergence.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a>(real, fake)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.bivariate.ContinuousDivergence.metric" title="sdmetrics.statistical.bivariate.ContinuousDivergence.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a>(real, synthetic)</p></td>
 <td><p>This approximates the KL divergence by binning the continuous values to turn them into categorical values and then computing the relative entropy.</p></td>
 </tr>
 </tbody>
@@ -477,15 +492,15 @@ which corresponds to the fields in a Metric object.</p>
 
 <dl class="method">
 <dt id="sdmetrics.statistical.bivariate.ContinuousDivergence.metric">
-<em class="property">static </em><code class="sig-name descname">metric</code><span class="sig-paren">(</span><em class="sig-param">real</em>, <em class="sig-param">fake</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/bivariate/continuous.html#ContinuousDivergence.metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.bivariate.ContinuousDivergence.metric" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">metric</code><span class="sig-paren">(</span><em class="sig-param">real</em>, <em class="sig-param">synthetic</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/bivariate/continuous.html#ContinuousDivergence.metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.bivariate.ContinuousDivergence.metric" title="Permalink to this definition">¶</a></dt>
 <dd><p>This approximates the KL divergence by binning the continuous values
 to turn them into categorical values and then computing the relative
 entropy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>real_column</strong> (<em>np.ndarray</em>) – The values from the real database.</p></li>
-<li><p><strong>fake_column</strong> (<em>np.ndarray</em>) – The values from the fake database.</p></li>
+<li><p><strong>real</strong> (<em>np.ndarray</em>) – The values from the real database.</p></li>
+<li><p><strong>synthetic</strong> (<em>np.ndarray</em>) – The values from the synthetic database.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

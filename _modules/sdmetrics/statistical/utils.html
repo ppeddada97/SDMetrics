@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../api/sdmetrics.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -214,28 +215,28 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
 
-<div class="viewcode-block" id="frequencies"><a class="viewcode-back" href="../../../api/sdmetrics.statistical.utils.html#sdmetrics.statistical.utils.frequencies">[docs]</a><span class="k">def</span> <span class="nf">frequencies</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">fake</span><span class="p">):</span>
+<div class="viewcode-block" id="frequencies"><a class="viewcode-back" href="../../../api/sdmetrics.statistical.utils.html#sdmetrics.statistical.utils.frequencies">[docs]</a><span class="k">def</span> <span class="nf">frequencies</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">synthetic</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given two iterators containing categorical data, this transforms it into</span>
 <span class="sd">    observed/expected frequencies which can be used for statistical tests. It</span>
-<span class="sd">    adds a regularization term to handle cases where the fake data contains</span>
+<span class="sd">    adds a regularization term to handle cases where the synthetic data contains</span>
 <span class="sd">    values that don&#39;t exist in the real data.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        real (list): A list of hashable objects.</span>
-<span class="sd">        fake (list): A list of hashable objects.</span>
+<span class="sd">        synthetic (list): A list of hashable objects.</span>
 
 <span class="sd">    Yields:</span>
 <span class="sd">        (list, list): The observed and expected frequencies (as a percent).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-    <span class="n">real</span><span class="p">,</span> <span class="n">fake</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">real</span><span class="p">),</span> <span class="n">Counter</span><span class="p">(</span><span class="n">fake</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">fake</span><span class="p">:</span>
+    <span class="n">real</span><span class="p">,</span> <span class="n">synthetic</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">real</span><span class="p">),</span> <span class="n">Counter</span><span class="p">(</span><span class="n">synthetic</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">synthetic</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">real</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Unexpected value </span><span class="si">%s</span><span class="s2"> in synthetic data.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,))</span>
             <span class="n">real</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1e-6</span>  <span class="c1"># Regularization to prevent NaN.</span>
-    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">fake</span><span class="p">:</span>
-        <span class="n">f_obs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fake</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">fake</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">synthetic</span><span class="p">:</span>
+        <span class="n">f_obs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">synthetic</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">synthetic</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
         <span class="n">f_exp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">real</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
     <span class="k">return</span> <span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span></div>
 </pre></div>

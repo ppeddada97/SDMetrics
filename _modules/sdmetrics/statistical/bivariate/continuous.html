@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api/sdmetrics.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -229,7 +230,7 @@
     <span class="p">]</span>
 
 <div class="viewcode-block" id="ContinuousDivergence.metric"><a class="viewcode-back" href="../../../../api/sdmetrics.statistical.bivariate.continuous.html#sdmetrics.statistical.bivariate.ContinuousDivergence.metric">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">metric</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">fake</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">metric</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">synthetic</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This approximates the KL divergence by binning the continuous values</span>
 <span class="sd">        to turn them into categorical values and then computing the relative</span>
@@ -239,18 +240,18 @@
 <span class="sd">            * Investigate a KDE-based approach.</span>
 
 <span class="sd">        Arguments:</span>
-<span class="sd">            real_column (np.ndarray): The values from the real database.</span>
-<span class="sd">            fake_column (np.ndarray): The values from the fake database.</span>
+<span class="sd">            real (np.ndarray): The values from the real database.</span>
+<span class="sd">            synthetic (np.ndarray): The values from the synthetic database.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            (str, Goal, str, tuple): A tuple containing (value, goal, unit, domain)</span>
 <span class="sd">            which corresponds to the fields in a Metric object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">real</span><span class="p">,</span> <span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">real</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">real</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-        <span class="n">fake</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span>
-            <span class="n">fake</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">fake</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span><span class="p">])</span>
+        <span class="n">synthetic</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span>
+            <span class="n">synthetic</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">synthetic</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span><span class="p">])</span>
 
-        <span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span> <span class="o">=</span> <span class="n">fake</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">real</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-5</span>
+        <span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span> <span class="o">=</span> <span class="n">synthetic</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">real</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-5</span>
         <span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span> <span class="o">=</span> <span class="n">f_obs</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f_obs</span><span class="p">),</span> <span class="n">f_exp</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f_exp</span><span class="p">)</span>
 
         <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rel_entr</span><span class="p">(</span><span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span><span class="p">))</span>

@@ -12,6 +12,7 @@ Subpackages
 .. toctree::
 
    sdmetrics.constraint
+   sdmetrics.datasets
    sdmetrics.detection
    sdmetrics.statistical
 

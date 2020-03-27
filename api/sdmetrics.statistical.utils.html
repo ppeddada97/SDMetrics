@@ -107,6 +107,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -248,23 +249,23 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.utils.frequencies" title="sdmetrics.statistical.utils.frequencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frequencies</span></code></a>(real, fake)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.utils.frequencies" title="sdmetrics.statistical.utils.frequencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frequencies</span></code></a>(real, synthetic)</p></td>
 <td><p>Given two iterators containing categorical data, this transforms it into observed/expected frequencies which can be used for statistical tests.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="sdmetrics.statistical.utils.frequencies">
-<code class="sig-prename descclassname">sdmetrics.statistical.utils.</code><code class="sig-name descname">frequencies</code><span class="sig-paren">(</span><em class="sig-param">real</em>, <em class="sig-param">fake</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/utils.html#frequencies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.utils.frequencies" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sdmetrics.statistical.utils.</code><code class="sig-name descname">frequencies</code><span class="sig-paren">(</span><em class="sig-param">real</em>, <em class="sig-param">synthetic</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/statistical/utils.html#frequencies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.utils.frequencies" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given two iterators containing categorical data, this transforms it into
 observed/expected frequencies which can be used for statistical tests. It
-adds a regularization term to handle cases where the fake data contains
+adds a regularization term to handle cases where the synthetic data contains
 values that don’t exist in the real data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>real</strong> (<em>list</em>) – A list of hashable objects.</p></li>
-<li><p><strong>fake</strong> (<em>list</em>) – A list of hashable objects.</p></li>
+<li><p><strong>synthetic</strong> (<em>list</em>) – A list of hashable objects.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>

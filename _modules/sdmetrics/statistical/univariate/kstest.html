@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api/sdmetrics.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -224,24 +225,26 @@
     <span class="n">dtypes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="KSTest.metric"><a class="viewcode-back" href="../../../../api/sdmetrics.statistical.univariate.kstest.html#sdmetrics.statistical.univariate.KSTest.metric">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">metric</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">fake_column</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">metric</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">synthetic_column</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function uses the two-sample Kolmogorov–Smirnov test to compare</span>
-<span class="sd">        the distributions of the two continuous columns using the emperical CDF.</span>
+<span class="sd">        the distributions of the two continuous columns using the empirical CDF.</span>
 <span class="sd">        It returns the resulting p-value so that a small value indicates that we</span>
 <span class="sd">        can reject the null hypothesis (i.e. and suggests that the distributions</span>
 <span class="sd">        are different).</span>
 
 <span class="sd">        Arguments:</span>
 <span class="sd">            real_column (np.ndarray): The values from the real database.</span>
-<span class="sd">            fake_column (np.ndarray): The values from the fake database.</span>
+<span class="sd">            synthetic_column (np.ndarray): The values from the synthetic database.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            (str, Goal, str, tuple): A tuple containing (value, goal, unit, domain)</span>
 <span class="sd">            which corresponds to the fields in a Metric object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">real_column</span> <span class="o">=</span> <span class="n">real_column</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">synthetic_column</span> <span class="o">=</span> <span class="n">synthetic_column</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">real_column</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">real_column</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">fake_column</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">fake_column</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">statistic</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">ks_2samp</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">fake_column</span><span class="p">)</span>
+        <span class="n">synthetic_column</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">synthetic_column</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">statistic</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">ks_2samp</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">synthetic_column</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pvalue</span><span class="p">,</span> <span class="n">Goal</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">,</span> <span class="s2">&quot;p-value&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span></div></div>
 </pre></div>
 

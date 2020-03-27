@@ -107,6 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -260,14 +261,14 @@ installation was successful.</p>
 <span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span> <span class="o">=</span> <span class="n">load_demo</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">sdv</span> <span class="o">=</span> <span class="n">SDV</span><span class="p">()</span>
 <span class="n">sdv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">)</span>
-<span class="n">fake_tables</span> <span class="o">=</span> <span class="n">sdv</span><span class="o">.</span><span class="n">sample_all</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">synthetic_tables</span> <span class="o">=</span> <span class="n">sdv</span><span class="o">.</span><span class="n">sample_all</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now that we have a synthetic dataset, we can evaluate it using <strong>SDMetrics</strong> by
 calling the <cite>evaluate</cite> function which returns an instance of <cite>MetricsReport</cite>
 with the default metrics:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sdmetrics</span> <span class="kn">import</span> <span class="n">evaluate</span>
-<span class="n">report</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">fake_tables</span><span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This report object provides a variety of functionality, from computing an overall

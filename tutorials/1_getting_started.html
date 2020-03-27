@@ -107,6 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -515,8 +516,8 @@ for table_name, df in real_tables.items():
 sdv = SDV()
 sdv.fit(metadata, real_tables)
 
-fake_tables = sdv.sample_all(20)
-for table_name, df in fake_tables.items():
+synthetic_tables = sdv.sample_all(20)
+for table_name, df in synthetic_tables.items():
     print(&quot;&gt;&quot;, table_name)
     print(df.head().to_string(index=False))
     print()
@@ -573,7 +574,7 @@ Type    Size  Store
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from sdmetrics import evaluate
-report = evaluate(metadata, real_tables, fake_tables)
+report = evaluate(metadata, real_tables, synthetic_tables)
 report
 </pre></div>
 </div>

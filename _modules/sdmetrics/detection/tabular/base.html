@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api/sdmetrics.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -247,12 +248,27 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="TabularDetector.metrics"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.base.html#sdmetrics.detection.tabular.TabularDetector.metrics">[docs]</a>    <span class="k">def</span> <span class="nf">metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">fake_tables</span><span class="p">):</span>
+<div class="viewcode-block" id="TabularDetector.metrics"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.base.html#sdmetrics.detection.tabular.TabularDetector.metrics">[docs]</a>    <span class="k">def</span> <span class="nf">metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function yields a sequence of Metric object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            metadata (sdv.Metadata): The Metadata object from SDV.</span>
+<span class="sd">            real_tables (dict): A dictionary mapping table names to dataframes.</span>
+<span class="sd">            synthetic_tables (dict): A dictionary mapping table names to dataframes.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            Metric: The next metric.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_single_table_detection</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">)</span>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_child_detection</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_single_table_detection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">):</span>
+        <span class="c1"># Single Table Detection</span>
         <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">real_tables</span><span class="p">):</span>
-            <span class="c1"># Single Table Detection</span>
-            <span class="n">auroc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auroc</span><span class="p">(</span>
+            <span class="n">auroc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_auroc</span><span class="p">(</span>
                 <span class="n">real_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">],</span>
-                <span class="n">fake_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">])</span>
+                <span class="n">synthetic_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">])</span>
 
             <span class="k">yield</span> <span class="n">Metric</span><span class="p">(</span>
                 <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
@@ -266,22 +282,24 @@
                 <span class="n">domain</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
             <span class="p">)</span>
 
-            <span class="c1"># Parent-Child Table Detection</span>
+    <span class="k">def</span> <span class="nf">_parent_child_detection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">):</span>
+        <span class="c1"># Parent-Child Table Detection</span>
+        <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">real_tables</span><span class="p">):</span>
             <span class="n">key</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_primary_key</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">child_name</span> <span class="ow">in</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_children</span><span class="p">(</span><span class="n">table_name</span><span class="p">):</span>
                 <span class="n">child_key</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_foreign_key</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">child_name</span><span class="p">)</span>
 
-                <span class="n">real</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_explode</span><span class="p">(</span>
+                <span class="n">real</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_denormalize</span><span class="p">(</span>
                     <span class="n">real_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">],</span>
                     <span class="n">key</span><span class="p">,</span>
                     <span class="n">real_tables</span><span class="p">[</span><span class="n">child_name</span><span class="p">],</span>
                     <span class="n">child_key</span><span class="p">)</span>
-                <span class="n">fake</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_explode</span><span class="p">(</span>
-                    <span class="n">fake_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">],</span>
+                <span class="n">synthetic</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_denormalize</span><span class="p">(</span>
+                    <span class="n">synthetic_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">],</span>
                     <span class="n">key</span><span class="p">,</span>
-                    <span class="n">fake_tables</span><span class="p">[</span><span class="n">child_name</span><span class="p">],</span>
+                    <span class="n">synthetic_tables</span><span class="p">[</span><span class="n">child_name</span><span class="p">],</span>
                     <span class="n">child_key</span><span class="p">)</span>
-                <span class="n">auroc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auroc</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">fake</span><span class="p">)</span>
+                <span class="n">auroc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_auroc</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">synthetic</span><span class="p">)</span>
 
                 <span class="k">yield</span> <span class="n">Metric</span><span class="p">(</span>
                     <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
@@ -294,15 +312,15 @@
                     <span class="n">goal</span><span class="o">=</span><span class="n">Goal</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">,</span>
                     <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;auroc&quot;</span><span class="p">,</span>
                     <span class="n">domain</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-                <span class="p">)</span></div>
+                <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_auroc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real_table</span><span class="p">,</span> <span class="n">fake_table</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_compute_auroc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real_table</span><span class="p">,</span> <span class="n">synthetic_table</span><span class="p">):</span>
         <span class="n">transformer</span> <span class="o">=</span> <span class="n">HyperTransformer</span><span class="p">()</span>
         <span class="n">real_table</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">real_table</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">fake_table</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">fake_table</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">synthetic_table</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">synthetic_table</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
 
-        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">real_table</span><span class="p">,</span> <span class="n">fake_table</span><span class="p">])</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">real_table</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fake_table</span><span class="p">))])</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">real_table</span><span class="p">,</span> <span class="n">synthetic_table</span><span class="p">])</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">real_table</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">synthetic_table</span><span class="p">))])</span>
         <span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">X</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.0</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
@@ -320,7 +338,7 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_explode</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">child_table</span><span class="p">,</span> <span class="n">child_key</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_denormalize</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">child_table</span><span class="p">,</span> <span class="n">child_key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Given a parent table (with a primary key) and a child table (with a foreign key),</span>
 <span class="sd">        this performs an outer join and returns a single flat table.</span>

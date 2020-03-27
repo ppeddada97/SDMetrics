@@ -105,6 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../api/sdmetrics.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../api/sdmetrics.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
@@ -225,14 +226,14 @@
     <span class="n">dtypes</span> <span class="o">=</span> <span class="p">[]</span>
 
 <div class="viewcode-block" id="UnivariateMetric.metric"><a class="viewcode-back" href="../../../../api/sdmetrics.statistical.univariate.base.html#sdmetrics.statistical.univariate.UnivariateMetric.metric">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">metric</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">fake_column</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">metric</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">synthetic_column</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function is expected to perform a statistical test on the two</span>
 <span class="sd">        samples and return a tuple containing (value, goal, unit, domain). See the</span>
 <span class="sd">        Metric object for what these fields represent.</span>
 
 <span class="sd">        Arguments:</span>
 <span class="sd">            real_column (np.ndarray): The values from the real database.</span>
-<span class="sd">            fake_column (np.ndarray): The values from the fake database.</span>
+<span class="sd">            synthetic_column (np.ndarray): The values from the synthetic database.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            (str, Goal, str, tuple): A tuple containing (value, goal, unit, domain)</span>
@@ -241,19 +242,31 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="UnivariateMetric.metrics"><a class="viewcode-back" href="../../../../api/sdmetrics.statistical.univariate.base.html#sdmetrics.statistical.univariate.UnivariateMetric.metrics">[docs]</a>    <span class="k">def</span> <span class="nf">metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">):</span>
-        <span class="n">tables</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">real_tables</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">synthetic_tables</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
-            <span class="n">dtypes</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-            <span class="n">real</span> <span class="o">=</span> <span class="n">real_tables</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-            <span class="n">fake</span> <span class="o">=</span> <span class="n">synthetic_tables</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-            <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dtypes</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">fake</span><span class="p">)</span></div>
+        <span class="sd">&quot;&quot;&quot;This function iterates over all the columns in all the tables and, if</span>
+<span class="sd">        the data type of a column matches the data types for which this metric is</span>
+<span class="sd">        defined, it computes the metric for that column and yields it.</span>
 
-    <span class="k">def</span> <span class="nf">_handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dtypes</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">fake</span><span class="p">):</span>
+<span class="sd">        Args:</span>
+<span class="sd">            metadata (sdv.Metadata): The Metadata object from SDV.</span>
+<span class="sd">            real_tables (dict): A dictionary mapping table names to dataframes.</span>
+<span class="sd">            synthetic_tables (dict): A dictionary mapping table names to dataframes.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            Metric: The next metric.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">real_tables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">==</span> <span class="n">synthetic_tables</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">real_tables</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">dtypes</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+            <span class="n">real</span> <span class="o">=</span> <span class="n">real_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">]</span>
+            <span class="n">synthetic</span> <span class="o">=</span> <span class="n">synthetic_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">]</span>
+            <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">dtypes</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">synthetic</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dtypes</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">synthetic</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">column_type</span> <span class="ow">in</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">column_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtypes</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="n">x1</span> <span class="o">=</span> <span class="n">real</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-            <span class="n">x2</span> <span class="o">=</span> <span class="n">fake</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">x2</span> <span class="o">=</span> <span class="n">synthetic</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
             <span class="n">value</span><span class="p">,</span> <span class="n">goal</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
             <span class="k">yield</span> <span class="n">Metric</span><span class="p">(</span>
                 <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
