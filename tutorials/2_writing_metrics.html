@@ -84,9 +84,13 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
@@ -99,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Generic-Metric">Generic Metric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Statistic-Metric">Statistic Metric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Detection-Metric">Detection Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Collecting-Metrics">Collecting Metrics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="3_ml_efficacy.html">Machine Learning Efficacy</a><ul>
@@ -463,15 +468,29 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Writing-Custom-Metrics">
 <h1>Writing Custom Metrics<a class="headerlink" href="#Writing-Custom-Metrics" title="Permalink to this headline">¶</a></h1>
-<p>Coming soon… how to write your own metrics.</p>
+<p>Let’s start by generating a simple synthetic dataset.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sdmetrics import adversary
-from sdmetrics import MetricsReport
+<span></span>from sdv import load_demo, SDV
 
+sdv = SDV()
+metadata, real_tables = load_demo(metadata=True)
+
+sdv.fit(metadata, real_tables)
+synthetic_tables = sdv.sample_all(20)
+</pre></div>
+</div>
+</div>
+<p>Next, we’ll create an empty <code class="docutils literal notranslate"><span class="pre">MetricsReport</span></code> object to hold our custom metrics.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sdmetrics import MetricsReport
 report = MetricsReport()
 </pre></div>
 </div>
@@ -480,7 +499,7 @@ report = MetricsReport()
 <h2>Generic Metric<a class="headerlink" href="#Generic-Metric" title="Permalink to this headline">¶</a></h2>
 <p>The simplest way to create a custom metric is to use the generic metric API. You simply write a function which yields a sequence of Metric objects, attach it to a metrics report, and you’re ready to go!</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -489,12 +508,12 @@ report = MetricsReport()
 def my_custom_metrics(metadata, real_tables, synthetic_tables):
     name = &quot;abs-diff-in-number-of-rows&quot;
 
-    for table_name in metadata:
+    for table_name in real_tables:
 
         # Absolute difference in number of rows
         nb_real_rows = len(real_tables[table_name])
         nb_synthetic_rows = len(synthetic_tables[table_name])
-        value = abs(nb_real_rows - nb_synthetic_rows)
+        value = float(abs(nb_real_rows - nb_synthetic_rows))
 
         # Specify some useful tags for the user
         tags = set([
@@ -504,7 +523,7 @@ def my_custom_metrics(metadata, real_tables, synthetic_tables):
 
         yield Metric(name, value, tags)
 
-report.add_metrics(my_custom_metrics(metadata, real_tables, fake_tables))
+report.add_metrics(my_custom_metrics(metadata, real_tables, synthetic_tables))
 </pre></div>
 </div>
 </div>
@@ -513,13 +532,13 @@ report.add_metrics(my_custom_metrics(metadata, real_tables, fake_tables))
 <h2>Statistic Metric<a class="headerlink" href="#Statistic-Metric" title="Permalink to this headline">¶</a></h2>
 <p>Alternatively, if you’re looking to create a statistical metric which looks at univariate or bivariate distributions, you can subclass the <code class="docutils literal notranslate"><span class="pre">UnivariateMetric</span></code> class and fill in a single function. The base class will handle identifying the columns which have the correct data type, traversing the tables, and so on. You can simply focus on the math.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from scipy.stats import chisquare
 from sdmetrics import Goal
-from sdmetrics.statistical import UnivariateMetric
+from sdmetrics.statistical.univariate import UnivariateMetric
 from sdmetrics.statistical.utils import frequencies
 
 class CSTest(UnivariateMetric):
@@ -546,7 +565,7 @@ class CSTest(UnivariateMetric):
         statistic, pvalue = chisquare(f_obs, f_exp)
         return pvalue, Goal.MAXIMIZE, &quot;p-value&quot;, (0.0, 1.0)
 
-report.add_metrics(CSTest.metrics(metadata, real_tables, fake_tables))
+report.add_metrics(CSTest().metrics(metadata, real_tables, synthetic_tables))
 </pre></div>
 </div>
 </div>
@@ -555,14 +574,14 @@ report.add_metrics(CSTest.metrics(metadata, real_tables, fake_tables))
 <h2>Detection Metric<a class="headerlink" href="#Detection-Metric" title="Permalink to this headline">¶</a></h2>
 <p>Similarly, if you’re looking to create a detection metric, you can subclass the <code class="docutils literal notranslate"><span class="pre">TabularDetector</span></code> class and fill in the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> functions. The base class will handle denormalizing parent-child relationships, etc. so you can focus on the machine learning.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler
 from sklearn.svm import SVC
-from sdmetrics.detection import TabularDetector
+from sdmetrics.detection.tabular import TabularDetector
 
 
 class SVCDetector(TabularDetector):
@@ -586,9 +605,189 @@ class SVCDetector(TabularDetector):
     def predict_proba(self, X):
         return self.model.predict_proba(X)[:, 1]
 
-report.add_metrics(SVCDetector.metrics(metadata, real_tables, fake_tables))
+report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables))
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="Collecting-Metrics">
+<h2>Collecting Metrics<a class="headerlink" href="#Collecting-Metrics" title="Permalink to this headline">¶</a></h2>
+<p>Now that we’ve generated all the metrics, we can explore the value of each metric using the standard <code class="docutils literal notranslate"><span class="pre">MetricsReport</span></code> interface which allows users to summarize, visualize, and explore the metrics at various levels of granularity.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>report.details()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Columns</th>
+      <th>Goal</th>
+      <th>Misc. Tags</th>
+      <th>Name</th>
+      <th>Tables</th>
+      <th>Unit</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td></td>
+      <td>Goal.IGNORE</td>
+      <td>priority:high</td>
+      <td>abs-diff-in-number-of-rows</td>
+      <td>table:users</td>
+      <td></td>
+      <td>10.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td></td>
+      <td>Goal.IGNORE</td>
+      <td>priority:high</td>
+      <td>abs-diff-in-number-of-rows</td>
+      <td>table:sessions</td>
+      <td></td>
+      <td>20.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td></td>
+      <td>Goal.IGNORE</td>
+      <td>priority:high</td>
+      <td>abs-diff-in-number-of-rows</td>
+      <td>table:transactions</td>
+      <td></td>
+      <td>274.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>column:country</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate</td>
+      <td>chisquare</td>
+      <td>table:users</td>
+      <td>p-value</td>
+      <td>0.999931</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>column:gender</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>priority:high,statistic:univariate</td>
+      <td>chisquare</td>
+      <td>table:users</td>
+      <td>p-value</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>column:device</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate</td>
+      <td>chisquare</td>
+      <td>table:sessions</td>
+      <td>p-value</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>column:os</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate</td>
+      <td>chisquare</td>
+      <td>table:sessions</td>
+      <td>p-value</td>
+      <td>0.838256</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>column:approved</td>
+      <td>Goal.MAXIMIZE</td>
+      <td>statistic:univariate</td>
+      <td>chisquare</td>
+      <td>table:transactions</td>
+      <td>p-value</td>
+      <td>0.739937</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>detection:auroc</td>
+      <td>svc</td>
+      <td>table:sessions</td>
+      <td>auroc</td>
+      <td>0.675000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>detection:auroc</td>
+      <td>svc</td>
+      <td>table:users</td>
+      <td>auroc</td>
+      <td>0.585979</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>detection:auroc</td>
+      <td>svc</td>
+      <td>table:transactions</td>
+      <td>auroc</td>
+      <td>0.734403</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>detection:auroc,priority:high</td>
+      <td>svc</td>
+      <td>table:transactions,table:sessions</td>
+      <td>auroc</td>
+      <td>0.905167</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>detection:auroc</td>
+      <td>svc</td>
+      <td>table:sessions,table:users</td>
+      <td>auroc</td>
+      <td>0.848485</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 </div>
 </div>

@@ -82,9 +82,13 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Quickstart</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -97,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/2_writing_metrics.html#Generic-Metric">Generic Metric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/2_writing_metrics.html#Statistic-Metric">Statistic Metric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/2_writing_metrics.html#Collecting-Metrics">Collecting Metrics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3_ml_efficacy.html">Machine Learning Efficacy</a><ul>
@@ -314,7 +319,7 @@
                     <span class="n">tags</span><span class="o">=</span><span class="nb">set</span><span class="p">([</span>
                         <span class="s2">&quot;detection:auroc&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;table:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">table_name</span><span class="p">,</span>
-                        <span class="s2">&quot;child:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">child_name</span><span class="p">,</span>
+                        <span class="s2">&quot;table:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">child_name</span><span class="p">,</span>
                     <span class="p">]</span> <span class="o">+</span> <span class="p">([</span><span class="s2">&quot;priority:high&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">auroc</span> <span class="o">&gt;</span> <span class="mf">0.9</span> <span class="k">else</span> <span class="p">[])),</span>
                     <span class="n">goal</span><span class="o">=</span><span class="n">Goal</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">,</span>
                     <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;auroc&quot;</span><span class="p">,</span>

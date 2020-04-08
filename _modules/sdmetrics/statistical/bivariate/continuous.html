@@ -82,9 +82,13 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Quickstart</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -97,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/2_writing_metrics.html#Generic-Metric">Generic Metric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/2_writing_metrics.html#Statistic-Metric">Statistic Metric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/2_writing_metrics.html#Collecting-Metrics">Collecting Metrics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/3_ml_efficacy.html">Machine Learning Efficacy</a><ul>
@@ -254,6 +259,9 @@
 <span class="sd">            (str, Goal, str, tuple): A tuple containing (value, goal, unit, domain)</span>
 <span class="sd">            which corresponds to the fields in a Metric object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">real</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">real</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">synthetic</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">synthetic</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
         <span class="n">real</span><span class="p">,</span> <span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">real</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">real</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
         <span class="n">synthetic</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span>
             <span class="n">synthetic</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">synthetic</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span><span class="p">])</span>

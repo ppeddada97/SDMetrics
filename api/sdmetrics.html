@@ -84,9 +84,13 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html#quickstart">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -99,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Generic-Metric">Generic Metric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Statistic-Metric">Statistic Metric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Collecting-Metrics">Collecting Metrics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/3_ml_efficacy.html">Machine Learning Efficacy</a><ul>
@@ -430,7 +435,7 @@ friendly API for accessing them.</p>
 <td><p>This computes a single scalar score for this report.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.MetricsReport.visualize" title="sdmetrics.MetricsReport.visualize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visualize</span></code></a>()</p></td>
-<td><p>This returns a pyplot.Figure which shows some of the key metrics in this report.</p></td>
+<td><p>This returns a pyplot.Figure which shows some of the key metrics.</p></td>
 </tr>
 </tbody>
 </table>
@@ -501,7 +506,7 @@ synthetic data, the model should try to maximize this score.</p>
 <dl class="method">
 <dt id="sdmetrics.MetricsReport.visualize">
 <code class="sig-name descname">visualize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics.html#MetricsReport.visualize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.MetricsReport.visualize" title="Permalink to this definition">¶</a></dt>
-<dd><p>This returns a pyplot.Figure which shows some of the key metrics in this report.</p>
+<dd><p>This returns a pyplot.Figure which shows some of the key metrics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A matplotlib figure visualizing key metricss.</p>
