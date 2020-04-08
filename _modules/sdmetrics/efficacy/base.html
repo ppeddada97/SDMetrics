@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sdmetrics.efficacy.base &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/header_light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#quickstart">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/1_getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/1_getting_started.html#Generating-Synthetic-Datasets">Generating Synthetic Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/1_getting_started.html#Evaluation-with-SDMetrics">Evaluation with SDMetrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/2_writing_metrics.html">Writing Custom Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/2_writing_metrics.html#Generic-Metric">Generic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/2_writing_metrics.html#Statistic-Metric">Statistic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/3_ml_efficacy.html">Machine Learning Efficacy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/3_ml_efficacy.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/3_ml_efficacy.html#Generating-Synthetic-Data">Generating Synthetic Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/3_ml_efficacy.html#Creating-the-Metadata">Creating the Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/3_ml_efficacy.html#Evaluating-Efficacy">Evaluating Efficacy</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/sdmetrics.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.detection.html">sdmetrics.detection package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.efficacy.html">sdmetrics.efficacy package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.efficacy.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.statistical.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.statistical.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../sdmetrics.html">sdmetrics</a> &raquo;</li>
+        
+      <li>sdmetrics.efficacy.base</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sdmetrics.efficacy.base</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+
+<span class="kn">from</span> <span class="nn">sdmetrics</span> <span class="kn">import</span> <span class="n">Goal</span><span class="p">,</span> <span class="n">Metric</span>
+
+
+<div class="viewcode-block" id="MLEfficacy"><a class="viewcode-back" href="../../../api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.MLEfficacy">[docs]</a><span class="k">class</span> <span class="nc">MLEfficacy</span><span class="p">():</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">target_table_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">target_column_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="n">metric_unit</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">metric_goal</span> <span class="o">=</span> <span class="n">Goal</span><span class="o">.</span><span class="n">IGNORE</span>
+    <span class="n">metric_domain</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">))</span>
+
+<div class="viewcode-block" id="MLEfficacy.fit"><a class="viewcode-back" href="../../../api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.MLEfficacy.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function implements a fit procedure which trains a supervised</span>
+<span class="sd">        learning model.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            X (np.ndarray): The numerical features (i.e. transformed rows).</span>
+<span class="sd">            y (np.ndarray): The output/target value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MLEfficacy.score"><a class="viewcode-back" href="../../../api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.MLEfficacy.score">[docs]</a>    <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function scores this model on the (test) dataset.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            X (np.ndarray): The numerical features (i.e. transformed rows).</span>
+<span class="sd">            y (np.ndarray): The output/target value.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The value of the appropriate metric.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="MLEfficacy.metrics"><a class="viewcode-back" href="../../../api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.MLEfficacy.metrics">[docs]</a>    <span class="k">def</span> <span class="nf">metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">):</span>
+        <span class="n">real_table</span> <span class="o">=</span> <span class="n">real_tables</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">target_table_name</span><span class="p">]</span>
+        <span class="n">synthetic_table</span> <span class="o">=</span> <span class="n">synthetic_tables</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">target_table_name</span><span class="p">]</span>
+        <span class="n">delta_score</span><span class="p">,</span> <span class="n">synthetic_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_score</span><span class="p">(</span><span class="n">real_table</span><span class="p">,</span> <span class="n">synthetic_table</span><span class="p">)</span>
+
+        <span class="c1"># Score on the synthetic table. Evaluated on real.</span>
+        <span class="k">yield</span> <span class="n">Metric</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">synthetic_score</span><span class="p">,</span>
+            <span class="n">tags</span><span class="o">=</span><span class="nb">set</span><span class="p">([</span>
+                <span class="s2">&quot;efficacy:ml&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;table:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_table_name</span><span class="p">,</span>
+                <span class="s2">&quot;column:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column_name</span><span class="p">,</span>
+            <span class="p">]),</span>
+            <span class="n">goal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metric_goal</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metric_unit</span><span class="p">,</span>
+            <span class="n">domain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metric_domain</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Score on the real test set using the machine learning&quot;</span>
+            <span class="s2">&quot; model trained on synthetic data.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Score on synthetic minus score on real. Evaluated on real.</span>
+        <span class="n">delta_domain</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric_domain</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric_domain</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">yield</span> <span class="n">Metric</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">delta_score</span><span class="p">,</span>
+            <span class="n">tags</span><span class="o">=</span><span class="nb">set</span><span class="p">([</span>
+                <span class="s2">&quot;efficacy:ml&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;table:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_table_name</span><span class="p">,</span>
+                <span class="s2">&quot;column:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column_name</span><span class="p">,</span>
+            <span class="p">]),</span>
+            <span class="n">goal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metric_goal</span><span class="p">,</span>
+            <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;delta_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric_unit</span><span class="p">,</span>
+            <span class="n">domain</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">delta_domain</span><span class="p">,</span> <span class="n">delta_domain</span><span class="p">),</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Diff in score on real when trained on synthetic vs real.&quot;</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_evaluate_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">synthetic</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This computes and returns the score of the model on the real test set when</span>
+<span class="sd">        it is trained on the synthetic data. It also returns the difference in score</span>
+<span class="sd">        of the model on the real data when trained on the synthetic data minus the</span>
+<span class="sd">        score when trained on the real data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">real_X</span> <span class="o">=</span> <span class="n">real</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">real</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">real_y</span> <span class="o">=</span> <span class="n">real</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">target_column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="n">synthetic_X</span> <span class="o">=</span> <span class="n">synthetic</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">synthetic</span><span class="o">.</span><span class="n">columns</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">synthetic_y</span> <span class="o">=</span> <span class="n">synthetic</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">target_column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="n">delta_scores</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">synthetic_scores</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">real_X</span><span class="p">,</span> <span class="n">real_y</span><span class="p">):</span>
+            <span class="c1"># Train a model on the real dataset and test on the real dataset.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">real_X</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">real_y</span><span class="p">[</span><span class="n">train_index</span><span class="p">])</span>
+            <span class="n">real_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">real_X</span><span class="p">[</span><span class="n">test_index</span><span class="p">],</span> <span class="n">real_y</span><span class="p">[</span><span class="n">test_index</span><span class="p">])</span>
+
+            <span class="c1"># Train a model on the synthetic dataset and test it on the real test dataset.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">synthetic_X</span><span class="p">,</span> <span class="n">synthetic_y</span><span class="p">)</span>
+            <span class="n">synthetic_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">real_X</span><span class="p">[</span><span class="n">test_index</span><span class="p">],</span> <span class="n">real_y</span><span class="p">[</span><span class="n">test_index</span><span class="p">])</span>
+
+            <span class="n">delta_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">synthetic_score</span> <span class="o">-</span> <span class="n">real_score</span><span class="p">)</span>
+            <span class="n">synthetic_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">synthetic_score</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">delta_scores</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">synthetic_scores</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, MIT Data To AI Lab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

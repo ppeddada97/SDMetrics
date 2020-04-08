@@ -100,6 +100,13 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/3_ml_efficacy.html">Machine Learning Efficacy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/3_ml_efficacy.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/3_ml_efficacy.html#Generating-Synthetic-Data">Generating Synthetic Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/3_ml_efficacy.html#Creating-the-Metadata">Creating the Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/3_ml_efficacy.html#Evaluating-Efficacy">Evaluating Efficacy</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul>
@@ -111,15 +118,15 @@
 <li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.efficacy.html">sdmetrics.efficacy package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.efficacy.html#submodules">Submodules</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="api/sdmetrics.statistical.html#submodules">Submodules</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>
 </li>
 </ul>
@@ -350,6 +357,10 @@
 </li>
         <li><a href="api/sdmetrics.detection.tabular.html#sdmetrics.detection.tabular.TabularDetector.fit">(sdmetrics.detection.tabular.TabularDetector method)</a>
 </li>
+        <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.fit">(sdmetrics.efficacy.base.MLEfficacy method)</a>
+</li>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.fit">(sdmetrics.efficacy.MLEfficacy method)</a>
+</li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -457,8 +468,26 @@
         <li><a href="api/sdmetrics.statistical.univariate.html#sdmetrics.statistical.univariate.UnivariateMetric.metric">(sdmetrics.statistical.univariate.UnivariateMetric static method)</a>
 </li>
       </ul></li>
+      <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.metric_domain">metric_domain (sdmetrics.efficacy.base.MLEfficacy attribute)</a>
+
+      <ul>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.metric_domain">(sdmetrics.efficacy.MLEfficacy attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.metric_goal">metric_goal (sdmetrics.efficacy.base.MLEfficacy attribute)</a>
+
+      <ul>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.metric_goal">(sdmetrics.efficacy.MLEfficacy attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.metric_unit">metric_unit (sdmetrics.efficacy.base.MLEfficacy attribute)</a>
+
+      <ul>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.metric_unit">(sdmetrics.efficacy.MLEfficacy attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/sdmetrics.constraint.html#sdmetrics.constraint.metrics">metrics() (in module sdmetrics.constraint)</a>
 
       <ul>
@@ -469,6 +498,10 @@
         <li><a href="api/sdmetrics.detection.tabular.base.html#sdmetrics.detection.tabular.base.TabularDetector.metrics">(sdmetrics.detection.tabular.base.TabularDetector method)</a>
 </li>
         <li><a href="api/sdmetrics.detection.tabular.html#sdmetrics.detection.tabular.TabularDetector.metrics">(sdmetrics.detection.tabular.TabularDetector method)</a>
+</li>
+        <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.metrics">(sdmetrics.efficacy.base.MLEfficacy method)</a>
+</li>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.metrics">(sdmetrics.efficacy.MLEfficacy method)</a>
 </li>
         <li><a href="api/sdmetrics.statistical.bivariate.base.html#sdmetrics.statistical.bivariate.base.BivariateMetric.metrics">(sdmetrics.statistical.bivariate.base.BivariateMetric method)</a>
 </li>
@@ -483,6 +516,12 @@
 </li>
       <li><a href="api/sdmetrics.html#sdmetrics.Goal.MINIMIZE">MINIMIZE (sdmetrics.Goal attribute)</a>
 </li>
+      <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy">MLEfficacy (class in sdmetrics.efficacy)</a>
+
+      <ul>
+        <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy">(class in sdmetrics.efficacy.base)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -509,6 +548,10 @@
         <li><a href="api/sdmetrics.detection.tabular.html#sdmetrics.detection.tabular.SVCDetector.name">(sdmetrics.detection.tabular.SVCDetector attribute)</a>
 </li>
         <li><a href="api/sdmetrics.detection.tabular.html#sdmetrics.detection.tabular.TabularDetector.name">(sdmetrics.detection.tabular.TabularDetector attribute)</a>
+</li>
+        <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.name">(sdmetrics.efficacy.base.MLEfficacy attribute)</a>
+</li>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.name">(sdmetrics.efficacy.MLEfficacy attribute)</a>
 </li>
         <li><a href="api/sdmetrics.html#sdmetrics.Metric.name">(sdmetrics.Metric attribute)</a>
 </li>
@@ -573,6 +616,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/sdmetrics.datasets.html#sdmetrics.datasets.Dataset.save">save() (sdmetrics.datasets.Dataset method)</a>
 </li>
+      <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.score">score() (sdmetrics.efficacy.base.MLEfficacy method)</a>
+
+      <ul>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.score">(sdmetrics.efficacy.MLEfficacy method)</a>
+</li>
+      </ul></li>
       <li><a href="api/sdmetrics.html#module-sdmetrics">sdmetrics (module)</a>
 </li>
       <li><a href="api/sdmetrics.constraint.html#module-sdmetrics.constraint">sdmetrics.constraint (module)</a>
@@ -589,12 +638,14 @@
 </li>
       <li><a href="api/sdmetrics.detection.tabular.svc.html#module-sdmetrics.detection.tabular.svc">sdmetrics.detection.tabular.svc (module)</a>
 </li>
-      <li><a href="api/sdmetrics.sdmetrics.html#module-sdmetrics.sdmetrics">sdmetrics.sdmetrics (module)</a>
-</li>
-      <li><a href="api/sdmetrics.statistical.html#module-sdmetrics.statistical">sdmetrics.statistical (module)</a>
+      <li><a href="api/sdmetrics.efficacy.html#module-sdmetrics.efficacy">sdmetrics.efficacy (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/sdmetrics.efficacy.base.html#module-sdmetrics.efficacy.base">sdmetrics.efficacy.base (module)</a>
+</li>
+      <li><a href="api/sdmetrics.statistical.html#module-sdmetrics.statistical">sdmetrics.statistical (module)</a>
+</li>
       <li><a href="api/sdmetrics.statistical.bivariate.html#module-sdmetrics.statistical.bivariate">sdmetrics.statistical.bivariate (module)</a>
 </li>
       <li><a href="api/sdmetrics.statistical.bivariate.base.html#module-sdmetrics.statistical.bivariate.base">sdmetrics.statistical.bivariate.base (module)</a>
@@ -633,10 +684,22 @@
         <li><a href="api/sdmetrics.detection.tabular.base.html#sdmetrics.detection.tabular.base.TabularDetector">(class in sdmetrics.detection.tabular.base)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/sdmetrics.html#sdmetrics.Metric.tags">tags (sdmetrics.Metric attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.target_column_name">target_column_name (sdmetrics.efficacy.base.MLEfficacy attribute)</a>
+
+      <ul>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.target_column_name">(sdmetrics.efficacy.MLEfficacy attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/sdmetrics.efficacy.base.html#sdmetrics.efficacy.base.MLEfficacy.target_table_name">target_table_name (sdmetrics.efficacy.base.MLEfficacy attribute)</a>
+
+      <ul>
+        <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.target_table_name">(sdmetrics.efficacy.MLEfficacy attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 

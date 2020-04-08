@@ -1,0 +1,7 @@
+sdmetrics.efficacy.base module
+==============================
+
+.. automodule:: sdmetrics.efficacy.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

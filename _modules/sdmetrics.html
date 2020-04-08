@@ -99,6 +99,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/3_ml_efficacy.html">Machine Learning Efficacy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/3_ml_efficacy.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/3_ml_efficacy.html#Generating-Synthetic-Data">Generating Synthetic Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/3_ml_efficacy.html#Creating-the-Metadata">Creating the Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/3_ml_efficacy.html#Evaluating-Efficacy">Evaluating Efficacy</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
 <ul>
@@ -110,15 +117,15 @@
 <li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.detection.html#subpackages">Subpackages</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.efficacy.html">sdmetrics.efficacy package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.efficacy.html#submodules">Submodules</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.statistical.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../api/sdmetrics.statistical.html#submodules">Submodules</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.sdmetrics.html">sdmetrics.sdmetrics module</a></li>
 </ul>
 </li>
 </ul>
@@ -326,8 +333,8 @@
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;Metric(name=</span><span class="si">%s</span><span class="s2">, value=</span><span class="si">%s</span><span class="s2">, tags=</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="s2">&quot;&quot;&quot;Metric(</span><span class="se">\n</span><span class="s2">  name=</span><span class="si">%s</span><span class="s2">, </span><span class="se">\n</span><span class="s2">  value=</span><span class="si">%.2f</span><span class="s2">, </span><span class="se">\n</span><span class="s2">  tags=</span><span class="si">%s</span><span class="s2">, </span><span class="se">\n</span><span class="s2">  description=</span><span class="si">%s</span><span class="se">\n</span><span class="s2">)&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MetricsReport"><a class="viewcode-back" href="../api/sdmetrics.html#sdmetrics.MetricsReport">[docs]</a><span class="k">class</span> <span class="nc">MetricsReport</span><span class="p">():</span>
