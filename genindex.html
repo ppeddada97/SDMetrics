@@ -2,15 +2,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  <title>Index &mdash; SDMetrics 0.0.1.dev0 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
 
   
   
@@ -20,7 +23,9 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -33,10 +38,6 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
@@ -75,6 +76,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -134,6 +136,11 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="api/sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.evaluation.html">sdmetrics.evaluation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/sdmetrics.report.html">sdmetrics.report module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
@@ -162,6 +169,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -200,7 +208,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Index</li>
     
@@ -251,11 +259,11 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.MetricsReport.add_metric">add_metric() (sdmetrics.MetricsReport method)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.MetricsReport.add_metric">add_metric() (sdmetrics.report.MetricsReport method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.MetricsReport.add_metrics">add_metrics() (sdmetrics.MetricsReport method)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.MetricsReport.add_metrics">add_metrics() (sdmetrics.report.MetricsReport method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -297,9 +305,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/sdmetrics.datasets.html#sdmetrics.datasets.Dataset">Dataset (class in sdmetrics.datasets)</a>
 </li>
-      <li><a href="api/sdmetrics.html#sdmetrics.Metric.description">description (sdmetrics.Metric attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Metric.description">description (sdmetrics.report.Metric attribute)</a>
 </li>
-      <li><a href="api/sdmetrics.html#sdmetrics.MetricsReport.details">details() (sdmetrics.MetricsReport method)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.MetricsReport.details">details() (sdmetrics.report.MetricsReport method)</a>
 </li>
       <li><a href="api/sdmetrics.statistical.bivariate.html#sdmetrics.statistical.bivariate.DiscreteDivergence">DiscreteDivergence (class in sdmetrics.statistical.bivariate)</a>
 
@@ -307,7 +315,7 @@
         <li><a href="api/sdmetrics.statistical.bivariate.discrete.html#sdmetrics.statistical.bivariate.discrete.DiscreteDivergence">(class in sdmetrics.statistical.bivariate.discrete)</a>
 </li>
       </ul></li>
-      <li><a href="api/sdmetrics.html#sdmetrics.Metric.domain">domain (sdmetrics.Metric attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Metric.domain">domain (sdmetrics.report.Metric attribute)</a>
 </li>
       <li><a href="api/sdmetrics.statistical.bivariate.base.html#sdmetrics.statistical.bivariate.base.BivariateMetric.dtypes">dtypes (sdmetrics.statistical.bivariate.base.BivariateMetric attribute)</a>, <a href="api/sdmetrics.statistical.bivariate.base.html#sdmetrics.statistical.bivariate.base.BivariateMetric.dtypes">[1]</a>
 
@@ -342,7 +350,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/sdmetrics.html#sdmetrics.evaluate">evaluate() (in module sdmetrics)</a>
+
+      <ul>
+        <li><a href="api/sdmetrics.evaluation.html#sdmetrics.evaluation.evaluate">(in module sdmetrics.evaluation)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -377,11 +389,11 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.Goal">Goal (class in sdmetrics)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Goal">Goal (class in sdmetrics.report)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.Metric.goal">goal (sdmetrics.Metric attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Metric.goal">goal (sdmetrics.report.Metric attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -389,7 +401,7 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.MetricsReport.highlights">highlights() (sdmetrics.MetricsReport method)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.MetricsReport.highlights">highlights() (sdmetrics.report.MetricsReport method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -401,7 +413,7 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.Goal.IGNORE">IGNORE (sdmetrics.Goal attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Goal.IGNORE">IGNORE (sdmetrics.report.Goal attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -441,11 +453,11 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.Goal.MAXIMIZE">MAXIMIZE (sdmetrics.Goal attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Goal.MAXIMIZE">MAXIMIZE (sdmetrics.report.Goal attribute)</a>
 </li>
       <li><a href="api/sdmetrics.datasets.html#sdmetrics.datasets.Dataset.metadata">metadata (sdmetrics.datasets.Dataset attribute)</a>
 </li>
-      <li><a href="api/sdmetrics.html#sdmetrics.Metric">Metric (class in sdmetrics)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Metric">Metric (class in sdmetrics.report)</a>
 </li>
       <li><a href="api/sdmetrics.statistical.bivariate.base.html#sdmetrics.statistical.bivariate.base.BivariateMetric.metric">metric() (sdmetrics.statistical.bivariate.base.BivariateMetric static method)</a>
 
@@ -517,9 +529,9 @@
         <li><a href="api/sdmetrics.statistical.univariate.html#sdmetrics.statistical.univariate.UnivariateMetric.metrics">(sdmetrics.statistical.univariate.UnivariateMetric method)</a>
 </li>
       </ul></li>
-      <li><a href="api/sdmetrics.html#sdmetrics.MetricsReport">MetricsReport (class in sdmetrics)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.MetricsReport">MetricsReport (class in sdmetrics.report)</a>
 </li>
-      <li><a href="api/sdmetrics.html#sdmetrics.Goal.MINIMIZE">MINIMIZE (sdmetrics.Goal attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Goal.MINIMIZE">MINIMIZE (sdmetrics.report.Goal attribute)</a>
 </li>
       <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy">MLEfficacy (class in sdmetrics.efficacy)</a>
 
@@ -558,7 +570,7 @@
 </li>
         <li><a href="api/sdmetrics.efficacy.html#sdmetrics.efficacy.MLEfficacy.name">(sdmetrics.efficacy.MLEfficacy attribute)</a>
 </li>
-        <li><a href="api/sdmetrics.html#sdmetrics.Metric.name">(sdmetrics.Metric attribute)</a>
+        <li><a href="api/sdmetrics.report.html#sdmetrics.report.Metric.name">(sdmetrics.report.Metric attribute)</a>
 </li>
         <li><a href="api/sdmetrics.statistical.bivariate.base.html#sdmetrics.statistical.bivariate.base.BivariateMetric.name">(sdmetrics.statistical.bivariate.base.BivariateMetric attribute)</a>, <a href="api/sdmetrics.statistical.bivariate.base.html#sdmetrics.statistical.bivariate.base.BivariateMetric.name">[1]</a>
 </li>
@@ -591,7 +603,7 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.MetricsReport.overall">overall() (sdmetrics.MetricsReport method)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.MetricsReport.overall">overall() (sdmetrics.report.MetricsReport method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -645,9 +657,13 @@
 </li>
       <li><a href="api/sdmetrics.efficacy.html#module-sdmetrics.efficacy">sdmetrics.efficacy (module)</a>
 </li>
+      <li><a href="api/sdmetrics.efficacy.base.html#module-sdmetrics.efficacy.base">sdmetrics.efficacy.base (module)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.efficacy.base.html#module-sdmetrics.efficacy.base">sdmetrics.efficacy.base (module)</a>
+      <li><a href="api/sdmetrics.evaluation.html#module-sdmetrics.evaluation">sdmetrics.evaluation (module)</a>
+</li>
+      <li><a href="api/sdmetrics.report.html#module-sdmetrics.report">sdmetrics.report (module)</a>
 </li>
       <li><a href="api/sdmetrics.statistical.html#module-sdmetrics.statistical">sdmetrics.statistical (module)</a>
 </li>
@@ -689,7 +705,7 @@
         <li><a href="api/sdmetrics.detection.tabular.base.html#sdmetrics.detection.tabular.base.TabularDetector">(class in sdmetrics.detection.tabular.base)</a>
 </li>
       </ul></li>
-      <li><a href="api/sdmetrics.html#sdmetrics.Metric.tags">tags (sdmetrics.Metric attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Metric.tags">tags (sdmetrics.report.Metric attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -711,7 +727,7 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.Metric.unit">unit (sdmetrics.Metric attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Metric.unit">unit (sdmetrics.report.Metric attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -727,11 +743,11 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.Metric.value">value (sdmetrics.Metric attribute)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.Metric.value">value (sdmetrics.report.Metric attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/sdmetrics.html#sdmetrics.MetricsReport.visualize">visualize() (sdmetrics.MetricsReport method)</a>
+      <li><a href="api/sdmetrics.report.html#sdmetrics.report.MetricsReport.visualize">visualize() (sdmetrics.report.MetricsReport method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -748,11 +764,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, MIT Data To AI Lab
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -763,7 +787,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

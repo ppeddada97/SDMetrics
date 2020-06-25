@@ -1,0 +1,7 @@
+sdmetrics.report module
+=======================
+
+.. automodule:: sdmetrics.report
+   :members:
+   :undoc-members:
+   :show-inheritance:

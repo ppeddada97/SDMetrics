@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  <title>Getting Started &mdash; SDMetrics 0.0.1.dev0 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
 
   
   
@@ -19,7 +22,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -32,10 +37,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Writing Custom Metrics" href="2_writing_metrics.html" />
@@ -76,6 +77,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -135,6 +137,11 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.evaluation.html">sdmetrics.evaluation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.report.html">sdmetrics.report module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
@@ -163,6 +170,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -201,7 +209,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Getting Started</li>
     
@@ -290,20 +298,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 5ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -396,7 +417,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -477,15 +498,27 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sdv import load_demo
+<span></span><span class="kn">from</span> <span class="nn">sdv</span> <span class="kn">import</span> <span class="n">load_demo</span>
 
-metadata, real_tables = load_demo(&quot;walmart&quot;, metadata=True)
-for table_name, df in real_tables.items():
-    print(&quot;&gt;&quot;, table_name)
-    print(df.head().to_string(index=False))
-    print()
+<span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span> <span class="o">=</span> <span class="n">load_demo</span><span class="p">(</span><span class="s2">&quot;walmart&quot;</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">table_name</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">real_tables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2020-06-25 19:46:08,024 - INFO - demo - Downloading dataset walmart from https://sdv-datasets.s3.amazonaws.com/walmart.zip
+2020-06-25 19:46:16,109 - INFO - demo - Extracting dataset into /home/xals/.virtualenvs/SDMetrics/lib/python3.6/site-packages/sdv/data
+2020-06-25 19:46:16,206 - INFO - metadata - Loading table stores
+2020-06-25 19:46:16,213 - INFO - metadata - Loading table features
+2020-06-25 19:46:16,227 - INFO - metadata - Loading table depts
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -523,18 +556,46 @@ for table_name, df in real_tables.items():
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sdv import SDV
+<span></span><span class="kn">from</span> <span class="nn">sdv</span> <span class="kn">import</span> <span class="n">SDV</span>
 
-sdv = SDV()
-sdv.fit(metadata, real_tables)
+<span class="n">sdv</span> <span class="o">=</span> <span class="n">SDV</span><span class="p">()</span>
+<span class="n">sdv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">)</span>
 
-synthetic_tables = sdv.sample_all(100)
-for table_name, df in synthetic_tables.items():
-    print(&quot;&gt;&quot;, table_name)
-    print(df.head().to_string(index=False))
-    print()
+<span class="n">synthetic_tables</span> <span class="o">=</span> <span class="n">sdv</span><span class="o">.</span><span class="n">sample_all</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">table_name</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">synthetic_tables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="n">table_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2020-06-25 19:46:16,573 - INFO - modeler - Modeling stores
+2020-06-25 19:46:16,574 - INFO - metadata - Loading transformer CategoricalTransformer for field Type
+2020-06-25 19:46:16,574 - INFO - metadata - Loading transformer NumericalTransformer for field Size
+2020-06-25 19:46:16,583 - INFO - modeler - Modeling depts
+2020-06-25 19:46:16,584 - INFO - metadata - Loading transformer DatetimeTransformer for field Date
+2020-06-25 19:46:16,584 - INFO - metadata - Loading transformer NumericalTransformer for field Weekly_Sales
+2020-06-25 19:46:16,585 - INFO - metadata - Loading transformer NumericalTransformer for field Dept
+2020-06-25 19:46:16,585 - INFO - metadata - Loading transformer BooleanTransformer for field IsHoliday
+2020-06-25 19:46:18,065 - INFO - modeler - Modeling features
+2020-06-25 19:46:18,066 - INFO - metadata - Loading transformer DatetimeTransformer for field Date
+2020-06-25 19:46:18,066 - INFO - metadata - Loading transformer NumericalTransformer for field MarkDown1
+2020-06-25 19:46:18,067 - INFO - metadata - Loading transformer BooleanTransformer for field IsHoliday
+2020-06-25 19:46:18,067 - INFO - metadata - Loading transformer NumericalTransformer for field MarkDown4
+2020-06-25 19:46:18,068 - INFO - metadata - Loading transformer NumericalTransformer for field MarkDown3
+2020-06-25 19:46:18,069 - INFO - metadata - Loading transformer NumericalTransformer for field Fuel_Price
+2020-06-25 19:46:18,069 - INFO - metadata - Loading transformer NumericalTransformer for field Unemployment
+2020-06-25 19:46:18,071 - INFO - metadata - Loading transformer NumericalTransformer for field Temperature
+2020-06-25 19:46:18,071 - INFO - metadata - Loading transformer NumericalTransformer for field MarkDown5
+2020-06-25 19:46:18,072 - INFO - metadata - Loading transformer NumericalTransformer for field MarkDown2
+2020-06-25 19:46:18,072 - INFO - metadata - Loading transformer NumericalTransformer for field CPI
+2020-06-25 19:46:20,158 - INFO - modeler - Modeling Complete
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -543,27 +604,27 @@ for table_name, df in synthetic_tables.items():
 <div class="highlight"><pre>
 &gt; stores
 Type    Size  Store
-   A  213178      0
-   A  161959      1
-   B   52047      2
-   B  139747      3
-   B  202028      4
-
-&gt; features
-                         Date     MarkDown1  Store  IsHoliday   MarkDown4     MarkDown3  Fuel_Price  Unemployment  Temperature    MarkDown5     MarkDown2         CPI
-2013-02-24 15:42:51.765077504           NaN      0      False -6398.11463  16671.303639    3.558381      6.738988    88.322154  6388.697657  17223.792884  176.060812
-2012-07-17 10:21:04.109254912  17403.320688      0      False         NaN           NaN    3.666979      7.174856    72.303166          NaN  13587.186333  186.074708
-2011-12-14 15:46:36.602722304  10484.088916      0      False         NaN   1077.439738    3.295589      8.401885    61.208604          NaN   3729.969024  199.613992
-2009-03-30 22:30:18.733320704  -9663.509270      0      False         NaN           NaN    2.821261           NaN    27.667123  -984.242194           NaN  227.890390
-2011-10-14 04:39:44.152434432   8284.869573      0      False         NaN  -5411.040991    3.016883      7.588815    76.263967  3854.349620           NaN  200.189541
+   B  162359      0
+   A  170980      1
+   A  121729      2
+   A  119871      3
+   B  105650      4
 
 &gt; depts
                          Date  Weekly_Sales  Store  Dept  IsHoliday
-2010-11-14 21:37:21.636431360  16816.578256      0     8      False
-2013-01-20 01:05:15.044575744  32330.823609      0    40      False
-2011-02-08 22:35:01.965113344  19327.625876      0    77      False
-2012-05-29 08:13:55.711912960   9012.689590      0    79      False
-2012-03-09 04:18:56.861504256  49512.180685      0    -2      False
+2012-02-09 21:17:12.955154432  36350.852015      0   103      False
+2011-01-21 18:24:47.572623360  25216.388905      0    44      False
+2010-06-18 12:19:42.539680512 -13136.641329      0    33      False
+2012-01-24 22:12:11.601125120  18568.195813      0    66      False
+2012-07-08 02:42:07.696383488   4870.694554      0    21      False
+
+&gt; features
+                         Date     MarkDown1  Store  IsHoliday    MarkDown4     MarkDown3  Fuel_Price  Unemployment  Temperature  MarkDown5     MarkDown2         CPI
+2012-05-18 06:23:23.519357440  13455.145775      0      False          NaN           NaN    3.331705      8.665745    38.100766        NaN           NaN  113.874949
+2014-05-12 20:57:43.380266240           NaN      0      False          NaN           NaN    3.457125      7.986831    80.337547        NaN  13352.919763   97.813549
+2011-08-31 22:09:20.301309952   9309.594749      0      False  8097.744566  14913.929190    3.790684      8.962725    36.775840        NaN   3068.128432  117.810954
+2010-10-14 15:34:59.405207296   1312.758302      0      False  6875.605041           NaN    3.908182      9.003278    17.247962  159.16623           NaN  119.884809
+2012-03-07 02:22:12.858559744           NaN      0      False   183.891473  -2399.303764    4.406721      6.441316    52.768009        NaN   3568.752822  116.397196
 
 </pre></div></div>
 </div>
@@ -576,9 +637,9 @@ Type    Size  Store
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sdmetrics import evaluate
-report = evaluate(metadata, real_tables, synthetic_tables)
-report
+<span></span><span class="kn">from</span> <span class="nn">sdmetrics</span> <span class="kn">import</span> <span class="n">evaluate</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">)</span>
+<span class="n">report</span>
 </pre></div>
 </div>
 </div>
@@ -588,7 +649,7 @@ report
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;sdmetrics.MetricsReport at 0x1224cd750&gt;
+&lt;sdmetrics.report.MetricsReport at 0x7fe3c4612978&gt;
 </pre></div></div>
 </div>
 <p>The metrics report can provide an <strong>overall score</strong>. This is a single scalar value which you can pass to an optimization routine (i.e. to tune some hyperparameters in your model).</p>
@@ -597,7 +658,7 @@ report
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(report.overall())
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">overall</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -606,7 +667,7 @@ report
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
--58.78717418000785
+-60.23613058409412
 </pre></div></div>
 </div>
 <p>Furthermore, the metrics report can also provide some key highlights. This shows the problem areas where your model performs especially poorly - for example, the below highlights suggest that our model is very bad at modeling the <code class="docutils literal notranslate"><span class="pre">MarkDownX</span></code> columns since the kstest has detected that the distributions look quite different between the real and synthetic versions.</p>
@@ -615,7 +676,7 @@ report
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>report.highlights()
+<span></span><span class="n">report</span><span class="o">.</span><span class="n">highlights</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -660,7 +721,7 @@ report
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>4.301373e-23</td>
+      <td>3.631931e-23</td>
     </tr>
     <tr>
       <th>1</th>
@@ -670,7 +731,7 @@ report
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>1.055098e-60</td>
+      <td>4.654995e-59</td>
     </tr>
     <tr>
       <th>2</th>
@@ -680,7 +741,7 @@ report
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>7.251224e-253</td>
+      <td>1.652154e-236</td>
     </tr>
     <tr>
       <th>3</th>
@@ -690,7 +751,7 @@ report
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>2.136220e-75</td>
+      <td>1.103714e-77</td>
     </tr>
     <tr>
       <th>4</th>
@@ -700,7 +761,7 @@ report
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>5.182947e-69</td>
+      <td>1.536199e-47</td>
     </tr>
     <tr>
       <th>5</th>
@@ -710,7 +771,7 @@ report
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>4.109717e-22</td>
+      <td>1.435159e-08</td>
     </tr>
     <tr>
       <th>6</th>
@@ -720,7 +781,7 @@ report
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>3.471358e-16</td>
+      <td>1.830072e-14</td>
     </tr>
     <tr>
       <th>7</th>
@@ -730,7 +791,7 @@ report
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>2.773154e-254</td>
+      <td>2.546443e-227</td>
     </tr>
     <tr>
       <th>8</th>
@@ -772,8 +833,8 @@ report
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%matplotlib inline
-report.visualize().savefig(&quot;../resources/visualize.png&quot;);
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">report</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../resources/visualize.png&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -790,7 +851,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>report.details()
+<span></span><span class="n">report</span><span class="o">.</span><span class="n">details</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -831,7 +892,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <th>0</th>
       <td></td>
       <td>Goal.MAXIMIZE</td>
-      <td>child:features</td>
+      <td>child:depts</td>
       <td>foreign-key</td>
       <td>table:stores</td>
       <td>binary</td>
@@ -841,7 +902,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <th>1</th>
       <td></td>
       <td>Goal.MAXIMIZE</td>
-      <td>child:depts</td>
+      <td>child:features</td>
       <td>foreign-key</td>
       <td>table:stores</td>
       <td>binary</td>
@@ -853,9 +914,9 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>logistic</td>
-      <td>table:features</td>
+      <td>table:stores</td>
       <td>auroc</td>
-      <td>7.539284e-01</td>
+      <td>7.595563e-01</td>
     </tr>
     <tr>
       <th>3</th>
@@ -863,9 +924,9 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>logistic</td>
-      <td>table:depts</td>
+      <td>table:features</td>
       <td>auroc</td>
-      <td>7.700053e-01</td>
+      <td>7.583616e-01</td>
     </tr>
     <tr>
       <th>4</th>
@@ -873,9 +934,9 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>logistic</td>
-      <td>table:stores</td>
+      <td>table:depts</td>
       <td>auroc</td>
-      <td>7.560507e-01</td>
+      <td>7.695387e-01</td>
     </tr>
     <tr>
       <th>5</th>
@@ -883,9 +944,9 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>logistic</td>
-      <td>table:stores,table:features</td>
+      <td>table:stores,table:depts</td>
       <td>auroc</td>
-      <td>7.669569e-01</td>
+      <td>7.749326e-01</td>
     </tr>
     <tr>
       <th>6</th>
@@ -893,9 +954,9 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>logistic</td>
-      <td>table:depts,table:stores</td>
+      <td>table:stores,table:features</td>
       <td>auroc</td>
-      <td>7.736407e-01</td>
+      <td>7.721373e-01</td>
     </tr>
     <tr>
       <th>7</th>
@@ -905,7 +966,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>chisquare</td>
       <td>table:stores</td>
       <td>p-value</td>
-      <td>9.627084e-01</td>
+      <td>9.703606e-01</td>
     </tr>
     <tr>
       <th>8</th>
@@ -915,7 +976,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>chisquare</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>9.153868e-01</td>
+      <td>9.106489e-01</td>
     </tr>
     <tr>
       <th>9</th>
@@ -925,7 +986,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>chisquare</td>
       <td>table:depts</td>
       <td>p-value</td>
-      <td>9.661065e-01</td>
+      <td>9.654409e-01</td>
     </tr>
     <tr>
       <th>10</th>
@@ -935,7 +996,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:stores</td>
       <td>p-value</td>
-      <td>4.844163e-01</td>
+      <td>3.656595e-01</td>
     </tr>
     <tr>
       <th>11</th>
@@ -945,7 +1006,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>4.301373e-23</td>
+      <td>3.631931e-23</td>
     </tr>
     <tr>
       <th>12</th>
@@ -955,7 +1016,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>1.055098e-60</td>
+      <td>4.654995e-59</td>
     </tr>
     <tr>
       <th>13</th>
@@ -965,7 +1026,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>7.251224e-253</td>
+      <td>1.652154e-236</td>
     </tr>
     <tr>
       <th>14</th>
@@ -975,7 +1036,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>2.136220e-75</td>
+      <td>1.103714e-77</td>
     </tr>
     <tr>
       <th>15</th>
@@ -985,7 +1046,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>5.182947e-69</td>
+      <td>1.536199e-47</td>
     </tr>
     <tr>
       <th>16</th>
@@ -995,7 +1056,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>4.109717e-22</td>
+      <td>1.435159e-08</td>
     </tr>
     <tr>
       <th>17</th>
@@ -1005,7 +1066,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>3.471358e-16</td>
+      <td>1.830072e-14</td>
     </tr>
     <tr>
       <th>18</th>
@@ -1015,7 +1076,7 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
       <td>kstest</td>
       <td>table:features</td>
       <td>p-value</td>
-      <td>2.773154e-254</td>
+      <td>2.546443e-227</td>
     </tr>
     <tr>
       <th>19</th>
@@ -1049,83 +1110,83 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
     </tr>
     <tr>
       <th>22</th>
-      <td>column:MarkDown1,column:MarkDown4</td>
+      <td>column:Dept,column:Weekly_Sales</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
-      <td>table:features</td>
+      <td>table:depts</td>
       <td>entropy</td>
-      <td>1.909824e-01</td>
+      <td>3.452047e-01</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>column:MarkDown1,column:MarkDown3</td>
+      <td>column:MarkDown4,column:MarkDown1</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.084088e-01</td>
+      <td>2.468564e-01</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>column:MarkDown1,column:Fuel_Price</td>
+      <td>column:MarkDown3,column:MarkDown1</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>5.251768e-01</td>
+      <td>2.548885e-01</td>
     </tr>
     <tr>
       <th>25</th>
+      <td>column:Fuel_Price,column:MarkDown1</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>4.966054e-01</td>
+    </tr>
+    <tr>
+      <th>26</th>
       <td>column:Unemployment,column:MarkDown1</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>1.357577e-01</td>
+      <td>1.832223e-01</td>
     </tr>
     <tr>
-      <th>26</th>
-      <td>column:Temperature,column:MarkDown1</td>
+      <th>27</th>
+      <td>column:MarkDown1,column:Temperature</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>1.105897e-01</td>
+      <td>1.119519e-01</td>
     </tr>
     <tr>
-      <th>27</th>
+      <th>28</th>
       <td>column:MarkDown5,column:MarkDown1</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>1.650564e-02</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>column:MarkDown1,column:MarkDown2</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>1.358802e-01</td>
+      <td>1.637039e-02</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>column:MarkDown1,column:CPI</td>
+      <td>column:MarkDown2,column:MarkDown1</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.399114e+00</td>
+      <td>1.749817e-01</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1139,303 +1200,303 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
     </tr>
     <tr>
       <th>65</th>
-      <td>column:Temperature,column:Fuel_Price</td>
+      <td>column:MarkDown3,column:Temperature</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>3.832978e-01</td>
+      <td>3.810768e-01</td>
     </tr>
     <tr>
       <th>66</th>
-      <td>column:Temperature,column:Unemployment</td>
+      <td>column:Fuel_Price,column:Temperature</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>4.465259e-01</td>
+      <td>4.188457e-01</td>
     </tr>
     <tr>
       <th>67</th>
-      <td>column:Temperature,column:MarkDown5</td>
+      <td>column:Unemployment,column:Temperature</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.582671e-02</td>
+      <td>4.860888e-01</td>
     </tr>
     <tr>
       <th>68</th>
-      <td>column:Temperature,column:MarkDown2</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>5.702315e-01</td>
-    </tr>
-    <tr>
-      <th>69</th>
-      <td>column:Temperature,column:CPI</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>2.111563e+00</td>
-    </tr>
-    <tr>
-      <th>70</th>
-      <td>column:MarkDown5,column:MarkDown1</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>1.650564e-02</td>
-    </tr>
-    <tr>
-      <th>71</th>
-      <td>column:MarkDown5,column:MarkDown4</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>2.867028e-02</td>
-    </tr>
-    <tr>
-      <th>72</th>
-      <td>column:MarkDown5,column:MarkDown3</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>9.371484e-02</td>
-    </tr>
-    <tr>
-      <th>73</th>
-      <td>column:MarkDown5,column:Fuel_Price</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>1.160164e-01</td>
-    </tr>
-    <tr>
-      <th>74</th>
-      <td>column:MarkDown5,column:Unemployment</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>1.082653e-01</td>
-    </tr>
-    <tr>
-      <th>75</th>
       <td>column:MarkDown5,column:Temperature</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.582671e-02</td>
+      <td>2.618501e-02</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>column:MarkDown2,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>6.358004e-01</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>column:CPI,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.329406e+00</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>column:MarkDown5,column:MarkDown1</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.637039e-02</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>column:MarkDown4,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>3.403700e-02</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>column:MarkDown5,column:MarkDown3</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>9.972152e-02</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>column:MarkDown5,column:Fuel_Price</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.111519e-01</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>column:Unemployment,column:MarkDown5</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>1.435452e-01</td>
     </tr>
     <tr>
       <th>76</th>
+      <td>column:MarkDown5,column:Temperature</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.618501e-02</td>
+    </tr>
+    <tr>
+      <th>77</th>
       <td>column:MarkDown5,column:MarkDown2</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>4.168144e-02</td>
+      <td>4.681295e-02</td>
     </tr>
     <tr>
-      <th>77</th>
+      <th>78</th>
       <td>column:MarkDown5,column:CPI</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>1.793222e+00</td>
+      <td>1.909536e+00</td>
     </tr>
     <tr>
-      <th>78</th>
-      <td>column:MarkDown1,column:MarkDown2</td>
+      <th>79</th>
+      <td>column:MarkDown2,column:MarkDown1</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>1.358802e-01</td>
+      <td>1.749817e-01</td>
     </tr>
     <tr>
-      <th>79</th>
+      <th>80</th>
       <td>column:MarkDown4,column:MarkDown2</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>8.361958e-02</td>
-    </tr>
-    <tr>
-      <th>80</th>
-      <td>column:MarkDown3,column:MarkDown2</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:features</td>
-      <td>entropy</td>
-      <td>3.615412e-01</td>
+      <td>1.080230e-01</td>
     </tr>
     <tr>
       <th>81</th>
-      <td>column:Fuel_Price,column:MarkDown2</td>
+      <td>column:MarkDown2,column:MarkDown3</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.525838e-01</td>
+      <td>3.401403e-01</td>
     </tr>
     <tr>
       <th>82</th>
+      <td>column:MarkDown2,column:Fuel_Price</td>
+      <td>Goal.MINIMIZE</td>
+      <td>statistic:bivariate</td>
+      <td>continuous-kl</td>
+      <td>table:features</td>
+      <td>entropy</td>
+      <td>2.813272e-01</td>
+    </tr>
+    <tr>
+      <th>83</th>
       <td>column:Unemployment,column:MarkDown2</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.068155e-01</td>
+      <td>2.862722e-01</td>
     </tr>
     <tr>
-      <th>83</th>
-      <td>column:Temperature,column:MarkDown2</td>
+      <th>84</th>
+      <td>column:MarkDown2,column:Temperature</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>5.702315e-01</td>
+      <td>6.358004e-01</td>
     </tr>
     <tr>
-      <th>84</th>
+      <th>85</th>
       <td>column:MarkDown5,column:MarkDown2</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>4.168144e-02</td>
+      <td>4.681295e-02</td>
     </tr>
     <tr>
-      <th>85</th>
+      <th>86</th>
       <td>column:CPI,column:MarkDown2</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.003694e+00</td>
+      <td>2.080662e+00</td>
     </tr>
     <tr>
-      <th>86</th>
+      <th>87</th>
       <td>column:CPI,column:MarkDown1</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.399114e+00</td>
+      <td>2.422266e+00</td>
     </tr>
     <tr>
-      <th>87</th>
-      <td>column:CPI,column:MarkDown4</td>
+      <th>88</th>
+      <td>column:MarkDown4,column:CPI</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.036075e+00</td>
+      <td>2.096885e+00</td>
     </tr>
     <tr>
-      <th>88</th>
+      <th>89</th>
       <td>column:CPI,column:MarkDown3</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>1.877150e+00</td>
+      <td>2.021915e+00</td>
     </tr>
     <tr>
-      <th>89</th>
+      <th>90</th>
       <td>column:CPI,column:Fuel_Price</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>5.581587e+00</td>
+      <td>4.870768e+00</td>
     </tr>
     <tr>
-      <th>90</th>
+      <th>91</th>
       <td>column:Unemployment,column:CPI</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>5.449239e+00</td>
+      <td>5.297344e+00</td>
     </tr>
     <tr>
-      <th>91</th>
-      <td>column:Temperature,column:CPI</td>
+      <th>92</th>
+      <td>column:CPI,column:Temperature</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.111563e+00</td>
+      <td>2.329406e+00</td>
     </tr>
     <tr>
-      <th>92</th>
+      <th>93</th>
       <td>column:MarkDown5,column:CPI</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>1.793222e+00</td>
+      <td>1.909536e+00</td>
     </tr>
     <tr>
-      <th>93</th>
-      <td>column:CPI,column:MarkDown2</td>
+      <th>94</th>
+      <td>column:MarkDown2,column:CPI</td>
       <td>Goal.MINIMIZE</td>
       <td>statistic:bivariate</td>
       <td>continuous-kl</td>
       <td>table:features</td>
       <td>entropy</td>
-      <td>2.003694e+00</td>
-    </tr>
-    <tr>
-      <th>94</th>
-      <td>column:Weekly_Sales,column:Dept</td>
-      <td>Goal.MINIMIZE</td>
-      <td>statistic:bivariate</td>
-      <td>continuous-kl</td>
-      <td>table:depts</td>
-      <td>entropy</td>
-      <td>3.314206e-01</td>
+      <td>2.080662e+00</td>
     </tr>
   </tbody>
 </table>
@@ -1465,11 +1526,19 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, MIT Data To AI Lab
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1480,7 +1549,6 @@ report.visualize().savefig(&quot;../resources/visualize.png&quot;);
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

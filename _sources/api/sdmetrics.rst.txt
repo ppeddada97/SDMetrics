@@ -16,3 +16,11 @@ Subpackages
    sdmetrics.detection
    sdmetrics.efficacy
    sdmetrics.statistical
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.evaluation
+   sdmetrics.report

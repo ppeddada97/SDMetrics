@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sdmetrics.report module &mdash; SDMetrics 0.0.1.dev0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../contributing.html" />
+    <link rel="prev" title="sdmetrics.evaluation module" href="sdmetrics.evaluation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/header_light.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/1_getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/1_getting_started.html#Generating-Synthetic-Datasets">Generating Synthetic Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/1_getting_started.html#Evaluation-with-SDMetrics">Evaluation with SDMetrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/2_writing_metrics.html">Writing Custom Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Generic-Metric">Generic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Statistic-Metric">Statistic Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Detection-Metric">Detection Metric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/2_writing_metrics.html#Collecting-Metrics">Collecting Metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/3_ml_efficacy.html">Machine Learning Efficacy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/3_ml_efficacy.html#Loading-the-Dataset">Loading the Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/3_ml_efficacy.html#Generating-Synthetic-Data">Generating Synthetic Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/3_ml_efficacy.html#Creating-the-Metadata">Creating the Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/3_ml_efficacy.html#Evaluating-Efficacy">Evaluating Efficacy</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.constraint.html">sdmetrics.constraint package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.datasets.html">sdmetrics.datasets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.detection.html">sdmetrics.detection package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.detection.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.efficacy.html">sdmetrics.efficacy package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.efficacy.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.statistical.html">sdmetrics.statistical package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.statistical.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.statistical.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.evaluation.html">sdmetrics.evaluation module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sdmetrics.report module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
+        
+      <li>sdmetrics.report module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.report.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-sdmetrics.report">
+<span id="sdmetrics-report-module"></span><h1>sdmetrics.report module<a class="headerlink" href="#module-sdmetrics.report" title="Permalink to this headline">¶</a></h1>
+<p>MetricsReport module.</p>
+<p>This module defines the classes Goal, Metric and MetricsReport, which
+are used for reporting the results of the different evaluation
+metrics executed on the data.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.Goal" title="sdmetrics.report.Goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Goal</span></code></a></p></td>
+<td><p>This enumerates the <cite>goal</cite> for a metric; the value of a metric can be ignored, minimized, or maximized.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.Metric" title="sdmetrics.report.Metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Metric</span></code></a>(name, value[, tags, goal, unit, …])</p></td>
+<td><p>This represents a single instance of a Metric.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport" title="sdmetrics.report.MetricsReport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricsReport</span></code></a>()</p></td>
+<td><p>The <cite>MetricsReport</cite> object is responsible for storing metrics and providing a user friendly API for accessing them.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="sdmetrics.report.Goal">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.report.</code><code class="sig-name descname">Goal</code><a class="reference internal" href="../_modules/sdmetrics/report.html#Goal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.Goal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>This enumerates the <cite>goal</cite> for a metric; the value of a metric can be ignored,
+minimized, or maximized.</p>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.Goal.IGNORE" title="sdmetrics.report.Goal.IGNORE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IGNORE</span></code></a></p></td>
+<td><p>str(object=’‘) -&gt; str</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.Goal.MAXIMIZE" title="sdmetrics.report.Goal.MAXIMIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MAXIMIZE</span></code></a></p></td>
+<td><p>str(object=’‘) -&gt; str</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.Goal.MINIMIZE" title="sdmetrics.report.Goal.MINIMIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MINIMIZE</span></code></a></p></td>
+<td><p>str(object=’‘) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.report.Goal.IGNORE">
+<code class="sig-name descname">IGNORE</code><em class="property"> = 'ignore'</em><a class="headerlink" href="#sdmetrics.report.Goal.IGNORE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.report.Goal.MAXIMIZE">
+<code class="sig-name descname">MAXIMIZE</code><em class="property"> = 'maximize'</em><a class="headerlink" href="#sdmetrics.report.Goal.MAXIMIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.report.Goal.MINIMIZE">
+<code class="sig-name descname">MINIMIZE</code><em class="property"> = 'minimize'</em><a class="headerlink" href="#sdmetrics.report.Goal.MINIMIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.report.Metric">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.report.</code><code class="sig-name descname">Metric</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">value</em>, <em class="sig-param">tags=None</em>, <em class="sig-param">goal=&lt;Goal.IGNORE: 'ignore'&gt;</em>, <em class="sig-param">unit=''</em>, <em class="sig-param">domain=(-inf</em>, <em class="sig-param">inf)</em>, <em class="sig-param">description=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/report.html#Metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.Metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This represents a single instance of a Metric.</p>
+<dl class="attribute">
+<dt id="sdmetrics.report.Metric.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#sdmetrics.report.Metric.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.report.Metric.value">
+<code class="sig-name descname">value</code><a class="headerlink" href="#sdmetrics.report.Metric.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>The value of the attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.report.Metric.tags">
+<code class="sig-name descname">tags</code><a class="headerlink" href="#sdmetrics.report.Metric.tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>A set of arbitrary strings/tags for the attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>set(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.report.Metric.goal">
+<code class="sig-name descname">goal</code><a class="headerlink" href="#sdmetrics.report.Metric.goal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the value should maximized, minimized, or ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sdmetrics.report.Goal" title="sdmetrics.report.Goal">Goal</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.report.Metric.unit">
+<code class="sig-name descname">unit</code><a class="headerlink" href="#sdmetrics.report.Metric.unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The “unit” of the metric (i.e. p-value, entropy, mean-squared-error).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.report.Metric.domain">
+<code class="sig-name descname">domain</code><a class="headerlink" href="#sdmetrics.report.Metric.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>The range of values the metric can take on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.report.Metric.description">
+<code class="sig-name descname">description</code><a class="headerlink" href="#sdmetrics.report.Metric.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>An arbitrary text description of the attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.report.MetricsReport">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.report.</code><code class="sig-name descname">MetricsReport</code><a class="reference internal" href="../_modules/sdmetrics/report.html#MetricsReport"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.MetricsReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The <cite>MetricsReport</cite> object is responsible for storing metrics and providing a user
+friendly API for accessing them.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport.add_metric" title="sdmetrics.report.MetricsReport.add_metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_metric</span></code></a>(metric)</p></td>
+<td><p>This adds the given <cite>Metric</cite> object to this report.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport.add_metrics" title="sdmetrics.report.MetricsReport.add_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_metrics</span></code></a>(iterator)</p></td>
+<td><p>This takes an iterator which yields <cite>Metric</cite> objects and adds all of these metrics to this report.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport.details" title="sdmetrics.report.MetricsReport.details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">details</span></code></a>([filter_func])</p></td>
+<td><p>This returns a DataFrame containing all of the metrics in this report.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport.highlights" title="sdmetrics.report.MetricsReport.highlights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">highlights</span></code></a>()</p></td>
+<td><p>This returns a DataFrame containing all of the metrics in this report which contain the “priority:high” tag.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport.overall" title="sdmetrics.report.MetricsReport.overall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">overall</span></code></a>()</p></td>
+<td><p>This computes a single scalar score for this report.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport.visualize" title="sdmetrics.report.MetricsReport.visualize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visualize</span></code></a>()</p></td>
+<td><p>This returns a pyplot.Figure which shows some of the key metrics.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.report.MetricsReport.add_metric">
+<code class="sig-name descname">add_metric</code><span class="sig-paren">(</span><em class="sig-param">metric</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/report.html#MetricsReport.add_metric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.MetricsReport.add_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>This adds the given <cite>Metric</cite> object to this report.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.report.MetricsReport.add_metrics">
+<code class="sig-name descname">add_metrics</code><span class="sig-paren">(</span><em class="sig-param">iterator</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/report.html#MetricsReport.add_metrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.MetricsReport.add_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>This takes an iterator which yields <cite>Metric</cite> objects and adds all
+of these metrics to this report.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.report.MetricsReport.details">
+<code class="sig-name descname">details</code><span class="sig-paren">(</span><em class="sig-param">filter_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/report.html#MetricsReport.details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.MetricsReport.details" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns a DataFrame containing all of the metrics in this report. You can
+optionally use <cite>filter_func</cite> to specify a lambda function which takes in the
+metric and returns True if it should be included in the output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter_func</strong> (<em>function</em><em>, </em><em>optional</em>) – A function which takes a Metric object
+and returns True if it should be included. Defaults to accepting all
+Metric objects.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A table listing all the (selected) metrics.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.report.MetricsReport.highlights">
+<code class="sig-name descname">highlights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/report.html#MetricsReport.highlights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.MetricsReport.highlights" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns a DataFrame containing all of the metrics in this report which
+contain the “priority:high” tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A table listing all the high-priority metrics.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.report.MetricsReport.overall">
+<code class="sig-name descname">overall</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/report.html#MetricsReport.overall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.MetricsReport.overall" title="Permalink to this definition">¶</a></dt>
+<dd><p>This computes a single scalar score for this report. To produce higher quality
+synthetic data, the model should try to maximize this score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The scalar value to maximize.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.report.MetricsReport.visualize">
+<code class="sig-name descname">visualize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/report.html#MetricsReport.visualize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.report.MetricsReport.visualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns a pyplot.Figure which shows some of the key metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A matplotlib figure visualizing key metricss.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pyplot.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sdmetrics.evaluation.html" class="btn btn-neutral float-left" title="sdmetrics.evaluation module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, MIT Data To AI Lab
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

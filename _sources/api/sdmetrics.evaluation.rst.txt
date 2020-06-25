@@ -1,0 +1,7 @@
+sdmetrics.evaluation module
+===========================
+
+.. automodule:: sdmetrics.evaluation
+   :members:
+   :undoc-members:
+   :show-inheritance:

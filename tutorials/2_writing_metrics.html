@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Writing Custom Metrics &mdash; SDMetrics 0.1.0.dev0 documentation</title>
+  <title>Writing Custom Metrics &mdash; SDMetrics 0.0.1.dev0 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
 
   
   
@@ -19,7 +22,9 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -32,10 +37,6 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Machine Learning Efficacy" href="3_ml_efficacy.html" />
@@ -76,6 +77,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -135,6 +137,11 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../api/sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.evaluation.html">sdmetrics.evaluation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/sdmetrics.report.html">sdmetrics.report module</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
@@ -163,6 +170,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -201,7 +209,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Writing Custom Metrics</li>
     
@@ -290,20 +298,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 5ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -396,7 +417,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -469,20 +490,39 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Writing-Custom-Metrics">
 <h1>Writing Custom Metrics<a class="headerlink" href="#Writing-Custom-Metrics" title="Permalink to this headline">¶</a></h1>
 <p>Let’s start by generating a simple synthetic dataset.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sdv import load_demo, SDV
+<span></span><span class="kn">from</span> <span class="nn">sdv</span> <span class="kn">import</span> <span class="n">load_demo</span><span class="p">,</span> <span class="n">SDV</span>
 
-sdv = SDV()
-metadata, real_tables = load_demo(metadata=True)
+<span class="n">sdv</span> <span class="o">=</span> <span class="n">SDV</span><span class="p">()</span>
+<span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span> <span class="o">=</span> <span class="n">load_demo</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-sdv.fit(metadata, real_tables)
-synthetic_tables = sdv.sample_all(20)
+<span class="n">sdv</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">)</span>
+<span class="n">synthetic_tables</span> <span class="o">=</span> <span class="n">sdv</span><span class="o">.</span><span class="n">sample_all</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2020-06-25 19:47:19,922 - INFO - modeler - Modeling users
+2020-06-25 19:47:19,923 - INFO - metadata - Loading transformer CategoricalTransformer for field country
+2020-06-25 19:47:19,924 - INFO - metadata - Loading transformer CategoricalTransformer for field gender
+2020-06-25 19:47:19,924 - INFO - metadata - Loading transformer NumericalTransformer for field age
+2020-06-25 19:47:19,941 - INFO - modeler - Modeling sessions
+2020-06-25 19:47:19,942 - INFO - metadata - Loading transformer CategoricalTransformer for field device
+2020-06-25 19:47:19,942 - INFO - metadata - Loading transformer CategoricalTransformer for field os
+2020-06-25 19:47:19,954 - INFO - modeler - Modeling transactions
+2020-06-25 19:47:19,955 - INFO - metadata - Loading transformer DatetimeTransformer for field timestamp
+2020-06-25 19:47:19,955 - INFO - metadata - Loading transformer NumericalTransformer for field amount
+2020-06-25 19:47:19,955 - INFO - metadata - Loading transformer BooleanTransformer for field approved
+2020-06-25 19:47:20,710 - INFO - modeler - Modeling Complete
+</pre></div></div>
 </div>
 <p>Next, we’ll create an empty <code class="docutils literal notranslate"><span class="pre">MetricsReport</span></code> object to hold our custom metrics.</p>
 <div class="nbinput nblast docutils container">
@@ -490,8 +530,9 @@ synthetic_tables = sdv.sample_all(20)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sdmetrics import MetricsReport
-report = MetricsReport()
+<span></span><span class="kn">from</span> <span class="nn">sdmetrics.report</span> <span class="kn">import</span> <span class="n">MetricsReport</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="n">MetricsReport</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -503,27 +544,27 @@ report = MetricsReport()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sdmetrics import Metric
+<span></span><span class="kn">from</span> <span class="nn">sdmetrics.report</span> <span class="kn">import</span> <span class="n">Metric</span>
 
-def my_custom_metrics(metadata, real_tables, synthetic_tables):
-    name = &quot;abs-diff-in-number-of-rows&quot;
+<span class="k">def</span> <span class="nf">my_custom_metrics</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;abs-diff-in-number-of-rows&quot;</span>
 
-    for table_name in real_tables:
+    <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">real_tables</span><span class="p">:</span>
 
-        # Absolute difference in number of rows
-        nb_real_rows = len(real_tables[table_name])
-        nb_synthetic_rows = len(synthetic_tables[table_name])
-        value = float(abs(nb_real_rows - nb_synthetic_rows))
+        <span class="c1"># Absolute difference in number of rows</span>
+        <span class="n">nb_real_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">real_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">])</span>
+        <span class="n">nb_synthetic_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">synthetic_tables</span><span class="p">[</span><span class="n">table_name</span><span class="p">])</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">nb_real_rows</span> <span class="o">-</span> <span class="n">nb_synthetic_rows</span><span class="p">))</span>
 
-        # Specify some useful tags for the user
-        tags = set([
-            &quot;priority:high&quot;,
-            &quot;table:%s&quot; % table_name
-        ])
+        <span class="c1"># Specify some useful tags for the user</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span>
+            <span class="s2">&quot;priority:high&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;table:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">table_name</span>
+        <span class="p">])</span>
 
-        yield Metric(name, value, tags)
+        <span class="k">yield</span> <span class="n">Metric</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
 
-report.add_metrics(my_custom_metrics(metadata, real_tables, synthetic_tables))
+<span class="n">report</span><span class="o">.</span><span class="n">add_metrics</span><span class="p">(</span><span class="n">my_custom_metrics</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -536,36 +577,37 @@ report.add_metrics(my_custom_metrics(metadata, real_tables, synthetic_tables))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from scipy.stats import chisquare
-from sdmetrics import Goal
-from sdmetrics.statistical.univariate import UnivariateMetric
-from sdmetrics.statistical.utils import frequencies
+<span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chisquare</span>
 
-class CSTest(UnivariateMetric):
+<span class="kn">from</span> <span class="nn">sdmetrics.report</span> <span class="kn">import</span> <span class="n">Goal</span>
+<span class="kn">from</span> <span class="nn">sdmetrics.statistical.univariate</span> <span class="kn">import</span> <span class="n">UnivariateMetric</span>
+<span class="kn">from</span> <span class="nn">sdmetrics.statistical.utils</span> <span class="kn">import</span> <span class="n">frequencies</span>
 
-    name = &quot;chisquare&quot;
-    dtypes = [&quot;object&quot;, &quot;bool&quot;]
+<span class="k">class</span> <span class="nc">CSTest</span><span class="p">(</span><span class="n">UnivariateMetric</span><span class="p">):</span>
 
-    @staticmethod
-    def metric(real_column, synthetic_column):
-        &quot;&quot;&quot;This function uses the Chi-squared test to compare the distributions
-        of the two categorical columns. It returns the resulting p-value so that
-        a small value indicates that we can reject the null hypothesis (i.e. and
-        suggests that the distributions are different).
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;chisquare&quot;</span>
+    <span class="n">dtypes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">,</span> <span class="s2">&quot;bool&quot;</span><span class="p">]</span>
 
-        Arguments:
-            real_column (np.ndarray): The values from the real database.
-            synthetic_column (np.ndarray): The values from the fake database.
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">metric</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">synthetic_column</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function uses the Chi-squared test to compare the distributions</span>
+<span class="sd">        of the two categorical columns. It returns the resulting p-value so that</span>
+<span class="sd">        a small value indicates that we can reject the null hypothesis (i.e. and</span>
+<span class="sd">        suggests that the distributions are different).</span>
 
-        Returns:
-            (str, Goal, str, tuple): A tuple containing (value, goal, unit, domain)
-            which corresponds to the fields in a Metric object.
-        &quot;&quot;&quot;
-        f_obs, f_exp = frequencies(real_column, synthetic_column)
-        statistic, pvalue = chisquare(f_obs, f_exp)
-        return pvalue, Goal.MAXIMIZE, &quot;p-value&quot;, (0.0, 1.0)
+<span class="sd">        Arguments:</span>
+<span class="sd">            real_column (np.ndarray): The values from the real database.</span>
+<span class="sd">            synthetic_column (np.ndarray): The values from the fake database.</span>
 
-report.add_metrics(CSTest().metrics(metadata, real_tables, synthetic_tables))
+<span class="sd">        Returns:</span>
+<span class="sd">            (str, Goal, str, tuple): A tuple containing (value, goal, unit, domain)</span>
+<span class="sd">            which corresponds to the fields in a Metric object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span> <span class="o">=</span> <span class="n">frequencies</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">synthetic_column</span><span class="p">)</span>
+        <span class="n">statistic</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">chisquare</span><span class="p">(</span><span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pvalue</span><span class="p">,</span> <span class="n">Goal</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">,</span> <span class="s2">&quot;p-value&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">report</span><span class="o">.</span><span class="n">add_metrics</span><span class="p">(</span><span class="n">CSTest</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -578,34 +620,35 @@ report.add_metrics(CSTest().metrics(metadata, real_tables, synthetic_tables))
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import RobustScaler
-from sklearn.svm import SVC
-from sdmetrics.detection.tabular import TabularDetector
+<span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">RobustScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="kn">from</span> <span class="nn">sdmetrics.detection.tabular</span> <span class="kn">import</span> <span class="n">TabularDetector</span>
 
 
-class SVCDetector(TabularDetector):
+<span class="k">class</span> <span class="nc">SVCDetector</span><span class="p">(</span><span class="n">TabularDetector</span><span class="p">):</span>
 
-    name = &quot;svc&quot;
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;svc&quot;</span>
 
-    def fit(self, X, y):
-        &quot;&quot;&quot;This function trains a sklearn pipeline with a robust scalar
-        and a support vector classifier.
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function trains a sklearn pipeline with a robust scalar</span>
+<span class="sd">        and a support vector classifier.</span>
 
-        Arguments:
-            X (np.ndarray): The numerical features (i.e. transformed rows).
-            y (np.ndarray): The binary classification target.
-        &quot;&quot;&quot;
-        self.model = Pipeline([
-            (&#39;scalar&#39;, RobustScaler()),
-            (&#39;classifier&#39;, SVC(probability=True, gamma=&#39;scale&#39;)),
-        ])
-        self.model.fit(X, y)
+<span class="sd">        Arguments:</span>
+<span class="sd">            X (np.ndarray): The numerical features (i.e. transformed rows).</span>
+<span class="sd">            y (np.ndarray): The binary classification target.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+            <span class="p">(</span><span class="s1">&#39;scalar&#39;</span><span class="p">,</span> <span class="n">RobustScaler</span><span class="p">()),</span>
+            <span class="p">(</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;scale&#39;</span><span class="p">)),</span>
+        <span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-    def predict_proba(self, X):
-        return self.model.predict_proba(X)[:, 1]
+    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 
-report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables))
+<span class="n">report</span><span class="o">.</span><span class="n">add_metrics</span><span class="p">(</span><span class="n">SVCDetector</span><span class="p">()</span><span class="o">.</span><span class="n">metrics</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">real_tables</span><span class="p">,</span> <span class="n">synthetic_tables</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -618,7 +661,7 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>report.details()
+<span></span><span class="n">report</span><span class="o">.</span><span class="n">details</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -673,7 +716,7 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>abs-diff-in-number-of-rows</td>
       <td>table:sessions</td>
       <td></td>
-      <td>20.000000</td>
+      <td>9.000000</td>
     </tr>
     <tr>
       <th>2</th>
@@ -683,7 +726,7 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>abs-diff-in-number-of-rows</td>
       <td>table:transactions</td>
       <td></td>
-      <td>274.000000</td>
+      <td>171.000000</td>
     </tr>
     <tr>
       <th>3</th>
@@ -693,7 +736,7 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>chisquare</td>
       <td>table:users</td>
       <td>p-value</td>
-      <td>0.999931</td>
+      <td>0.980379</td>
     </tr>
     <tr>
       <th>4</th>
@@ -713,7 +756,7 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>chisquare</td>
       <td>table:sessions</td>
       <td>p-value</td>
-      <td>1.000000</td>
+      <td>0.880443</td>
     </tr>
     <tr>
       <th>6</th>
@@ -723,7 +766,7 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>chisquare</td>
       <td>table:sessions</td>
       <td>p-value</td>
-      <td>0.838256</td>
+      <td>0.779993</td>
     </tr>
     <tr>
       <th>7</th>
@@ -733,7 +776,7 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>chisquare</td>
       <td>table:transactions</td>
       <td>p-value</td>
-      <td>0.739937</td>
+      <td>0.778779</td>
     </tr>
     <tr>
       <th>8</th>
@@ -741,9 +784,9 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>svc</td>
-      <td>table:sessions</td>
+      <td>table:users</td>
       <td>auroc</td>
-      <td>0.675000</td>
+      <td>0.716270</td>
     </tr>
     <tr>
       <th>9</th>
@@ -751,9 +794,9 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>svc</td>
-      <td>table:users</td>
+      <td>table:transactions</td>
       <td>auroc</td>
-      <td>0.585979</td>
+      <td>0.962614</td>
     </tr>
     <tr>
       <th>10</th>
@@ -761,29 +804,29 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>svc</td>
-      <td>table:transactions</td>
+      <td>table:sessions</td>
       <td>auroc</td>
-      <td>0.734403</td>
+      <td>0.631614</td>
     </tr>
     <tr>
       <th>11</th>
-      <td></td>
-      <td>Goal.MINIMIZE</td>
-      <td>detection:auroc,priority:high</td>
-      <td>svc</td>
-      <td>table:transactions,table:sessions</td>
-      <td>auroc</td>
-      <td>0.905167</td>
-    </tr>
-    <tr>
-      <th>12</th>
       <td></td>
       <td>Goal.MINIMIZE</td>
       <td>detection:auroc</td>
       <td>svc</td>
       <td>table:sessions,table:users</td>
       <td>auroc</td>
-      <td>0.848485</td>
+      <td>0.681944</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td></td>
+      <td>Goal.MINIMIZE</td>
+      <td>priority:high,detection:auroc</td>
+      <td>svc</td>
+      <td>table:sessions,table:transactions</td>
+      <td>auroc</td>
+      <td>0.900529</td>
     </tr>
   </tbody>
 </table>
@@ -812,11 +855,19 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, MIT Data To AI Lab
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -827,7 +878,6 @@ report.add_metrics(SVCDetector().metrics(metadata, real_tables, synthetic_tables
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
