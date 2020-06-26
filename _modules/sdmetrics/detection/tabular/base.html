@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.detection.tabular.base &mdash; SDMetrics 0.0.1.dev2 documentation</title>
+  <title>sdmetrics.detection.tabular.base &mdash; SDMetrics 0.0.1.dev3 documentation</title>
   
 
   
@@ -374,6 +374,9 @@
             <span class="n">right_on</span><span class="o">=</span><span class="n">child_key</span><span class="p">)</span>
 
         <span class="k">del</span> <span class="n">flat</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">child_key</span> <span class="o">!=</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">flat</span><span class="p">[</span><span class="n">child_key</span><span class="p">]</span>
+
         <span class="k">return</span> <span class="n">flat</span></div>
 </pre></div>
 

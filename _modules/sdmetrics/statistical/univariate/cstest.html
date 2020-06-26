@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.statistical.univariate.cstest &mdash; SDMetrics 0.0.1.dev2 documentation</title>
+  <title>sdmetrics.statistical.univariate.cstest &mdash; SDMetrics 0.0.1.dev3 documentation</title>
   
 
   
@@ -258,7 +258,11 @@
 <span class="sd">            which corresponds to the fields in a Metric object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span> <span class="o">=</span> <span class="n">frequencies</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">synthetic_column</span><span class="p">)</span>
-        <span class="n">statistic</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">chisquare</span><span class="p">(</span><span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">f_obs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">f_exp</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">pvalue</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">pvalue</span> <span class="o">=</span> <span class="n">chisquare</span><span class="p">(</span><span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="n">pvalue</span><span class="p">,</span> <span class="n">Goal</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">,</span> <span class="s2">&quot;p-value&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span></div></div>
 </pre></div>
 
