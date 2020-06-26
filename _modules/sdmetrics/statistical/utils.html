@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.statistical.utils &mdash; SDMetrics 0.0.1.dev1 documentation</title>
+  <title>sdmetrics.statistical.utils &mdash; SDMetrics 0.0.1.dev2 documentation</title>
   
 
   
@@ -253,7 +253,7 @@
         <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">real</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Unexpected value </span><span class="si">%s</span><span class="s2"> in synthetic data.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,))</span>
             <span class="n">real</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1e-6</span>  <span class="c1"># Regularization to prevent NaN.</span>
-    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">synthetic</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">real</span><span class="p">:</span>
         <span class="n">f_obs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">synthetic</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">synthetic</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
         <span class="n">f_exp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">real</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
     <span class="k">return</span> <span class="n">f_obs</span><span class="p">,</span> <span class="n">f_exp</span></div>
