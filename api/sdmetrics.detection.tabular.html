@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.detection.tabular package &mdash; SDMetrics 0.0.2 documentation</title>
+  <title>sdmetrics.detection.tabular package &mdash; SDMetrics 0.0.3 documentation</title>
   
 
   
@@ -165,6 +165,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
 </ul>
@@ -268,7 +272,7 @@
 <span id="sdmetrics-detection-tabular-package"></span><h1>sdmetrics.detection.tabular package<a class="headerlink" href="#module-sdmetrics.detection.tabular" title="Permalink to this headline">¶</a></h1>
 <p>This module implements machine learning methods for detecting synthetic
 rows in a single table.</p>
-<p><strong>Classes</strong></p>
+<p><strong>Classes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -290,7 +294,7 @@ rows in a single table.</p>
 <dt id="sdmetrics.detection.tabular.TabularDetector">
 <em class="property">class </em><code class="sig-prename descclassname">sdmetrics.detection.tabular.</code><code class="sig-name descname">TabularDetector</code><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/base.html#TabularDetector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.TabularDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -308,7 +312,7 @@ rows in a single table.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Attributes</strong></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -316,7 +320,7 @@ rows in a single table.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.TabularDetector.name" title="sdmetrics.detection.tabular.TabularDetector.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -381,24 +385,9 @@ comes from the synthetic dataset.</p>
 
 <dl class="class">
 <dt id="sdmetrics.detection.tabular.LogisticDetector">
-<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.detection.tabular.</code><code class="sig-name descname">LogisticDetector</code><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/logistic.html#LogisticDetector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.LogisticDetector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="sdmetrics.detection.tabular.base.html#sdmetrics.detection.tabular.base.TabularDetector" title="sdmetrics.detection.tabular.base.TabularDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.detection.tabular.base.TabularDetector</span></code></a></p>
-<p><strong>Methods</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.LogisticDetector.fit" title="sdmetrics.detection.tabular.LogisticDetector.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, y)</p></td>
-<td><p>This function trains a sklearn pipeline with a robust scalar and a logistic regression classifier.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.LogisticDetector.predict_proba" title="sdmetrics.detection.tabular.LogisticDetector.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</p></td>
-<td><p>This function predicts the probability that each of the samples comes from the synthetic dataset.</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Attributes</strong></p>
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.detection.tabular.</code><code class="sig-name descname">LogisticDetector</code><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/sklearn.html#LogisticDetector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.LogisticDetector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.detection.tabular.sklearn.html#sdmetrics.detection.tabular.sklearn.ScikitLearnDetector" title="sdmetrics.detection.tabular.sklearn.ScikitLearnDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.detection.tabular.sklearn.ScikitLearnDetector</span></code></a></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -406,70 +395,22 @@ comes from the synthetic dataset.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.LogisticDetector.name" title="sdmetrics.detection.tabular.LogisticDetector.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="sdmetrics.detection.tabular.LogisticDetector.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/logistic.html#LogisticDetector.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.LogisticDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function trains a sklearn pipeline with a robust scalar
-and a logistic regression classifier.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>np.ndarray</em>) – The numerical features (i.e. transformed rows).</p></li>
-<li><p><strong>y</strong> (<em>np.ndarray</em>) – The binary classification target.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="sdmetrics.detection.tabular.LogisticDetector.name">
 <code class="sig-name descname">name</code><em class="property"> = 'logistic'</em><a class="headerlink" href="#sdmetrics.detection.tabular.LogisticDetector.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="sdmetrics.detection.tabular.LogisticDetector.predict_proba">
-<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/logistic.html#LogisticDetector.predict_proba"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.LogisticDetector.predict_proba" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function predicts the probability that each of the samples
-comes from the synthetic dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X</strong> (<em>np.ndarray</em>) – The numerical features (i.e. transformed rows).</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The probability that the class is 1.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>np.ndarray</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="class">
 <dt id="sdmetrics.detection.tabular.SVCDetector">
-<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.detection.tabular.</code><code class="sig-name descname">SVCDetector</code><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/svc.html#SVCDetector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.SVCDetector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="sdmetrics.detection.tabular.base.html#sdmetrics.detection.tabular.base.TabularDetector" title="sdmetrics.detection.tabular.base.TabularDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.detection.tabular.base.TabularDetector</span></code></a></p>
-<p><strong>Methods</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.SVCDetector.fit" title="sdmetrics.detection.tabular.SVCDetector.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, y)</p></td>
-<td><p>This function trains a sklearn pipeline with a robust scalar and a support vector classifier.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.SVCDetector.predict_proba" title="sdmetrics.detection.tabular.SVCDetector.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</p></td>
-<td><p>This function predicts the probability that each of the samples comes from the synthetic dataset.</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Attributes</strong></p>
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.detection.tabular.</code><code class="sig-name descname">SVCDetector</code><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/sklearn.html#SVCDetector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.SVCDetector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.detection.tabular.sklearn.html#sdmetrics.detection.tabular.sklearn.ScikitLearnDetector" title="sdmetrics.detection.tabular.sklearn.ScikitLearnDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.detection.tabular.sklearn.ScikitLearnDetector</span></code></a></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -477,47 +418,14 @@ comes from the synthetic dataset.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.detection.tabular.SVCDetector.name" title="sdmetrics.detection.tabular.SVCDetector.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="sdmetrics.detection.tabular.SVCDetector.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/svc.html#SVCDetector.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.SVCDetector.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function trains a sklearn pipeline with a robust scalar
-and a support vector classifier.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>np.ndarray</em>) – The numerical features (i.e. transformed rows).</p></li>
-<li><p><strong>y</strong> (<em>np.ndarray</em>) – The binary classification target.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="sdmetrics.detection.tabular.SVCDetector.name">
 <code class="sig-name descname">name</code><em class="property"> = 'svc'</em><a class="headerlink" href="#sdmetrics.detection.tabular.SVCDetector.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="sdmetrics.detection.tabular.SVCDetector.predict_proba">
-<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/detection/tabular/svc.html#SVCDetector.predict_proba"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.detection.tabular.SVCDetector.predict_proba" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function predicts the probability that each of the samples
-comes from the synthetic dataset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X</strong> (<em>np.ndarray</em>) – The numerical features (i.e. transformed rows).</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The probability that the class is 1.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>np.ndarray</p>
-</dd>
-</dl>
-</dd></dl>
 
 </dd></dl>
 
@@ -526,8 +434,7 @@ comes from the synthetic dataset.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sdmetrics.detection.tabular.base.html">sdmetrics.detection.tabular.base module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdmetrics.detection.tabular.logistic.html">sdmetrics.detection.tabular.logistic module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sdmetrics.detection.tabular.svc.html">sdmetrics.detection.tabular.svc module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdmetrics.detection.tabular.sklearn.html">sdmetrics.detection.tabular.sklearn module</a></li>
 </ul>
 </div>
 </div>

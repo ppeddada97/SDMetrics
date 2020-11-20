@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.statistical.univariate.cstest module &mdash; SDMetrics 0.0.2 documentation</title>
+  <title>sdmetrics.statistical.univariate.cstest module &mdash; SDMetrics 0.0.3 documentation</title>
   
 
   
@@ -165,6 +165,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
 </ul>
@@ -268,7 +272,7 @@
 </style>
 <div class="section" id="module-sdmetrics.statistical.univariate.cstest">
 <span id="sdmetrics-statistical-univariate-cstest-module"></span><h1>sdmetrics.statistical.univariate.cstest module<a class="headerlink" href="#module-sdmetrics.statistical.univariate.cstest" title="Permalink to this headline">¶</a></h1>
-<p><strong>Classes</strong></p>
+<p><strong>Classes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -278,13 +282,39 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.cstest.CSTest" title="sdmetrics.statistical.univariate.cstest.CSTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CSTest</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Goal</span></code></p></td>
+<td><p>This enumerates the <cite>goal</cite> for a metric; the value of a metric can be ignored, minimized, or maximized.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnivariateMetric</span></code></p></td>
+<td><p><dl class="attribute">
+<dt id="sdmetrics.statistical.univariate.cstest.name">
+<code class="sig-prename descclassname">sdmetrics.statistical.univariate.cstest.</code><code class="sig-name descname">name</code><a class="headerlink" href="#sdmetrics.statistical.univariate.cstest.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">chisquare</span></code>(f_obs[, f_exp, ddof, axis])</p></td>
+<td><p>Calculate a one-way chi-square test.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">frequencies</span></code>(real, synthetic)</p></td>
+<td><p>Given two iterators containing categorical data, this transforms it into observed/expected frequencies which can be used for statistical tests.</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="sdmetrics.statistical.univariate.cstest.CSTest">
 <em class="property">class </em><code class="sig-prename descclassname">sdmetrics.statistical.univariate.cstest.</code><code class="sig-name descname">CSTest</code><a class="reference internal" href="../_modules/sdmetrics/statistical/univariate/cstest.html#CSTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.univariate.cstest.CSTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="sdmetrics.statistical.univariate.base.html#sdmetrics.statistical.univariate.base.UnivariateMetric" title="sdmetrics.statistical.univariate.base.UnivariateMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.statistical.univariate.base.UnivariateMetric</span></code></a></p>
-<p><strong>Attributes</strong></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -292,14 +322,14 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.cstest.CSTest.dtypes" title="sdmetrics.statistical.univariate.cstest.CSTest.dtypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtypes</span></code></a></p></td>
-<td><p>Built-in mutable sequence.</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.cstest.CSTest.name" title="sdmetrics.statistical.univariate.cstest.CSTest.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />

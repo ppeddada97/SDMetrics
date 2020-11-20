@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.report module &mdash; SDMetrics 0.0.2 documentation</title>
+  <title>sdmetrics.report module &mdash; SDMetrics 0.0.3 documentation</title>
   
 
   
@@ -165,6 +165,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
 </ul>
@@ -268,20 +272,23 @@
 <p>This module defines the classes Goal, Metric and MetricsReport, which
 are used for reporting the results of the different evaluation
 metrics executed on the data.</p>
-<p><strong>Classes</strong></p>
+<p><strong>Classes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.Goal" title="sdmetrics.report.Goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Goal</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Enum</span></code></p></td>
+<td><p>Generic enumeration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.Goal" title="sdmetrics.report.Goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Goal</span></code></a></p></td>
 <td><p>This enumerates the <cite>goal</cite> for a metric; the value of a metric can be ignored, minimized, or maximized.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.Metric" title="sdmetrics.report.Metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Metric</span></code></a>(name, value[, tags, goal, unit, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.Metric" title="sdmetrics.report.Metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Metric</span></code></a>(name, value[, tags, goal, unit, …])</p></td>
 <td><p>This represents a single instance of a Metric.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport" title="sdmetrics.report.MetricsReport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricsReport</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.MetricsReport" title="sdmetrics.report.MetricsReport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricsReport</span></code></a>()</p></td>
 <td><p>The <cite>MetricsReport</cite> object is responsible for storing metrics and providing a user friendly API for accessing them.</p></td>
 </tr>
 </tbody>
@@ -292,7 +299,7 @@ metrics executed on the data.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>This enumerates the <cite>goal</cite> for a metric; the value of a metric can be ignored,
 minimized, or maximized.</p>
-<p><strong>Attributes</strong></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -300,13 +307,13 @@ minimized, or maximized.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.Goal.IGNORE" title="sdmetrics.report.Goal.IGNORE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IGNORE</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.report.Goal.MAXIMIZE" title="sdmetrics.report.Goal.MAXIMIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MAXIMIZE</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.report.Goal.MINIMIZE" title="sdmetrics.report.Goal.MINIMIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MINIMIZE</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -417,7 +424,7 @@ minimized, or maximized.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The <cite>MetricsReport</cite> object is responsible for storing metrics and providing a user
 friendly API for accessing them.</p>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />

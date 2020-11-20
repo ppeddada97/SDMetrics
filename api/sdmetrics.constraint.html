@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.constraint package &mdash; SDMetrics 0.0.2 documentation</title>
+  <title>sdmetrics.constraint package &mdash; SDMetrics 0.0.3 documentation</title>
   
 
   
@@ -165,6 +165,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
 </ul>
@@ -266,7 +270,22 @@
 <span id="sdmetrics-constraint-package"></span><h1>sdmetrics.constraint package<a class="headerlink" href="#module-sdmetrics.constraint" title="Permalink to this headline">¶</a></h1>
 <p>This module implements constraint checking which makes sure the statistical
 properties of the synthetic data match the specified metadata.</p>
-<p><strong>Functions</strong></p>
+<p><strong>Classes:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Goal</span></code></p></td>
+<td><p>This enumerates the <cite>goal</cite> for a metric; the value of a metric can be ignored, minimized, or maximized.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Metric</span></code>(name, value[, tags, goal, unit, …])</p></td>
+<td><p>This represents a single instance of a Metric.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.statistical.univariate package &mdash; SDMetrics 0.0.2 documentation</title>
+  <title>sdmetrics.statistical.univariate package &mdash; SDMetrics 0.0.3 documentation</title>
   
 
   
@@ -165,6 +165,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
 </ul>
@@ -267,7 +271,7 @@
 <div class="section" id="module-sdmetrics.statistical.univariate">
 <span id="sdmetrics-statistical-univariate-package"></span><h1>sdmetrics.statistical.univariate package<a class="headerlink" href="#module-sdmetrics.statistical.univariate" title="Permalink to this headline">¶</a></h1>
 <p>This module implements univariate goodness-of-fit tests.</p>
-<p><strong>Classes</strong></p>
+<p><strong>Classes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -294,36 +298,6 @@
 <dt id="sdmetrics.statistical.univariate.UnivariateMetric">
 <em class="property">class </em><code class="sig-prename descclassname">sdmetrics.statistical.univariate.</code><code class="sig-name descname">UnivariateMetric</code><a class="reference internal" href="../_modules/sdmetrics/statistical/univariate/base.html#UnivariateMetric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.univariate.UnivariateMetric" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p><strong>Attributes</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.UnivariateMetric.dtypes" title="sdmetrics.statistical.univariate.UnivariateMetric.dtypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtypes</span></code></a></p></td>
-<td><p>Built-in mutable sequence.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.UnivariateMetric.name" title="sdmetrics.statistical.univariate.UnivariateMetric.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Methods</strong></p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.UnivariateMetric.metric" title="sdmetrics.statistical.univariate.UnivariateMetric.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a>(real_column, synthetic_column)</p></td>
-<td><p>This function is expected to perform a statistical test on the two samples and return a tuple containing (value, goal, unit, domain).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.UnivariateMetric.metrics" title="sdmetrics.statistical.univariate.UnivariateMetric.metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics</span></code></a>(metadata, real_tables, synthetic_tables)</p></td>
-<td><p>This function iterates over all the columns in all the tables and, if the data type of a column matches the data types for which this metric is defined, it computes the metric for that column and yields it.</p></td>
-</tr>
-</tbody>
-</table>
 <dl class="attribute">
 <dt id="sdmetrics.statistical.univariate.UnivariateMetric.name">
 <code class="sig-name descname">name</code><a class="headerlink" href="#sdmetrics.statistical.univariate.UnivariateMetric.name" title="Permalink to this definition">¶</a></dt>
@@ -346,6 +320,36 @@
 </dl>
 </dd></dl>
 
+<p><strong>Attributes:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.UnivariateMetric.dtypes" title="sdmetrics.statistical.univariate.UnivariateMetric.dtypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtypes</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.UnivariateMetric.name" title="sdmetrics.statistical.univariate.UnivariateMetric.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.UnivariateMetric.metric" title="sdmetrics.statistical.univariate.UnivariateMetric.metric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metric</span></code></a>(real_column, synthetic_column)</p></td>
+<td><p>This function is expected to perform a statistical test on the two samples and return a tuple containing (value, goal, unit, domain).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.UnivariateMetric.metrics" title="sdmetrics.statistical.univariate.UnivariateMetric.metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metrics</span></code></a>(metadata, real_tables, synthetic_tables)</p></td>
+<td><p>This function iterates over all the columns in all the tables and, if the data type of a column matches the data types for which this metric is defined, it computes the metric for that column and yields it.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt>
 <code class="sig-name descname">dtypes</code><em class="property"> = []</em></dt>
@@ -405,7 +409,7 @@ defined, it computes the metric for that column and yields it.</p>
 <dt id="sdmetrics.statistical.univariate.CSTest">
 <em class="property">class </em><code class="sig-prename descclassname">sdmetrics.statistical.univariate.</code><code class="sig-name descname">CSTest</code><a class="reference internal" href="../_modules/sdmetrics/statistical/univariate/cstest.html#CSTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.univariate.CSTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="sdmetrics.statistical.univariate.base.html#sdmetrics.statistical.univariate.base.UnivariateMetric" title="sdmetrics.statistical.univariate.base.UnivariateMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.statistical.univariate.base.UnivariateMetric</span></code></a></p>
-<p><strong>Attributes</strong></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -413,14 +417,14 @@ defined, it computes the metric for that column and yields it.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.CSTest.dtypes" title="sdmetrics.statistical.univariate.CSTest.dtypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtypes</span></code></a></p></td>
-<td><p>Built-in mutable sequence.</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.CSTest.name" title="sdmetrics.statistical.univariate.CSTest.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -472,7 +476,7 @@ which corresponds to the fields in a Metric object.</p>
 <dt id="sdmetrics.statistical.univariate.KSTest">
 <em class="property">class </em><code class="sig-prename descclassname">sdmetrics.statistical.univariate.</code><code class="sig-name descname">KSTest</code><a class="reference internal" href="../_modules/sdmetrics/statistical/univariate/kstest.html#KSTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.statistical.univariate.KSTest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="sdmetrics.statistical.univariate.base.html#sdmetrics.statistical.univariate.base.UnivariateMetric" title="sdmetrics.statistical.univariate.base.UnivariateMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.statistical.univariate.base.UnivariateMetric</span></code></a></p>
-<p><strong>Attributes</strong></p>
+<p><strong>Attributes:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -480,14 +484,14 @@ which corresponds to the fields in a Metric object.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.KSTest.dtypes" title="sdmetrics.statistical.univariate.KSTest.dtypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtypes</span></code></a></p></td>
-<td><p>Built-in mutable sequence.</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.statistical.univariate.KSTest.name" title="sdmetrics.statistical.univariate.KSTest.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
-<td><p>str(object=’’) -&gt; str</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Methods</strong></p>
+<p><strong>Methods:</strong></p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />

@@ -12,5 +12,4 @@ Submodules
 .. toctree::
 
    sdmetrics.detection.tabular.base
-   sdmetrics.detection.tabular.logistic
-   sdmetrics.detection.tabular.svc
+   sdmetrics.detection.tabular.sklearn

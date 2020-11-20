@@ -1,7 +1,0 @@
-sdmetrics.detection.tabular.logistic module
-===========================================
-
-.. automodule:: sdmetrics.detection.tabular.logistic
-   :members:
-   :undoc-members:
-   :show-inheritance:

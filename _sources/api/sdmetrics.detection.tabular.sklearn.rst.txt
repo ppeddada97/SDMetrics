@@ -1,0 +1,7 @@
+sdmetrics.detection.tabular.sklearn module
+==========================================
+
+.. automodule:: sdmetrics.detection.tabular.sklearn
+   :members:
+   :undoc-members:
+   :show-inheritance:

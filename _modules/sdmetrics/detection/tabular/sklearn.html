@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sdmetrics.detection.tabular.svc &mdash; SDMetrics 0.0.2 documentation</title>
+  <title>sdmetrics.detection.tabular.sklearn &mdash; SDMetrics 0.0.3 documentation</title>
   
 
   
@@ -163,6 +163,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
 </ul>
@@ -217,7 +221,7 @@
         
           <li><a href="../../detection.html">sdmetrics.detection</a> &raquo;</li>
         
-      <li>sdmetrics.detection.tabular.svc</li>
+      <li>sdmetrics.detection.tabular.sklearn</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -232,34 +236,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for sdmetrics.detection.tabular.svc</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+  <h1>Source code for sdmetrics.detection.tabular.sklearn</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;scikit-learn based TabularDetectors.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">RobustScaler</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 
 <span class="kn">from</span> <span class="nn">sdmetrics.detection.tabular.base</span> <span class="kn">import</span> <span class="n">TabularDetector</span>
 
 
-<div class="viewcode-block" id="SVCDetector"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.svc.html#sdmetrics.detection.tabular.SVCDetector">[docs]</a><span class="k">class</span> <span class="nc">SVCDetector</span><span class="p">(</span><span class="n">TabularDetector</span><span class="p">):</span>
+<div class="viewcode-block" id="ScikitLearnDetector"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.sklearn.html#sdmetrics.detection.tabular.ScikitLearnDetector">[docs]</a><span class="k">class</span> <span class="nc">ScikitLearnDetector</span><span class="p">(</span><span class="n">TabularDetector</span><span class="p">):</span>
 
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;svc&quot;</span>
+    <span class="k">def</span> <span class="nf">_get_classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Build and return an instance of a scikit-learn Classifier.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-<div class="viewcode-block" id="SVCDetector.fit"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.svc.html#sdmetrics.detection.tabular.SVCDetector.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="viewcode-block" id="ScikitLearnDetector.fit"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.sklearn.html#sdmetrics.detection.tabular.ScikitLearnDetector.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This function trains a sklearn pipeline with a robust scalar</span>
-<span class="sd">        and a support vector classifier.</span>
+<span class="sd">        and a logistic regression classifier.</span>
 
 <span class="sd">        Arguments:</span>
 <span class="sd">            X (np.ndarray): The numerical features (i.e. transformed rows).</span>
 <span class="sd">            y (np.ndarray): The binary classification target.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+            <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">()),</span>
             <span class="p">(</span><span class="s1">&#39;scalar&#39;</span><span class="p">,</span> <span class="n">RobustScaler</span><span class="p">()),</span>
-            <span class="p">(</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;scale&#39;</span><span class="p">)),</span>
+            <span class="p">(</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_classifier</span><span class="p">()),</span>
         <span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SVCDetector.predict_proba"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.svc.html#sdmetrics.detection.tabular.SVCDetector.predict_proba">[docs]</a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<div class="viewcode-block" id="ScikitLearnDetector.predict_proba"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.sklearn.html#sdmetrics.detection.tabular.ScikitLearnDetector.predict_proba">[docs]</a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="LogisticDetector"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.sklearn.html#sdmetrics.detection.tabular.LogisticDetector">[docs]</a><span class="k">class</span> <span class="nc">LogisticDetector</span><span class="p">(</span><span class="n">ScikitLearnDetector</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;logistic&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_get_classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;lbfgs&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SVCDetector"><a class="viewcode-back" href="../../../../api/sdmetrics.detection.tabular.sklearn.html#sdmetrics.detection.tabular.SVCDetector">[docs]</a><span class="k">class</span> <span class="nc">SVCDetector</span><span class="p">(</span><span class="n">ScikitLearnDetector</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;svc&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_get_classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;scale&#39;</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
