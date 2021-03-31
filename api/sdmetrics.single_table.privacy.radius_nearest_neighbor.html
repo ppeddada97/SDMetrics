@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>sdmetrics.single_table.privacy.radius_nearest_neighbor module &mdash; SDMetrics 0.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sdmetrics.single_table.privacy.util module" href="sdmetrics.single_table.privacy.util.html" />
+    <link rel="prev" title="sdmetrics.single_table.privacy.numerical_sklearn module" href="sdmetrics.single_table.privacy.numerical_sklearn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SDMetrics
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.column_pairs.html">sdmetrics.column_pairs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.multi_table.html">sdmetrics.multi_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.single_column.html">sdmetrics.single_column package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="sdmetrics.single_table.html">sdmetrics.single_table package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="sdmetrics.single_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.timeseries.html">sdmetrics.timeseries package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.base.html">sdmetrics.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.demos.html">sdmetrics.demos module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.goal.html">sdmetrics.goal module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.utils.html">sdmetrics.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-3-0-2021-03-30">v0.3.0 - 2021-03-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-2-0-2021-02-24">v0.2.0 - 2021-02-24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-3-2021-02-13">v0.1.3 - 2021-02-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id3">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-2-2021-01-27">v0.1.2 - 2021-01-27</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id5">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-1-2020-12-30">v0.1.1 - 2020-12-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id10">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-0-2020-12-18">v0.1.0 - 2020-12-18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-4-2020-11-27">v0.0.4 - 2020-11-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id14">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_table.html">sdmetrics.single_table package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_table.privacy.html">sdmetrics.single_table.privacy package</a> &raquo;</li>
+        
+      <li>sdmetrics.single_table.privacy.radius_nearest_neighbor module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.single_table.privacy.radius_nearest_neighbor.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-sdmetrics.single_table.privacy.radius_nearest_neighbor">
+<span id="sdmetrics-single-table-privacy-radius-nearest-neighbor-module"></span><h1>sdmetrics.single_table.privacy.radius_nearest_neighbor module<a class="headerlink" href="#module-sdmetrics.single_table.privacy.radius_nearest_neighbor" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InverseCDFCutoff</span></code></a>([p, cutoff])</p></td>
+<td><p>Gives weight = 1 if the Lp averaged distance between the entries is below a given cutoff.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumericalRadiusNearestNeighbor</span></code></a></p></td>
+<td><p>The Radius Nearest Neighbor privacy metric.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumericalRadiusNearestNeighborAttacker</span></code></a>([…])</p></td>
+<td><p>The Radius Nearest Neighbor Attacker.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.radius_nearest_neighbor.</code><code class="sig-name descname">InverseCDFCutoff</code><span class="sig-paren">(</span><em class="sig-param">p=2</em>, <em class="sig-param">cutoff=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/radius_nearest_neighbor.html#InverseCDFCutoff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.loss.html#sdmetrics.single_table.privacy.loss.InverseCDFDistance" title="sdmetrics.single_table.privacy.loss.InverseCDFDistance"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.loss.InverseCDFDistance</span></code></a></p>
+<p>Gives weight = 1 if the Lp averaged distance between the entries is below a given cutoff.</p>
+<p>Formally, suppose given key = (k1,..,kn), while the reference key is (k1’,…,kn’).
+Suppose the cdfs of each entry are c1,…,cn, resp.
+Then weight = 1 if and only if (sum <a href="#id1"><span class="problematic" id="id2">|</span></a>c_i(ki) - c_i(ki’)|**p) / n &lt;= cutoff**p.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff.fit" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data, cols)</p></td>
+<td><p>Fits univariate distributions (automatically selected).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff.measure" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff.measure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">measure</span></code></a>(pred, real)</p></td>
+<td><p>Compute the distance (L_p norm) between the pred and real values.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">cols</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/radius_nearest_neighbor.html#InverseCDFCutoff.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits univariate distributions (automatically selected).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – Data, where each column in <cite>cols</cite> is a continuous column.</p></li>
+<li><p><strong>cols</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Column names.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff.measure">
+<code class="sig-name descname">measure</code><span class="sig-paren">(</span><em class="sig-param">pred</em>, <em class="sig-param">real</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/radius_nearest_neighbor.html#InverseCDFCutoff.measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff.measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the distance (L_p norm) between the pred and real values.</p>
+<p>This uses the probability integral transform to map the pred/real values
+to a CDF value (between 0.0 and 1.0). Then, it computes the L_p norm
+between the CDF(pred) and CDF(real).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pred</strong> (<em>tuple</em>) – Predicted value(s) corresponding to the columns specified in fit.</p></li>
+<li><p><strong>real</strong> (<em>tuple</em>) – Real value(s) corresponding to the columns specified in fit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The L_p norm of the CDF value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.radius_nearest_neighbor.</code><code class="sig-name descname">NumericalRadiusNearestNeighbor</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/radius_nearest_neighbor.html#NumericalRadiusNearestNeighbor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.NumericalPrivacyMetric" title="sdmetrics.single_table.privacy.base.NumericalPrivacyMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.NumericalPrivacyMetric</span></code></a></p>
+<p>The Radius Nearest Neighbor privacy metric.</p>
+<p>Scored based on the NumericalRadiusNearestNeighborAttacker.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.MODEL" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MODEL</span></code></a></p></td>
+<td><p>The Radius Nearest Neighbor Attacker.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.MODEL_KWARGS" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.MODEL_KWARGS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MODEL_KWARGS</span></code></a></p></td>
+<td><p>dict() -&gt; new empty dictionary</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.name" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.MODEL">
+<code class="sig-name descname">MODEL</code><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">NumericalRadiusNearestNeighborAttacker</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.MODEL_KWARGS">
+<code class="sig-name descname">MODEL_KWARGS</code><em class="property"> = {'weight_func': &lt;class 'sdmetrics.single_table.privacy.radius_nearest_neighbor.InverseCDFCutoff'&gt;, 'weight_func_kwargs': {'cutoff': 0.3, 'p': 2}}</em><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.MODEL_KWARGS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.name">
+<code class="sig-name descname">name</code><em class="property"> = 'Numerical Radius Nearest Neighbor'</em><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighbor.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.radius_nearest_neighbor.</code><code class="sig-name descname">NumericalRadiusNearestNeighborAttacker</code><span class="sig-paren">(</span><em class="sig-param">weight_func=None</em>, <em class="sig-param">weight_func_kwargs=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/radius_nearest_neighbor.html#NumericalRadiusNearestNeighborAttacker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.PrivacyAttackerModel" title="sdmetrics.single_table.privacy.base.PrivacyAttackerModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.PrivacyAttackerModel</span></code></a></p>
+<p>The Radius Nearest Neighbor Attacker.</p>
+<p>It will predict the sensitive value to be a weighted mean of the entries in the
+synthetic table. Where this weight is given by a separate function, and typically
+describes the closeness between the given key and the corresponding entry in the table.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker.fit" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(synthetic_data, key_fields, sensitive_fields)</p></td>
+<td><p>Fit the NumericalRadiusNearestNeighborAttacker on the synthetic data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker.predict" title="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(key_data)</p></td>
+<td><p>Make a prediction of the sensitive data given keys.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">synthetic_data</em>, <em class="sig-param">key_fields</em>, <em class="sig-param">sensitive_fields</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/radius_nearest_neighbor.html#NumericalRadiusNearestNeighborAttacker.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the NumericalRadiusNearestNeighborAttacker on the synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>synthetic_data</strong> (<em>pandas.DataFrame</em>) – The synthetic data table used for adverserial learning.</p></li>
+<li><p><strong>key_fields</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The names of the key columns.</p></li>
+<li><p><strong>sensitive_fields</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The names of the sensitive columns.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">key_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/radius_nearest_neighbor.html#NumericalRadiusNearestNeighborAttacker.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.radius_nearest_neighbor.NumericalRadiusNearestNeighborAttacker.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a prediction of the sensitive data given keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key_data</strong> (<em>tuple</em>) – The key data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The predicted sensitive data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sdmetrics.single_table.privacy.util.html" class="btn btn-neutral float-right" title="sdmetrics.single_table.privacy.util module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sdmetrics.single_table.privacy.numerical_sklearn.html" class="btn btn-neutral float-left" title="sdmetrics.single_table.privacy.numerical_sklearn module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, MIT Data To AI Lab.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

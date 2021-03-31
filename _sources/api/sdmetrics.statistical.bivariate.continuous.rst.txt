@@ -1,7 +1,0 @@
-sdmetrics.statistical.bivariate.continuous module
-=================================================
-
-.. automodule:: sdmetrics.statistical.bivariate.continuous
-   :members:
-   :undoc-members:
-   :show-inheritance:

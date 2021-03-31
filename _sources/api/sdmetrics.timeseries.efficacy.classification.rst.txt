@@ -1,0 +1,7 @@
+sdmetrics.timeseries.efficacy.classification module
+===================================================
+
+.. automodule:: sdmetrics.timeseries.efficacy.classification
+   :members:
+   :undoc-members:
+   :show-inheritance:

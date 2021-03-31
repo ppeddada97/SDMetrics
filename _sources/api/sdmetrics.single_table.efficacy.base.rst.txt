@@ -1,0 +1,7 @@
+sdmetrics.single\_table.efficacy.base module
+============================================
+
+.. automodule:: sdmetrics.single_table.efficacy.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

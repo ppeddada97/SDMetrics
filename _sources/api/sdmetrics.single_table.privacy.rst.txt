@@ -1,0 +1,21 @@
+sdmetrics.single\_table.privacy package
+=======================================
+
+.. automodule:: sdmetrics.single_table.privacy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.single_table.privacy.base
+   sdmetrics.single_table.privacy.cap
+   sdmetrics.single_table.privacy.categorical_sklearn
+   sdmetrics.single_table.privacy.ensemble
+   sdmetrics.single_table.privacy.loss
+   sdmetrics.single_table.privacy.numerical_sklearn
+   sdmetrics.single_table.privacy.radius_nearest_neighbor
+   sdmetrics.single_table.privacy.util

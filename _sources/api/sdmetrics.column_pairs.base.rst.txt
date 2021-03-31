@@ -1,0 +1,7 @@
+sdmetrics.column\_pairs.base module
+===================================
+
+.. automodule:: sdmetrics.column_pairs.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

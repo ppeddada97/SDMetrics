@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>sdmetrics.single_column.statistical.cstest module &mdash; SDMetrics 0.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sdmetrics.single_column.statistical.kstest module" href="sdmetrics.single_column.statistical.kstest.html" />
+    <link rel="prev" title="sdmetrics.single_column.statistical package" href="sdmetrics.single_column.statistical.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SDMetrics
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.column_pairs.html">sdmetrics.column_pairs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.multi_table.html">sdmetrics.multi_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="sdmetrics.single_column.html">sdmetrics.single_column package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="sdmetrics.single_column.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.single_table.html">sdmetrics.single_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.timeseries.html">sdmetrics.timeseries package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.base.html">sdmetrics.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.demos.html">sdmetrics.demos module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.goal.html">sdmetrics.goal module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.utils.html">sdmetrics.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-3-0-2021-03-30">v0.3.0 - 2021-03-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-2-0-2021-02-24">v0.2.0 - 2021-02-24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-3-2021-02-13">v0.1.3 - 2021-02-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id3">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-2-2021-01-27">v0.1.2 - 2021-01-27</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id5">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-1-2020-12-30">v0.1.1 - 2020-12-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id10">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-0-2020-12-18">v0.1.0 - 2020-12-18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-4-2020-11-27">v0.0.4 - 2020-11-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id14">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_column.html">sdmetrics.single_column package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_column.statistical.html">sdmetrics.single_column.statistical package</a> &raquo;</li>
+        
+      <li>sdmetrics.single_column.statistical.cstest module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.single_column.statistical.cstest.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-sdmetrics.single_column.statistical.cstest">
+<span id="sdmetrics-single-column-statistical-cstest-module"></span><h1>sdmetrics.single_column.statistical.cstest module<a class="headerlink" href="#module-sdmetrics.single_column.statistical.cstest" title="Permalink to this headline">¶</a></h1>
+<p>Chi-Squared test based metric.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_column.statistical.cstest.CSTest" title="sdmetrics.single_column.statistical.cstest.CSTest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CSTest</span></code></a></p></td>
+<td><p>Chi-Squared test based metric.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="sdmetrics.single_column.statistical.cstest.CSTest">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_column.statistical.cstest.</code><code class="sig-name descname">CSTest</code><a class="reference internal" href="../_modules/sdmetrics/single_column/statistical/cstest.html#CSTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_column.statistical.cstest.CSTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_column.base.html#sdmetrics.single_column.base.SingleColumnMetric" title="sdmetrics.single_column.base.SingleColumnMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_column.base.SingleColumnMetric</span></code></a></p>
+<p>Chi-Squared test based metric.</p>
+<p>This metric uses the Chi-Squared test to compare the distributions
+of the two categorical columns. It returns the resulting p-value so that
+a small value indicates that we can reject the null hypothesis (i.e. and
+suggests that the distributions are different).</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_column.statistical.cstest.CSTest.compute" title="sdmetrics.single_column.statistical.cstest.CSTest.compute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute</span></code></a>(real_data, synthetic_data)</p></td>
+<td><p>Compare two discrete columns using a Chi-Squared test.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_column.statistical.cstest.CSTest.normalize" title="sdmetrics.single_column.statistical.cstest.CSTest.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a>(raw_score)</p></td>
+<td><p>Returns the <cite>raw_score</cite> as is, since it is already normalized.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_column.statistical.cstest.CSTest.goal" title="sdmetrics.single_column.statistical.cstest.CSTest.goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">goal</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_column.statistical.cstest.CSTest.max_value" title="sdmetrics.single_column.statistical.cstest.CSTest.max_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_value</span></code></a></p></td>
+<td><p>Convert a string or number to a floating point number, if possible.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_column.statistical.cstest.CSTest.min_value" title="sdmetrics.single_column.statistical.cstest.CSTest.min_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_value</span></code></a></p></td>
+<td><p>Convert a string or number to a floating point number, if possible.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_column.statistical.cstest.CSTest.name" title="sdmetrics.single_column.statistical.cstest.CSTest.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_column.statistical.cstest.CSTest.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#sdmetrics.single_column.statistical.cstest.CSTest.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name to use when reports about this metric are printed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_column.statistical.cstest.CSTest.goal">
+<code class="sig-name descname">goal</code><a class="headerlink" href="#sdmetrics.single_column.statistical.cstest.CSTest.goal" title="Permalink to this definition">¶</a></dt>
+<dd><p>The goal of this metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="sdmetrics.goal.html#sdmetrics.goal.Goal" title="sdmetrics.goal.Goal">sdmetrics.goal.Goal</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_column.statistical.cstest.CSTest.min_value">
+<code class="sig-name descname">min_value</code><a class="headerlink" href="#sdmetrics.single_column.statistical.cstest.CSTest.min_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum value or values that this metric can take.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Union[float, tuple[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_column.statistical.cstest.CSTest.max_value">
+<code class="sig-name descname">max_value</code><a class="headerlink" href="#sdmetrics.single_column.statistical.cstest.CSTest.max_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum value or values that this metric can take.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Union[float, tuple[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_column.statistical.cstest.CSTest.compute">
+<em class="property">static </em><code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">real_data</em>, <em class="sig-param">synthetic_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_column/statistical/cstest.html#CSTest.compute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_column.statistical.cstest.CSTest.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare two discrete columns using a Chi-Squared test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>real_data</strong> (<em>Union</em><em>[</em><em>numpy.ndarray</em><em>, </em><em>pandas.Series</em><em>]</em>) – The values from the real dataset.</p></li>
+<li><p><strong>synthetic_data</strong> (<em>Union</em><em>[</em><em>numpy.ndarray</em><em>, </em><em>pandas.Series</em><em>]</em>) – The values from the synthetic dataset.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Chi-Squared test p-value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">goal</code><em class="property"> = 'maximize'</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">max_value</code><em class="property"> = 1.0</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">min_value</code><em class="property"> = 0.0</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">name</code><em class="property"> = 'Chi-Squared'</em></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_column.statistical.cstest.CSTest.normalize">
+<em class="property">classmethod </em><code class="sig-name descname">normalize</code><span class="sig-paren">(</span><em class="sig-param">raw_score</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_column/statistical/cstest.html#CSTest.normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_column.statistical.cstest.CSTest.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <cite>raw_score</cite> as is, since it is already normalized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw_score</strong> (<em>float</em>) – The value of the metric from <cite>compute</cite>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The normalized value of the metric</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sdmetrics.single_column.statistical.kstest.html" class="btn btn-neutral float-right" title="sdmetrics.single_column.statistical.kstest module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sdmetrics.single_column.statistical.html" class="btn btn-neutral float-left" title="sdmetrics.single_column.statistical package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, MIT Data To AI Lab.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

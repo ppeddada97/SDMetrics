@@ -1,0 +1,7 @@
+sdmetrics.single\_table.base module
+===================================
+
+.. automodule:: sdmetrics.single_table.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

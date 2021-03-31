@@ -1,0 +1,7 @@
+sdmetrics.timeseries.efficacy.base module
+=========================================
+
+.. automodule:: sdmetrics.timeseries.efficacy.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

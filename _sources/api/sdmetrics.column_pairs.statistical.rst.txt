@@ -1,0 +1,14 @@
+sdmetrics.column\_pairs.statistical package
+===========================================
+
+.. automodule:: sdmetrics.column_pairs.statistical
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.column_pairs.statistical.kl_divergence

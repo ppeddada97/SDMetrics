@@ -1,0 +1,7 @@
+sdmetrics.single\_column.statistical.cstest module
+==================================================
+
+.. automodule:: sdmetrics.single_column.statistical.cstest
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sdmetrics.single\_table.privacy.loss module
+===========================================
+
+.. automodule:: sdmetrics.single_table.privacy.loss
+   :members:
+   :undoc-members:
+   :show-inheritance:

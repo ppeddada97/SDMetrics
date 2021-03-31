@@ -1,0 +1,21 @@
+sdmetrics.column\_pairs package
+===============================
+
+.. automodule:: sdmetrics.column_pairs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   sdmetrics.column_pairs.statistical
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.column_pairs.base

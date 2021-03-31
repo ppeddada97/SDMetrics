@@ -1,7 +1,0 @@
-sdmetrics.constraint package
-============================
-
-.. automodule:: sdmetrics.constraint
-   :members:
-   :undoc-members:
-   :show-inheritance:

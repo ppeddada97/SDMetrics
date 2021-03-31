@@ -1,0 +1,7 @@
+sdmetrics.single\_table.privacy.categorical\_sklearn module
+===========================================================
+
+.. automodule:: sdmetrics.single_table.privacy.categorical_sklearn
+   :members:
+   :undoc-members:
+   :show-inheritance:

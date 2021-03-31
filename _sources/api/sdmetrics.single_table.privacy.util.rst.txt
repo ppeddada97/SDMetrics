@@ -1,0 +1,7 @@
+sdmetrics.single\_table.privacy.util module
+===========================================
+
+.. automodule:: sdmetrics.single_table.privacy.util
+   :members:
+   :undoc-members:
+   :show-inheritance:

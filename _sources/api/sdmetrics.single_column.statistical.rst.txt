@@ -1,0 +1,15 @@
+sdmetrics.single\_column.statistical package
+============================================
+
+.. automodule:: sdmetrics.single_column.statistical
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.single_column.statistical.cstest
+   sdmetrics.single_column.statistical.kstest

@@ -1,0 +1,23 @@
+sdmetrics.timeseries package
+============================
+
+.. automodule:: sdmetrics.timeseries
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   sdmetrics.timeseries.efficacy
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.timeseries.base
+   sdmetrics.timeseries.detection
+   sdmetrics.timeseries.ml_scorers

@@ -1,0 +1,7 @@
+sdmetrics.single\_table.efficacy.multiclass module
+==================================================
+
+.. automodule:: sdmetrics.single_table.efficacy.multiclass
+   :members:
+   :undoc-members:
+   :show-inheritance:

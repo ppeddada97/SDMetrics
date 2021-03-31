@@ -1,0 +1,15 @@
+sdmetrics.multi\_table.detection package
+========================================
+
+.. automodule:: sdmetrics.multi_table.detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.multi_table.detection.base
+   sdmetrics.multi_table.detection.parent_child

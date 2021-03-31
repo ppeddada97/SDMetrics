@@ -11,16 +11,18 @@ Subpackages
 
 .. toctree::
 
-   sdmetrics.constraint
-   sdmetrics.datasets
-   sdmetrics.detection
-   sdmetrics.efficacy
-   sdmetrics.statistical
+   sdmetrics.column_pairs
+   sdmetrics.multi_table
+   sdmetrics.single_column
+   sdmetrics.single_table
+   sdmetrics.timeseries
 
 Submodules
 ----------
 
 .. toctree::
 
-   sdmetrics.evaluation
-   sdmetrics.report
+   sdmetrics.base
+   sdmetrics.demos
+   sdmetrics.goal
+   sdmetrics.utils

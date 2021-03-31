@@ -1,0 +1,7 @@
+sdmetrics.demos module
+======================
+
+.. automodule:: sdmetrics.demos
+   :members:
+   :undoc-members:
+   :show-inheritance:

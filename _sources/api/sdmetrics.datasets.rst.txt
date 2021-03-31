@@ -1,7 +1,0 @@
-sdmetrics.datasets package
-==========================
-
-.. automodule:: sdmetrics.datasets
-   :members:
-   :undoc-members:
-   :show-inheritance:

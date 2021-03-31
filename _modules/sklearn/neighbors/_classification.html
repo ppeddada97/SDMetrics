@@ -1,0 +1,908 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>sklearn.neighbors._classification &mdash; SDMetrics 0.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SDMetrics
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/sdmetrics.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.column_pairs.html">sdmetrics.column_pairs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.column_pairs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.column_pairs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.multi_table.html">sdmetrics.multi_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.multi_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.multi_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.single_column.html">sdmetrics.single_column package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.single_column.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.single_column.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.single_table.html">sdmetrics.single_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.single_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.single_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.timeseries.html">sdmetrics.timeseries package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.timeseries.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.timeseries.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.base.html">sdmetrics.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.demos.html">sdmetrics.demos module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.goal.html">sdmetrics.goal module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.utils.html">sdmetrics.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-3-0-2021-03-30">v0.3.0 - 2021-03-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-2-0-2021-02-24">v0.2.0 - 2021-02-24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-1-3-2021-02-13">v0.1.3 - 2021-02-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#id3">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-1-2-2021-01-27">v0.1.2 - 2021-01-27</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#id5">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-1-1-2020-12-30">v0.1.1 - 2020-12-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#id10">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-1-0-2020-12-18">v0.1.0 - 2020-12-18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-0-4-2020-11-27">v0.0.4 - 2020-11-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#id14">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>sklearn.neighbors._classification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sklearn.neighbors._classification</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Nearest Neighbor Classification&quot;&quot;&quot;</span>
+
+<span class="c1"># Authors: Jake Vanderplas &lt;vanderplas@astro.washington.edu&gt;</span>
+<span class="c1">#          Fabian Pedregosa &lt;fabian.pedregosa@inria.fr&gt;</span>
+<span class="c1">#          Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
+<span class="c1">#          Sparseness support by Lars Buitinck</span>
+<span class="c1">#          Multi-output support by Arnaud Joly &lt;a.joly@ulg.ac.be&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># License: BSD 3 clause (C) INRIA, University of Amsterdam</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">..utils.extmath</span> <span class="kn">import</span> <span class="n">weighted_mode</span>
+<span class="kn">from</span> <span class="nn">..utils.validation</span> <span class="kn">import</span> <span class="n">_is_arraylike</span><span class="p">,</span> <span class="n">_num_samples</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">._base</span> <span class="kn">import</span> <span class="n">_check_weights</span><span class="p">,</span> <span class="n">_get_weights</span>
+<span class="kn">from</span> <span class="nn">._base</span> <span class="kn">import</span> <span class="n">NeighborsBase</span><span class="p">,</span> <span class="n">KNeighborsMixin</span><span class="p">,</span> <span class="n">RadiusNeighborsMixin</span>
+<span class="kn">from</span> <span class="nn">..base</span> <span class="kn">import</span> <span class="n">ClassifierMixin</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">check_array</span>
+<span class="kn">from</span> <span class="nn">..utils.validation</span> <span class="kn">import</span> <span class="n">_deprecate_positional_args</span>
+
+
+<span class="k">class</span> <span class="nc">KNeighborsClassifier</span><span class="p">(</span><span class="n">KNeighborsMixin</span><span class="p">,</span>
+                           <span class="n">ClassifierMixin</span><span class="p">,</span>
+                           <span class="n">NeighborsBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Classifier implementing the k-nearest neighbors vote.</span>
+
+<span class="sd">    Read more in the :ref:`User Guide &lt;classification&gt;`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n_neighbors : int, default=5</span>
+<span class="sd">        Number of neighbors to use by default for :meth:`kneighbors` queries.</span>
+
+<span class="sd">    weights : {&#39;uniform&#39;, &#39;distance&#39;} or callable, default=&#39;uniform&#39;</span>
+<span class="sd">        weight function used in prediction.  Possible values:</span>
+
+<span class="sd">        - &#39;uniform&#39; : uniform weights.  All points in each neighborhood</span>
+<span class="sd">          are weighted equally.</span>
+<span class="sd">        - &#39;distance&#39; : weight points by the inverse of their distance.</span>
+<span class="sd">          in this case, closer neighbors of a query point will have a</span>
+<span class="sd">          greater influence than neighbors which are further away.</span>
+<span class="sd">        - [callable] : a user-defined function which accepts an</span>
+<span class="sd">          array of distances, and returns an array of the same shape</span>
+<span class="sd">          containing the weights.</span>
+
+<span class="sd">    algorithm : {&#39;auto&#39;, &#39;ball_tree&#39;, &#39;kd_tree&#39;, &#39;brute&#39;}, default=&#39;auto&#39;</span>
+<span class="sd">        Algorithm used to compute the nearest neighbors:</span>
+
+<span class="sd">        - &#39;ball_tree&#39; will use :class:`BallTree`</span>
+<span class="sd">        - &#39;kd_tree&#39; will use :class:`KDTree`</span>
+<span class="sd">        - &#39;brute&#39; will use a brute-force search.</span>
+<span class="sd">        - &#39;auto&#39; will attempt to decide the most appropriate algorithm</span>
+<span class="sd">          based on the values passed to :meth:`fit` method.</span>
+
+<span class="sd">        Note: fitting on sparse input will override the setting of</span>
+<span class="sd">        this parameter, using brute force.</span>
+
+<span class="sd">    leaf_size : int, default=30</span>
+<span class="sd">        Leaf size passed to BallTree or KDTree.  This can affect the</span>
+<span class="sd">        speed of the construction and query, as well as the memory</span>
+<span class="sd">        required to store the tree.  The optimal value depends on the</span>
+<span class="sd">        nature of the problem.</span>
+
+<span class="sd">    p : int, default=2</span>
+<span class="sd">        Power parameter for the Minkowski metric. When p = 1, this is</span>
+<span class="sd">        equivalent to using manhattan_distance (l1), and euclidean_distance</span>
+<span class="sd">        (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used.</span>
+
+<span class="sd">    metric : str or callable, default=&#39;minkowski&#39;</span>
+<span class="sd">        the distance metric to use for the tree.  The default metric is</span>
+<span class="sd">        minkowski, and with p=2 is equivalent to the standard Euclidean</span>
+<span class="sd">        metric. See the documentation of :class:`DistanceMetric` for a</span>
+<span class="sd">        list of available metrics.</span>
+<span class="sd">        If metric is &quot;precomputed&quot;, X is assumed to be a distance matrix and</span>
+<span class="sd">        must be square during fit. X may be a :term:`sparse graph`,</span>
+<span class="sd">        in which case only &quot;nonzero&quot; elements may be considered neighbors.</span>
+
+<span class="sd">    metric_params : dict, default=None</span>
+<span class="sd">        Additional keyword arguments for the metric function.</span>
+
+<span class="sd">    n_jobs : int, default=None</span>
+<span class="sd">        The number of parallel jobs to run for neighbors search.</span>
+<span class="sd">        ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.</span>
+<span class="sd">        ``-1`` means using all processors. See :term:`Glossary &lt;n_jobs&gt;`</span>
+<span class="sd">        for more details.</span>
+<span class="sd">        Doesn&#39;t affect :meth:`fit` method.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    classes_ : array of shape (n_classes,)</span>
+<span class="sd">        Class labels known to the classifier</span>
+
+<span class="sd">    effective_metric_ : str or callble</span>
+<span class="sd">        The distance metric used. It will be same as the `metric` parameter</span>
+<span class="sd">        or a synonym of it, e.g. &#39;euclidean&#39; if the `metric` parameter set to</span>
+<span class="sd">        &#39;minkowski&#39; and `p` parameter set to 2.</span>
+
+<span class="sd">    effective_metric_params_ : dict</span>
+<span class="sd">        Additional keyword arguments for the metric function. For most metrics</span>
+<span class="sd">        will be same with `metric_params` parameter, but may also contain the</span>
+<span class="sd">        `p` parameter value if the `effective_metric_` attribute is set to</span>
+<span class="sd">        &#39;minkowski&#39;.</span>
+
+<span class="sd">    n_samples_fit_ : int</span>
+<span class="sd">        Number of samples in the fitted data.</span>
+
+<span class="sd">    outputs_2d_ : bool</span>
+<span class="sd">        False when `y`&#39;s shape is (n_samples, ) or (n_samples, 1) during fit</span>
+<span class="sd">        otherwise True.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; X = [[0], [1], [2], [3]]</span>
+<span class="sd">    &gt;&gt;&gt; y = [0, 0, 1, 1]</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.neighbors import KNeighborsClassifier</span>
+<span class="sd">    &gt;&gt;&gt; neigh = KNeighborsClassifier(n_neighbors=3)</span>
+<span class="sd">    &gt;&gt;&gt; neigh.fit(X, y)</span>
+<span class="sd">    KNeighborsClassifier(...)</span>
+<span class="sd">    &gt;&gt;&gt; print(neigh.predict([[1.1]]))</span>
+<span class="sd">    [0]</span>
+<span class="sd">    &gt;&gt;&gt; print(neigh.predict_proba([[0.9]]))</span>
+<span class="sd">    [[0.66666667 0.33333333]]</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RadiusNeighborsClassifier</span>
+<span class="sd">    KNeighborsRegressor</span>
+<span class="sd">    RadiusNeighborsRegressor</span>
+<span class="sd">    NearestNeighbors</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    See :ref:`Nearest Neighbors &lt;neighbors&gt;` in the online documentation</span>
+<span class="sd">    for a discussion of the choice of ``algorithm`` and ``leaf_size``.</span>
+
+<span class="sd">    .. warning::</span>
+
+<span class="sd">       Regarding the Nearest Neighbors algorithms, if it is found that two</span>
+<span class="sd">       neighbors, neighbor `k+1` and `k`, have identical distances</span>
+<span class="sd">       but different labels, the results will depend on the ordering of the</span>
+<span class="sd">       training data.</span>
+
+<span class="sd">    https://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@_deprecate_positional_args</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                 <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                 <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;minkowski&#39;</span><span class="p">,</span> <span class="n">metric_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+            <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span>
+            <span class="n">leaf_size</span><span class="o">=</span><span class="n">leaf_size</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
+            <span class="n">metric_params</span><span class="o">=</span><span class="n">metric_params</span><span class="p">,</span>
+            <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">_check_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit the k-nearest neighbors classifier from the training dataset.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : {array-like, sparse matrix} of shape (n_samples, n_features) or \</span>
+<span class="sd">                (n_samples, n_samples) if metric=&#39;precomputed&#39;</span>
+<span class="sd">            Training data.</span>
+
+<span class="sd">        y : {array-like, sparse matrix} of shape (n_samples,) or \</span>
+<span class="sd">                (n_samples, n_outputs)</span>
+<span class="sd">            Target values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : KNeighborsClassifier</span>
+<span class="sd">            The fitted k-nearest neighbors classifier.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict the class labels for the provided data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape (n_queries, n_features), \</span>
+<span class="sd">                or (n_queries, n_indexed) if metric == &#39;precomputed&#39;</span>
+<span class="sd">            Test samples.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        y : ndarray of shape (n_queries,) or (n_queries, n_outputs)</span>
+<span class="sd">            Class labels for each data sample.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s1">&#39;csr&#39;</span><span class="p">)</span>
+
+        <span class="n">neigh_dist</span><span class="p">,</span> <span class="n">neigh_ind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">classes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+        <span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">classes_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span>
+
+        <span class="n">n_outputs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes_</span><span class="p">)</span>
+        <span class="n">n_queries</span> <span class="o">=</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">_get_weights</span><span class="p">(</span><span class="n">neigh_dist</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_queries</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">classes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">classes_k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes_</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mode</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">_y</span><span class="p">[</span><span class="n">neigh_ind</span><span class="p">,</span> <span class="n">k</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">mode</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">weighted_mode</span><span class="p">(</span><span class="n">_y</span><span class="p">[</span><span class="n">neigh_ind</span><span class="p">,</span> <span class="n">k</span><span class="p">],</span> <span class="n">weights</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="n">mode</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">)</span>
+            <span class="n">y_pred</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes_k</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">y_pred</span>
+
+    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return probability estimates for the test data X.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape (n_queries, n_features), \</span>
+<span class="sd">                or (n_queries, n_indexed) if metric == &#39;precomputed&#39;</span>
+<span class="sd">            Test samples.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        p : ndarray of shape (n_queries, n_classes), or a list of n_outputs</span>
+<span class="sd">            of such arrays if n_outputs &gt; 1.</span>
+<span class="sd">            The class probabilities of the input samples. Classes are ordered</span>
+<span class="sd">            by lexicographic order.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s1">&#39;csr&#39;</span><span class="p">)</span>
+
+        <span class="n">neigh_dist</span><span class="p">,</span> <span class="n">neigh_ind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="n">classes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+        <span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">classes_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span>
+
+        <span class="n">n_queries</span> <span class="o">=</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">_get_weights</span><span class="p">(</span><span class="n">neigh_dist</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">neigh_ind</span><span class="p">)</span>
+
+        <span class="n">all_rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">probabilities</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">classes_k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes_</span><span class="p">):</span>
+            <span class="n">pred_labels</span> <span class="o">=</span> <span class="n">_y</span><span class="p">[:,</span> <span class="n">k</span><span class="p">][</span><span class="n">neigh_ind</span><span class="p">]</span>
+            <span class="n">proba_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_queries</span><span class="p">,</span> <span class="n">classes_k</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+
+            <span class="c1"># a simple &#39;:&#39; index doesn&#39;t work right</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pred_labels</span><span class="o">.</span><span class="n">T</span><span class="p">):</span>  <span class="c1"># loop is O(n_neighbors)</span>
+                <span class="n">proba_k</span><span class="p">[</span><span class="n">all_rows</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="o">+=</span> <span class="n">weights</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+
+            <span class="c1"># normalize &#39;votes&#39; into real [0,1] probabilities</span>
+            <span class="n">normalizer</span> <span class="o">=</span> <span class="n">proba_k</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+            <span class="n">normalizer</span><span class="p">[</span><span class="n">normalizer</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">proba_k</span> <span class="o">/=</span> <span class="n">normalizer</span>
+
+            <span class="n">probabilities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proba_k</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">probabilities</span>
+
+
+<span class="k">class</span> <span class="nc">RadiusNeighborsClassifier</span><span class="p">(</span><span class="n">RadiusNeighborsMixin</span><span class="p">,</span>
+                                <span class="n">ClassifierMixin</span><span class="p">,</span>
+                                <span class="n">NeighborsBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Classifier implementing a vote among neighbors within a given radius</span>
+
+<span class="sd">    Read more in the :ref:`User Guide &lt;classification&gt;`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    radius : float, default=1.0</span>
+<span class="sd">        Range of parameter space to use by default for :meth:`radius_neighbors`</span>
+<span class="sd">        queries.</span>
+
+<span class="sd">    weights : {&#39;uniform&#39;, &#39;distance&#39;} or callable, default=&#39;uniform&#39;</span>
+<span class="sd">        weight function used in prediction.  Possible values:</span>
+
+<span class="sd">        - &#39;uniform&#39; : uniform weights.  All points in each neighborhood</span>
+<span class="sd">          are weighted equally.</span>
+<span class="sd">        - &#39;distance&#39; : weight points by the inverse of their distance.</span>
+<span class="sd">          in this case, closer neighbors of a query point will have a</span>
+<span class="sd">          greater influence than neighbors which are further away.</span>
+<span class="sd">        - [callable] : a user-defined function which accepts an</span>
+<span class="sd">          array of distances, and returns an array of the same shape</span>
+<span class="sd">          containing the weights.</span>
+
+<span class="sd">        Uniform weights are used by default.</span>
+
+<span class="sd">    algorithm : {&#39;auto&#39;, &#39;ball_tree&#39;, &#39;kd_tree&#39;, &#39;brute&#39;}, default=&#39;auto&#39;</span>
+<span class="sd">        Algorithm used to compute the nearest neighbors:</span>
+
+<span class="sd">        - &#39;ball_tree&#39; will use :class:`BallTree`</span>
+<span class="sd">        - &#39;kd_tree&#39; will use :class:`KDTree`</span>
+<span class="sd">        - &#39;brute&#39; will use a brute-force search.</span>
+<span class="sd">        - &#39;auto&#39; will attempt to decide the most appropriate algorithm</span>
+<span class="sd">          based on the values passed to :meth:`fit` method.</span>
+
+<span class="sd">        Note: fitting on sparse input will override the setting of</span>
+<span class="sd">        this parameter, using brute force.</span>
+
+<span class="sd">    leaf_size : int, default=30</span>
+<span class="sd">        Leaf size passed to BallTree or KDTree.  This can affect the</span>
+<span class="sd">        speed of the construction and query, as well as the memory</span>
+<span class="sd">        required to store the tree.  The optimal value depends on the</span>
+<span class="sd">        nature of the problem.</span>
+
+<span class="sd">    p : int, default=2</span>
+<span class="sd">        Power parameter for the Minkowski metric. When p = 1, this is</span>
+<span class="sd">        equivalent to using manhattan_distance (l1), and euclidean_distance</span>
+<span class="sd">        (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used.</span>
+
+<span class="sd">    metric : str or callable, default=&#39;minkowski&#39;</span>
+<span class="sd">        the distance metric to use for the tree.  The default metric is</span>
+<span class="sd">        minkowski, and with p=2 is equivalent to the standard Euclidean</span>
+<span class="sd">        metric. See the documentation of :class:`DistanceMetric` for a</span>
+<span class="sd">        list of available metrics.</span>
+<span class="sd">        If metric is &quot;precomputed&quot;, X is assumed to be a distance matrix and</span>
+<span class="sd">        must be square during fit. X may be a :term:`sparse graph`,</span>
+<span class="sd">        in which case only &quot;nonzero&quot; elements may be considered neighbors.</span>
+
+<span class="sd">    outlier_label : {manual label, &#39;most_frequent&#39;}, default=None</span>
+<span class="sd">        label for outlier samples (samples with no neighbors in given radius).</span>
+
+<span class="sd">        - manual label: str or int label (should be the same type as y)</span>
+<span class="sd">          or list of manual labels if multi-output is used.</span>
+<span class="sd">        - &#39;most_frequent&#39; : assign the most frequent label of y to outliers.</span>
+<span class="sd">        - None : when any outlier is detected, ValueError will be raised.</span>
+
+<span class="sd">    metric_params : dict, default=None</span>
+<span class="sd">        Additional keyword arguments for the metric function.</span>
+
+<span class="sd">    n_jobs : int, default=None</span>
+<span class="sd">        The number of parallel jobs to run for neighbors search.</span>
+<span class="sd">        ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.</span>
+<span class="sd">        ``-1`` means using all processors. See :term:`Glossary &lt;n_jobs&gt;`</span>
+<span class="sd">        for more details.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    classes_ : ndarray of shape (n_classes,)</span>
+<span class="sd">        Class labels known to the classifier.</span>
+
+<span class="sd">    effective_metric_ : str or callable</span>
+<span class="sd">        The distance metric used. It will be same as the `metric` parameter</span>
+<span class="sd">        or a synonym of it, e.g. &#39;euclidean&#39; if the `metric` parameter set to</span>
+<span class="sd">        &#39;minkowski&#39; and `p` parameter set to 2.</span>
+
+<span class="sd">    effective_metric_params_ : dict</span>
+<span class="sd">        Additional keyword arguments for the metric function. For most metrics</span>
+<span class="sd">        will be same with `metric_params` parameter, but may also contain the</span>
+<span class="sd">        `p` parameter value if the `effective_metric_` attribute is set to</span>
+<span class="sd">        &#39;minkowski&#39;.</span>
+
+<span class="sd">    n_samples_fit_ : int</span>
+<span class="sd">        Number of samples in the fitted data.</span>
+
+<span class="sd">    outlier_label_ : int or array-like of shape (n_class,)</span>
+<span class="sd">        Label which is given for outlier samples (samples with no neighbors</span>
+<span class="sd">        on given radius).</span>
+
+<span class="sd">    outputs_2d_ : bool</span>
+<span class="sd">        False when `y`&#39;s shape is (n_samples, ) or (n_samples, 1) during fit</span>
+<span class="sd">        otherwise True.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; X = [[0], [1], [2], [3]]</span>
+<span class="sd">    &gt;&gt;&gt; y = [0, 0, 1, 1]</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.neighbors import RadiusNeighborsClassifier</span>
+<span class="sd">    &gt;&gt;&gt; neigh = RadiusNeighborsClassifier(radius=1.0)</span>
+<span class="sd">    &gt;&gt;&gt; neigh.fit(X, y)</span>
+<span class="sd">    RadiusNeighborsClassifier(...)</span>
+<span class="sd">    &gt;&gt;&gt; print(neigh.predict([[1.5]]))</span>
+<span class="sd">    [0]</span>
+<span class="sd">    &gt;&gt;&gt; print(neigh.predict_proba([[1.0]]))</span>
+<span class="sd">    [[0.66666667 0.33333333]]</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    KNeighborsClassifier</span>
+<span class="sd">    RadiusNeighborsRegressor</span>
+<span class="sd">    KNeighborsRegressor</span>
+<span class="sd">    NearestNeighbors</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    See :ref:`Nearest Neighbors &lt;neighbors&gt;` in the online documentation</span>
+<span class="sd">    for a discussion of the choice of ``algorithm`` and ``leaf_size``.</span>
+
+<span class="sd">    https://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@_deprecate_positional_args</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
+                 <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;minkowski&#39;</span><span class="p">,</span>
+                 <span class="n">outlier_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">metric_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+              <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span>
+              <span class="n">algorithm</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span>
+              <span class="n">leaf_size</span><span class="o">=</span><span class="n">leaf_size</span><span class="p">,</span>
+              <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">metric_params</span><span class="o">=</span><span class="n">metric_params</span><span class="p">,</span>
+              <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">_check_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span> <span class="o">=</span> <span class="n">outlier_label</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit the radius neighbors classifier from the training dataset.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : {array-like, sparse matrix} of shape (n_samples, n_features) or \</span>
+<span class="sd">                (n_samples, n_samples) if metric=&#39;precomputed&#39;</span>
+<span class="sd">            Training data.</span>
+
+<span class="sd">        y : {array-like, sparse matrix} of shape (n_samples,) or \</span>
+<span class="sd">                (n_samples, n_outputs)</span>
+<span class="sd">            Target values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : RadiusNeighborsClassifier</span>
+<span class="sd">            The fitted radius neighbors classifier.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="n">classes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+        <span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">classes_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">outlier_label_</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span> <span class="o">==</span> <span class="s1">&#39;most_frequent&#39;</span><span class="p">:</span>
+            <span class="n">outlier_label_</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># iterate over multi-output, get the most frequent label for each</span>
+            <span class="c1"># output.</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">classes_k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes_</span><span class="p">):</span>
+                <span class="n">label_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">_y</span><span class="p">[:,</span> <span class="n">k</span><span class="p">])</span>
+                <span class="n">outlier_label_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">classes_k</span><span class="p">[</span><span class="n">label_count</span><span class="o">.</span><span class="n">argmax</span><span class="p">()])</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">_is_arraylike</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span><span class="p">)</span> <span class="ow">and</span>
+               <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes_</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The length of outlier_label: </span><span class="si">{}</span><span class="s2"> is &quot;</span>
+                                     <span class="s2">&quot;inconsistent with the output &quot;</span>
+                                     <span class="s2">&quot;length: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span><span class="p">,</span>
+                                                         <span class="nb">len</span><span class="p">(</span><span class="n">classes_</span><span class="p">)))</span>
+                <span class="n">outlier_label_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">outlier_label_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">outlier_label</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes_</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">classes</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">classes_</span><span class="p">,</span> <span class="n">outlier_label_</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">_is_arraylike</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="ow">and</span>
+                   <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+                    <span class="c1"># ensure the outlier lable for each output is a scalar.</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The outlier_label of classes </span><span class="si">{}</span><span class="s2"> is &quot;</span>
+                                    <span class="s2">&quot;supposed to be a scalar, got &quot;</span>
+                                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">classes</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
+                    <span class="c1"># ensure the dtype of outlier label is consistent with y.</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The dtype of outlier_label </span><span class="si">{}</span><span class="s2"> is &quot;</span>
+                                    <span class="s2">&quot;inconsistent with classes </span><span class="si">{}</span><span class="s2"> in &quot;</span>
+                                    <span class="s2">&quot;y.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">classes</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">outlier_label_</span> <span class="o">=</span> <span class="n">outlier_label_</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict the class labels for the provided data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape (n_queries, n_features), \</span>
+<span class="sd">                or (n_queries, n_indexed) if metric == &#39;precomputed&#39;</span>
+<span class="sd">            Test samples.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        y : ndarray of shape (n_queries,) or (n_queries, n_outputs)</span>
+<span class="sd">            Class labels for each data sample.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">classes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">probs</span><span class="p">]</span>
+            <span class="n">classes_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span>
+
+        <span class="n">n_outputs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">classes_</span><span class="p">)</span>
+        <span class="n">n_queries</span> <span class="o">=</span> <span class="n">probs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_queries</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">classes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">prob</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probs</span><span class="p">):</span>
+            <span class="c1"># iterate over multi-output, assign labels based on probabilities</span>
+            <span class="c1"># of each output.</span>
+            <span class="n">max_prob_index</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">y_pred</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes_</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">max_prob_index</span><span class="p">)</span>
+
+            <span class="n">outlier_zero_probs</span> <span class="o">=</span> <span class="p">(</span><span class="n">prob</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">outlier_zero_probs</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="n">zero_prob_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">outlier_zero_probs</span><span class="p">)</span>
+                <span class="n">y_pred</span><span class="p">[</span><span class="n">zero_prob_index</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outlier_label_</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">y_pred</span>
+
+    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return probability estimates for the test data X.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape (n_queries, n_features), \</span>
+<span class="sd">                or (n_queries, n_indexed) if metric == &#39;precomputed&#39;</span>
+<span class="sd">            Test samples.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        p : ndarray of shape (n_queries, n_classes), or a list of n_outputs</span>
+<span class="sd">            of such arrays if n_outputs &gt; 1.</span>
+<span class="sd">            The class probabilities of the input samples. Classes are ordered</span>
+<span class="sd">            by lexicographic order.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s1">&#39;csr&#39;</span><span class="p">)</span>
+        <span class="n">n_queries</span> <span class="o">=</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="n">neigh_dist</span><span class="p">,</span> <span class="n">neigh_ind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius_neighbors</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">outlier_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_queries</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="n">outlier_mask</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">nind</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">nind</span> <span class="ow">in</span> <span class="n">neigh_ind</span><span class="p">]</span>
+        <span class="n">outliers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">outlier_mask</span><span class="p">)</span>
+        <span class="n">inliers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="o">~</span><span class="n">outlier_mask</span><span class="p">)</span>
+
+        <span class="n">classes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span>
+        <span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">classes_</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">outlier_label_</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">outliers</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No neighbors found for test samples </span><span class="si">%r</span><span class="s1">, &#39;</span>
+                             <span class="s1">&#39;you can try using larger radius, &#39;</span>
+                             <span class="s1">&#39;giving a label for outliers, &#39;</span>
+                             <span class="s1">&#39;or considering removing them from your dataset.&#39;</span>
+                             <span class="o">%</span> <span class="n">outliers</span><span class="p">)</span>
+
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">_get_weights</span><span class="p">(</span><span class="n">neigh_dist</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">inliers</span><span class="p">]</span>
+
+        <span class="n">probabilities</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># iterate over multi-output, measure probabilities of the k-th output.</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">classes_k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes_</span><span class="p">):</span>
+            <span class="n">pred_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">neigh_ind</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+            <span class="n">pred_labels</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">_y</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">neigh_ind</span><span class="p">]</span>
+
+            <span class="n">proba_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_queries</span><span class="p">,</span> <span class="n">classes_k</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+            <span class="n">proba_inl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">inliers</span><span class="p">),</span> <span class="n">classes_k</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+
+            <span class="c1"># samples have different size of neighbors within the same radius</span>
+            <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pred_labels</span><span class="p">[</span><span class="n">inliers</span><span class="p">]):</span>
+                    <span class="n">proba_inl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span>
+                                                  <span class="n">minlength</span><span class="o">=</span><span class="n">classes_k</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pred_labels</span><span class="p">[</span><span class="n">inliers</span><span class="p">]):</span>
+                    <span class="n">proba_inl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span>
+                                                  <span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                  <span class="n">minlength</span><span class="o">=</span><span class="n">classes_k</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+            <span class="n">proba_k</span><span class="p">[</span><span class="n">inliers</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">proba_inl</span>
+
+            <span class="k">if</span> <span class="n">outliers</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">_outlier_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outlier_label_</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                <span class="n">label_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">classes_k</span> <span class="o">==</span> <span class="n">_outlier_label</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">label_index</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">proba_k</span><span class="p">[</span><span class="n">outliers</span><span class="p">,</span> <span class="n">label_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Outlier label </span><span class="si">{}</span><span class="s1"> is not in training &#39;</span>
+                                  <span class="s1">&#39;classes. All class probabilities of &#39;</span>
+                                  <span class="s1">&#39;outliers will be assigned with 0.&#39;</span>
+                                  <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outlier_label_</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+
+            <span class="c1"># normalize &#39;votes&#39; into real [0,1] probabilities</span>
+            <span class="n">normalizer</span> <span class="o">=</span> <span class="n">proba_k</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+            <span class="n">normalizer</span><span class="p">[</span><span class="n">normalizer</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">proba_k</span> <span class="o">/=</span> <span class="n">normalizer</span>
+
+            <span class="n">probabilities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proba_k</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">probabilities</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, MIT Data To AI Lab.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

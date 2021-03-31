@@ -1,0 +1,7 @@
+sdmetrics.timeseries.detection module
+=====================================
+
+.. automodule:: sdmetrics.timeseries.detection
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sdmetrics.single\_table.privacy.numerical\_sklearn module
+=========================================================
+
+.. automodule:: sdmetrics.single_table.privacy.numerical_sklearn
+   :members:
+   :undoc-members:
+   :show-inheritance:

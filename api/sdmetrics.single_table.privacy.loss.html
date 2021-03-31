@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>sdmetrics.single_table.privacy.loss module &mdash; SDMetrics 0.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sdmetrics.single_table.privacy.numerical_sklearn module" href="sdmetrics.single_table.privacy.numerical_sklearn.html" />
+    <link rel="prev" title="sdmetrics.single_table.privacy.ensemble module" href="sdmetrics.single_table.privacy.ensemble.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SDMetrics
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.column_pairs.html">sdmetrics.column_pairs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.multi_table.html">sdmetrics.multi_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.single_column.html">sdmetrics.single_column package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="sdmetrics.single_table.html">sdmetrics.single_table package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="sdmetrics.single_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.timeseries.html">sdmetrics.timeseries package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.base.html">sdmetrics.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.demos.html">sdmetrics.demos module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.goal.html">sdmetrics.goal module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.utils.html">sdmetrics.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-3-0-2021-03-30">v0.3.0 - 2021-03-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-2-0-2021-02-24">v0.2.0 - 2021-02-24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-3-2021-02-13">v0.1.3 - 2021-02-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id3">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-2-2021-01-27">v0.1.2 - 2021-01-27</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id5">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-1-2020-12-30">v0.1.1 - 2020-12-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id10">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-0-2020-12-18">v0.1.0 - 2020-12-18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-4-2020-11-27">v0.0.4 - 2020-11-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id14">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_table.html">sdmetrics.single_table package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_table.privacy.html">sdmetrics.single_table.privacy package</a> &raquo;</li>
+        
+      <li>sdmetrics.single_table.privacy.loss module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.single_table.privacy.loss.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-sdmetrics.single_table.privacy.loss">
+<span id="sdmetrics-single-table-privacy-loss-module"></span><h1>sdmetrics.single_table.privacy.loss module<a class="headerlink" href="#module-sdmetrics.single_table.privacy.loss" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.loss.InverseCDFDistance" title="sdmetrics.single_table.privacy.loss.InverseCDFDistance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InverseCDFDistance</span></code></a>([p])</p></td>
+<td><p>Measure the distance between continuous key fields.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.loss.LossFunction" title="sdmetrics.single_table.privacy.loss.LossFunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LossFunction</span></code></a></p></td>
+<td><p>Base class for a loss function.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.loss.InverseCDFDistance">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.loss.</code><code class="sig-name descname">InverseCDFDistance</code><span class="sig-paren">(</span><em class="sig-param">p=2</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/loss.html#InverseCDFDistance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.loss.InverseCDFDistance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sdmetrics.single_table.privacy.loss.LossFunction" title="sdmetrics.single_table.privacy.loss.LossFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.loss.LossFunction</span></code></a></p>
+<p>Measure the distance between continuous key fields.</p>
+<p>This loss function first applies the fitted cdfs to every single entry (i.e. turning
+the numerical values into their respective percentiles) and then measures the Lp distance
+to the pth power, between the predicted value and the real value.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.loss.InverseCDFDistance.fit" title="sdmetrics.single_table.privacy.loss.InverseCDFDistance.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data, cols)</p></td>
+<td><p>Fits univariate distributions (automatically selected).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.loss.InverseCDFDistance.measure" title="sdmetrics.single_table.privacy.loss.InverseCDFDistance.measure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">measure</span></code></a>(pred, real)</p></td>
+<td><p>Compute the distance (L_p norm) between the pred and real values.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.loss.InverseCDFDistance.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">cols</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/loss.html#InverseCDFDistance.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.loss.InverseCDFDistance.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits univariate distributions (automatically selected).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – Data, where each column in <cite>cols</cite> is a continuous column.</p></li>
+<li><p><strong>cols</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Column names.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.loss.InverseCDFDistance.measure">
+<code class="sig-name descname">measure</code><span class="sig-paren">(</span><em class="sig-param">pred</em>, <em class="sig-param">real</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/loss.html#InverseCDFDistance.measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.loss.InverseCDFDistance.measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the distance (L_p norm) between the pred and real values.</p>
+<p>This uses the probability integral transform to map the pred/real values
+to a CDF value (between 0.0 and 1.0). Then, it computes the L_p norm
+between the CDF(pred) and CDF(real).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pred</strong> (<em>tuple</em>) – Predicted value(s) corresponding to the columns specified in fit.</p></li>
+<li><p><strong>real</strong> (<em>tuple</em>) – Real value(s) corresponding to the columns specified in fit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The L_p norm of the CDF value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.loss.LossFunction">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.loss.</code><code class="sig-name descname">LossFunction</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/loss.html#LossFunction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.loss.LossFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for a loss function.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.loss.LossFunction.fit" title="sdmetrics.single_table.privacy.loss.LossFunction.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data, cols)</p></td>
+<td><p>Learn the metric on the value space.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.loss.LossFunction.measure" title="sdmetrics.single_table.privacy.loss.LossFunction.measure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">measure</span></code></a>(pred, real)</p></td>
+<td><p>Calculate the loss of a single prediction.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.loss.LossFunction.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">cols</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/loss.html#LossFunction.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.loss.LossFunction.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learn the metric on the value space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>real_data</strong> (<em>pandas.DataFrame</em>) – The real data table.</p></li>
+<li><p><strong>cols</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The names for the target columns (usually the sensitive cols).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.loss.LossFunction.measure">
+<code class="sig-name descname">measure</code><span class="sig-paren">(</span><em class="sig-param">pred</em>, <em class="sig-param">real</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/loss.html#LossFunction.measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.loss.LossFunction.measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the loss of a single prediction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pred</strong> (<em>tuple</em>) – The predicted value.</p></li>
+<li><p><strong>real</strong> (<em>tuple</em>) – The actual value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sdmetrics.single_table.privacy.numerical_sklearn.html" class="btn btn-neutral float-right" title="sdmetrics.single_table.privacy.numerical_sklearn module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sdmetrics.single_table.privacy.ensemble.html" class="btn btn-neutral float-left" title="sdmetrics.single_table.privacy.ensemble module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, MIT Data To AI Lab.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

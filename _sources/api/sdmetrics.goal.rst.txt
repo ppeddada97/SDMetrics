@@ -1,0 +1,7 @@
+sdmetrics.goal module
+=====================
+
+.. automodule:: sdmetrics.goal
+   :members:
+   :undoc-members:
+   :show-inheritance:

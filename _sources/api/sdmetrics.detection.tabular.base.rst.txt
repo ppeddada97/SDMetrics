@@ -1,7 +1,0 @@
-sdmetrics.detection.tabular.base module
-=======================================
-
-.. automodule:: sdmetrics.detection.tabular.base
-   :members:
-   :undoc-members:
-   :show-inheritance:

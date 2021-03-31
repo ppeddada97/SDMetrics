@@ -1,0 +1,699 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>sdmetrics.single_table.privacy.cap module &mdash; SDMetrics 0.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sdmetrics.single_table.privacy.categorical_sklearn module" href="sdmetrics.single_table.privacy.categorical_sklearn.html" />
+    <link rel="prev" title="sdmetrics.single_table.privacy.base module" href="sdmetrics.single_table.privacy.base.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SDMetrics
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.column_pairs.html">sdmetrics.column_pairs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.multi_table.html">sdmetrics.multi_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.single_column.html">sdmetrics.single_column package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="sdmetrics.single_table.html">sdmetrics.single_table package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="sdmetrics.single_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.timeseries.html">sdmetrics.timeseries package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.base.html">sdmetrics.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.demos.html">sdmetrics.demos module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.goal.html">sdmetrics.goal module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.utils.html">sdmetrics.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-3-0-2021-03-30">v0.3.0 - 2021-03-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-2-0-2021-02-24">v0.2.0 - 2021-02-24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-3-2021-02-13">v0.1.3 - 2021-02-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id3">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-2-2021-01-27">v0.1.2 - 2021-01-27</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id5">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-1-2020-12-30">v0.1.1 - 2020-12-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id10">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-0-2020-12-18">v0.1.0 - 2020-12-18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-4-2020-11-27">v0.0.4 - 2020-11-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id14">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_table.html">sdmetrics.single_table package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_table.privacy.html">sdmetrics.single_table.privacy package</a> &raquo;</li>
+        
+      <li>sdmetrics.single_table.privacy.cap module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.single_table.privacy.cap.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-sdmetrics.single_table.privacy.cap">
+<span id="sdmetrics-single-table-privacy-cap-module"></span><h1>sdmetrics.single_table.privacy.cap module<a class="headerlink" href="#module-sdmetrics.single_table.privacy.cap" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CAPAttacker" title="sdmetrics.single_table.privacy.cap.CAPAttacker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CAPAttacker</span></code></a>()</p></td>
+<td><p>The CAP (Correct Attribution Probability) privacy attacker.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalCAP" title="sdmetrics.single_table.privacy.cap.CategoricalCAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalCAP</span></code></a></p></td>
+<td><p>The Categorical CAP privacy metric.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP" title="sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalGeneralizedCAP</span></code></a></p></td>
+<td><p>The GeneralizedCAP privacy metric.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalZeroCAP" title="sdmetrics.single_table.privacy.cap.CategoricalZeroCAP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CategoricalZeroCAP</span></code></a></p></td>
+<td><p>The Categorical 0CAP privacy metric.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker" title="sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralizedCAPAttacker</span></code></a>()</p></td>
+<td><p>The GeneralizedCAP privacy attacker.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.ZeroCAPAttacker" title="sdmetrics.single_table.privacy.cap.ZeroCAPAttacker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroCAPAttacker</span></code></a>()</p></td>
+<td><p>The 0CAP privacy attacker, which operates in the same way as CAP does.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.cap.CAPAttacker">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.cap.</code><code class="sig-name descname">CAPAttacker</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#CAPAttacker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CAPAttacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.PrivacyAttackerModel" title="sdmetrics.single_table.privacy.base.PrivacyAttackerModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.PrivacyAttackerModel</span></code></a></p>
+<p>The CAP (Correct Attribution Probability) privacy attacker.</p>
+<p>It will find out all rows in synthetic table that match the target key attributes, and
+predict the sensitive entry that appears most frequently among them. The privacy score will
+be the frequency the correct sensitive entry appears among all such entries. In the case that
+no such row is found, the attack will be ignored and not counted towards the privacy score.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CAPAttacker.fit" title="sdmetrics.single_table.privacy.cap.CAPAttacker.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(synthetic_data, key_fields, sensitive_fields)</p></td>
+<td><p>Fit the attacker on the synthetic data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CAPAttacker.predict" title="sdmetrics.single_table.privacy.cap.CAPAttacker.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(key_data)</p></td>
+<td><p>Make a prediction of the sensitive data given keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CAPAttacker.score" title="sdmetrics.single_table.privacy.cap.CAPAttacker.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(key_data, sensitive_data)</p></td>
+<td><p>Score based on the belief of the attacker, in the form P(sensitive_data|key|data).</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.cap.CAPAttacker.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">synthetic_data</em>, <em class="sig-param">key_fields</em>, <em class="sig-param">sensitive_fields</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#CAPAttacker.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CAPAttacker.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the attacker on the synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>synthetic_data</strong> (<em>Union</em><em>[</em><em>numpy.ndarray</em><em>, </em><em>pandas.DataFrame</em><em>]</em>) – The values from the synthetic dataset.</p></li>
+<li><p><strong>key_fields</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Name of the column(s) to use as the key attributes.</p></li>
+<li><p><strong>sensitive_fields</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Name of the column(s) to use as the sensitive attributes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.cap.CAPAttacker.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">key_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#CAPAttacker.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CAPAttacker.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a prediction of the sensitive data given keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key_data</strong> (<em>tuple</em>) – The key data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The predicted sensitive data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.cap.CAPAttacker.score">
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">key_data</em>, <em class="sig-param">sensitive_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#CAPAttacker.score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CAPAttacker.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Score based on the belief of the attacker, in the form P(sensitive_data|key|data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key_data</strong> (<em>tuple</em>) – The key data.</p></li>
+<li><p><strong>sensitive_data</strong> (<em>tuple</em>) – The sensitive data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The frequency of the correct sensitive entry.
+Returns <cite>None</cite> if the key is not in the data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalCAP">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.cap.</code><code class="sig-name descname">CategoricalCAP</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#CategoricalCAP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalCAP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric" title="sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric</span></code></a></p>
+<p>The Categorical CAP privacy metric. Scored based on the CAPAttacker.</p>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalCAP.ACCURACY_BASE" title="sdmetrics.single_table.privacy.cap.CategoricalCAP.ACCURACY_BASE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCURACY_BASE</span></code></a></p></td>
+<td><p>bool(x) -&gt; bool</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalCAP.name" title="sdmetrics.single_table.privacy.cap.CategoricalCAP.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalCAP.MODEL" title="sdmetrics.single_table.privacy.cap.CategoricalCAP.MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MODEL</span></code></a></p></td>
+<td><p>The CAP (Correct Attribution Probability) privacy attacker.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalCAP.ACCURACY_BASE">
+<code class="sig-name descname">ACCURACY_BASE</code><em class="property"> = False</em><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalCAP.ACCURACY_BASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalCAP.MODEL">
+<code class="sig-name descname">MODEL</code><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalCAP.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CAPAttacker" title="sdmetrics.single_table.privacy.cap.CAPAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">CAPAttacker</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalCAP.name">
+<code class="sig-name descname">name</code><em class="property"> = 'CategoricalCAP'</em><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalCAP.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.cap.</code><code class="sig-name descname">CategoricalGeneralizedCAP</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#CategoricalGeneralizedCAP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric" title="sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric</span></code></a></p>
+<p>The GeneralizedCAP privacy metric. Scored based on the ZeroCAPAttacker.</p>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.ACCURACY_BASE" title="sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.ACCURACY_BASE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCURACY_BASE</span></code></a></p></td>
+<td><p>bool(x) -&gt; bool</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.name" title="sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.MODEL" title="sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MODEL</span></code></a></p></td>
+<td><p>The GeneralizedCAP privacy attacker.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.ACCURACY_BASE">
+<code class="sig-name descname">ACCURACY_BASE</code><em class="property"> = False</em><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.ACCURACY_BASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.MODEL">
+<code class="sig-name descname">MODEL</code><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker" title="sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralizedCAPAttacker</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.name">
+<code class="sig-name descname">name</code><em class="property"> = 'Categorical GeneralizedCAP'</em><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalGeneralizedCAP.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalZeroCAP">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.cap.</code><code class="sig-name descname">CategoricalZeroCAP</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#CategoricalZeroCAP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalZeroCAP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric" title="sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.CategoricalPrivacyMetric</span></code></a></p>
+<p>The Categorical 0CAP privacy metric. Scored based on the ZeroCAPAttacker.</p>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.ACCURACY_BASE" title="sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.ACCURACY_BASE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCURACY_BASE</span></code></a></p></td>
+<td><p>bool(x) -&gt; bool</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.name" title="sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.MODEL" title="sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MODEL</span></code></a></p></td>
+<td><p>The 0CAP privacy attacker, which operates in the same way as CAP does.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.ACCURACY_BASE">
+<code class="sig-name descname">ACCURACY_BASE</code><em class="property"> = False</em><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.ACCURACY_BASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.MODEL">
+<code class="sig-name descname">MODEL</code><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#sdmetrics.single_table.privacy.cap.ZeroCAPAttacker" title="sdmetrics.single_table.privacy.cap.ZeroCAPAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroCAPAttacker</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.name">
+<code class="sig-name descname">name</code><em class="property"> = '0CAP'</em><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.CategoricalZeroCAP.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.cap.</code><code class="sig-name descname">GeneralizedCAPAttacker</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#GeneralizedCAPAttacker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CAPAttacker" title="sdmetrics.single_table.privacy.cap.CAPAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.cap.CAPAttacker</span></code></a></p>
+<p>The GeneralizedCAP privacy attacker.</p>
+<p>It will find out all rows in synthetic table that are closest (in hamming distance) to the
+target key attributes, and predict the sensitive entry that appears most frequently among
+them. The privacy score for each row in the real table will be calculated as the frequency
+that the true sensitive attribute appears among all rows in the synthetic table with closest
+key attribute.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker.predict" title="sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(key_data)</p></td>
+<td><p>Make a prediction of the sensitive data given keys.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker.score" title="sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(key_data, sensitive_data)</p></td>
+<td><p>Score based on the belief of the attacker, in the form P(sensitive_data|key|data).</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">key_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#GeneralizedCAPAttacker.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a prediction of the sensitive data given keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key_data</strong> (<em>tuple</em>) – The key data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The predicted sensitive data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker.score">
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">key_data</em>, <em class="sig-param">sensitive_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#GeneralizedCAPAttacker.score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.GeneralizedCAPAttacker.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Score based on the belief of the attacker, in the form P(sensitive_data|key|data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key_data</strong> (<em>tuple</em>) – The key data.</p></li>
+<li><p><strong>sensitive_data</strong> (<em>tuple</em>) – The sensitive data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The frequency of the correct sensitive entry.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.cap.ZeroCAPAttacker">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.cap.</code><code class="sig-name descname">ZeroCAPAttacker</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#ZeroCAPAttacker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.ZeroCAPAttacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sdmetrics.single_table.privacy.cap.CAPAttacker" title="sdmetrics.single_table.privacy.cap.CAPAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.cap.CAPAttacker</span></code></a></p>
+<p>The 0CAP privacy attacker, which operates in the same way as CAP does.</p>
+<p>The difference is that when a match in key attribute is not found, the attack will
+be classified as failed and a score of 0 will be recorded.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.cap.ZeroCAPAttacker.score" title="sdmetrics.single_table.privacy.cap.ZeroCAPAttacker.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(key_data, sensitive_data)</p></td>
+<td><p>Score based on the belief of the attacker, in the form P(sensitive_data|key|data).</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.cap.ZeroCAPAttacker.score">
+<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">key_data</em>, <em class="sig-param">sensitive_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/cap.html#ZeroCAPAttacker.score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.cap.ZeroCAPAttacker.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Score based on the belief of the attacker, in the form P(sensitive_data|key|data).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key_data</strong> (<em>tuple</em>) – The key data.</p></li>
+<li><p><strong>sensitive_data</strong> (<em>tuple</em>) – The sensitive data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The frequency of the correct sensitive entry.
+Returns <cite>0</cite> if the key is not in the data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sdmetrics.single_table.privacy.categorical_sklearn.html" class="btn btn-neutral float-right" title="sdmetrics.single_table.privacy.categorical_sklearn module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sdmetrics.single_table.privacy.base.html" class="btn btn-neutral float-left" title="sdmetrics.single_table.privacy.base module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, MIT Data To AI Lab.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

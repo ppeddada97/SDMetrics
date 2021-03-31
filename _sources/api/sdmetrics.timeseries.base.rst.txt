@@ -1,0 +1,7 @@
+sdmetrics.timeseries.base module
+================================
+
+.. automodule:: sdmetrics.timeseries.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

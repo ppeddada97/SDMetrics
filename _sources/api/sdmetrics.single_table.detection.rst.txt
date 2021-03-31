@@ -1,0 +1,15 @@
+sdmetrics.single\_table.detection package
+=========================================
+
+.. automodule:: sdmetrics.single_table.detection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.single_table.detection.base
+   sdmetrics.single_table.detection.sklearn

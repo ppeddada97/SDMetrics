@@ -1,0 +1,15 @@
+sdmetrics.timeseries.efficacy package
+=====================================
+
+.. automodule:: sdmetrics.timeseries.efficacy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.timeseries.efficacy.base
+   sdmetrics.timeseries.efficacy.classification

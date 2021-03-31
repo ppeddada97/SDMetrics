@@ -1,0 +1,7 @@
+sdmetrics.single\_column.statistical.kstest module
+==================================================
+
+.. automodule:: sdmetrics.single_column.statistical.kstest
+   :members:
+   :undoc-members:
+   :show-inheritance:

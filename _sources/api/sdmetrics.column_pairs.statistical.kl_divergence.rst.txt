@@ -1,0 +1,7 @@
+sdmetrics.column\_pairs.statistical.kl\_divergence module
+=========================================================
+
+.. automodule:: sdmetrics.column_pairs.statistical.kl_divergence
+   :members:
+   :undoc-members:
+   :show-inheritance:

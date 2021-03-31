@@ -1,0 +1,7 @@
+sdmetrics.single\_table.privacy.radius\_nearest\_neighbor module
+================================================================
+
+.. automodule:: sdmetrics.single_table.privacy.radius_nearest_neighbor
+   :members:
+   :undoc-members:
+   :show-inheritance:

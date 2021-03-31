@@ -1,0 +1,18 @@
+sdmetrics.single\_table.efficacy package
+========================================
+
+.. automodule:: sdmetrics.single_table.efficacy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.single_table.efficacy.base
+   sdmetrics.single_table.efficacy.binary
+   sdmetrics.single_table.efficacy.mlefficacy
+   sdmetrics.single_table.efficacy.multiclass
+   sdmetrics.single_table.efficacy.regression

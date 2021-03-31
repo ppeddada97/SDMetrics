@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>sdmetrics.single_table.multi_single_column &mdash; SDMetrics 0.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SDMetrics
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/sdmetrics.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/sdmetrics.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.column_pairs.html">sdmetrics.column_pairs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.column_pairs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.column_pairs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.multi_table.html">sdmetrics.multi_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.multi_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.multi_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.single_column.html">sdmetrics.single_column package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.single_column.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.single_column.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.single_table.html">sdmetrics.single_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.single_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.single_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.timeseries.html">sdmetrics.timeseries package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.timeseries.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/sdmetrics.timeseries.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.base.html">sdmetrics.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.demos.html">sdmetrics.demos module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.goal.html">sdmetrics.goal module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/sdmetrics.utils.html">sdmetrics.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-3-0-2021-03-30">v0.3.0 - 2021-03-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-2-0-2021-02-24">v0.2.0 - 2021-02-24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-1-3-2021-02-13">v0.1.3 - 2021-02-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#id3">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-1-2-2021-01-27">v0.1.2 - 2021-01-27</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#id5">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-1-1-2020-12-30">v0.1.1 - 2020-12-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#id10">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-1-0-2020-12-18">v0.1.0 - 2020-12-18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-0-4-2020-11-27">v0.0.4 - 2020-11-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../history.html#id14">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>sdmetrics.single_table.multi_single_column</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sdmetrics.single_table.multi_single_column</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;SingleTable metrics based on applying a SingleColumnMetric on all the columns.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">rdt</span> <span class="kn">import</span> <span class="n">HyperTransformer</span>
+
+<span class="kn">from</span> <span class="nn">sdmetrics</span> <span class="kn">import</span> <span class="n">single_column</span>
+<span class="kn">from</span> <span class="nn">sdmetrics.single_table.base</span> <span class="kn">import</span> <span class="n">SingleTableMetric</span>
+<span class="kn">from</span> <span class="nn">sdmetrics.utils</span> <span class="kn">import</span> <span class="n">NestedAttrsMeta</span>
+
+
+<div class="viewcode-block" id="MultiSingleColumnMetric"><a class="viewcode-back" href="../../../api/sdmetrics.single_table.multi_single_column.html#sdmetrics.multi_table.MultiSingleColumnMetric">[docs]</a><span class="k">class</span> <span class="nc">MultiSingleColumnMetric</span><span class="p">(</span><span class="n">SingleTableMetric</span><span class="p">,</span>
+                              <span class="n">metaclass</span><span class="o">=</span><span class="n">NestedAttrsMeta</span><span class="p">(</span><span class="s1">&#39;single_column_metric&#39;</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;SingleTableMetric subclass that applies a SingleColumnMetric on each column.</span>
+
+<span class="sd">    This class can either be used by creating a subclass that inherits from it and</span>
+<span class="sd">    sets the SingleColumn Metric as the ``single_column_metric`` attribute,</span>
+<span class="sd">    or by creating an instance of this class passing the underlying SingleColumn</span>
+<span class="sd">    metric as an argument.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Name to use when reports about this metric are printed.</span>
+<span class="sd">        goal (sdmetrics.goal.Goal):</span>
+<span class="sd">            The goal of this metric.</span>
+<span class="sd">        min_value (Union[float, tuple[float]]):</span>
+<span class="sd">            Minimum value or values that this metric can take.</span>
+<span class="sd">        max_value (Union[float, tuple[float]]):</span>
+<span class="sd">            Maximum value or values that this metric can take.</span>
+<span class="sd">        single_column_metric (sdmetrics.single_column.base.SingleColumnMetric):</span>
+<span class="sd">            SingleColumn metric to apply.</span>
+<span class="sd">        field_types (dict):</span>
+<span class="sd">            Field types to which the SingleColumn metric will be applied.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">single_column_metric</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">single_column_metric_kwargs</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">field_types</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">single_column_metric</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">single_column_metric_kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">single_column_metric</span> <span class="o">=</span> <span class="n">single_column_metric</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">single_column_metric_kwargs</span> <span class="o">=</span> <span class="n">single_column_metric_kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute</span>
+
+    <span class="k">def</span> <span class="nf">_compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real_data</span><span class="p">,</span> <span class="n">synthetic_data</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute this metric.</span>
+
+<span class="sd">        This is done by computing the underlying SingleColumn metric to all the</span>
+<span class="sd">        columns that are compatible with it.</span>
+
+<span class="sd">        The output is the average of the scores obtained.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            real_data (pandas.DataFrame):</span>
+<span class="sd">                The values from the real dataset.</span>
+<span class="sd">            synthetic_data (pandas.DataFrame):</span>
+<span class="sd">                The values from the synthetic dataset.</span>
+<span class="sd">            metadata (dict):</span>
+<span class="sd">                Table metadata dict.</span>
+<span class="sd">            **kwargs:</span>
+<span class="sd">                Any additional keyword arguments will be passed down</span>
+<span class="sd">                to the single column metric</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[float, tuple[float]]:</span>
+<span class="sd">                Metric output.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_inputs</span><span class="p">(</span><span class="n">real_data</span><span class="p">,</span> <span class="n">synthetic_data</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+
+        <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_fields</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">field_types</span><span class="p">)</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">real_column</span> <span class="ow">in</span> <span class="n">real_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="n">real_column</span> <span class="o">=</span> <span class="n">real_column</span><span class="o">.</span><span class="n">values</span>
+                <span class="n">synthetic_column</span> <span class="o">=</span> <span class="n">synthetic_data</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+                <span class="n">score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">single_column_metric</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span>
+                    <span class="n">real_column</span><span class="p">,</span>
+                    <span class="n">synthetic_column</span><span class="p">,</span>
+                    <span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">single_column_metric_kwargs</span> <span class="ow">or</span> <span class="p">{}),</span>
+                    <span class="o">**</span><span class="n">kwargs</span>
+                <span class="p">)</span>
+                <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MultiSingleColumnMetric.compute"><a class="viewcode-back" href="../../../api/sdmetrics.single_table.multi_single_column.html#sdmetrics.multi_table.MultiSingleColumnMetric.compute">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">real_data</span><span class="p">,</span> <span class="n">synthetic_data</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute this metric.</span>
+
+<span class="sd">        This is done by computing the underlying SingleColumn metric to all the</span>
+<span class="sd">        columns that are compatible with it.</span>
+
+<span class="sd">        The output is the average of the scores obtained.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            real_data (pandas.DataFrame):</span>
+<span class="sd">                The values from the real dataset.</span>
+<span class="sd">            synthetic_data (pandas.DataFrame):</span>
+<span class="sd">                The values from the synthetic dataset.</span>
+<span class="sd">            metadata (dict):</span>
+<span class="sd">                Table metadata dict.</span>
+<span class="sd">            **kwargs:</span>
+<span class="sd">                Any additional keyword arguments will be passed down</span>
+<span class="sd">                to the single column metric</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[float, tuple[float]]:</span>
+<span class="sd">                Metric output.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_compute</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">real_data</span><span class="p">,</span> <span class="n">synthetic_data</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MultiSingleColumnMetric.normalize"><a class="viewcode-back" href="../../../api/sdmetrics.single_table.multi_single_column.html#sdmetrics.multi_table.MultiSingleColumnMetric.normalize">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">raw_score</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the `raw_score` as is, since it is already normalized.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            raw_score (float):</span>
+<span class="sd">                The value of the metric from `compute`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float:</span>
+<span class="sd">                The normalized value of the metric</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">cls</span><span class="o">.</span><span class="n">min_value</span> <span class="o">==</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">raw_score</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="CSTest"><a class="viewcode-back" href="../../../api/sdmetrics.single_table.multi_single_column.html#sdmetrics.multi_table.CSTest">[docs]</a><span class="k">class</span> <span class="nc">CSTest</span><span class="p">(</span><span class="n">MultiSingleColumnMetric</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;MultiSingleColumnMetric based on SingleColumn CSTest.</span>
+
+<span class="sd">    This function applies the single column ``CSTest`` metric to all</span>
+<span class="sd">    the discrete columns found in the table and then returns the average</span>
+<span class="sd">    of all the scores obtained.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">field_types</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;boolean&#39;</span><span class="p">,</span> <span class="s1">&#39;categorical&#39;</span><span class="p">)</span>
+    <span class="n">single_column_metric</span> <span class="o">=</span> <span class="n">single_column</span><span class="o">.</span><span class="n">statistical</span><span class="o">.</span><span class="n">CSTest</span></div>
+
+
+<div class="viewcode-block" id="KSTest"><a class="viewcode-back" href="../../../api/sdmetrics.single_table.multi_single_column.html#sdmetrics.multi_table.KSTest">[docs]</a><span class="k">class</span> <span class="nc">KSTest</span><span class="p">(</span><span class="n">MultiSingleColumnMetric</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;MultiSingleColumnMetric based on SingleColumn KSTest.</span>
+
+<span class="sd">    This function applies the single column ``KSTest`` metric to all</span>
+<span class="sd">    the numerical columns found in the table and then returns the average</span>
+<span class="sd">    of all the scores obtained.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">field_types</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;numerical&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">single_column_metric</span> <span class="o">=</span> <span class="n">single_column</span><span class="o">.</span><span class="n">statistical</span><span class="o">.</span><span class="n">KSTest</span></div>
+
+
+<div class="viewcode-block" id="KSTestExtended"><a class="viewcode-back" href="../../../api/sdmetrics.single_table.multi_single_column.html#sdmetrics.multi_table.KSTestExtended">[docs]</a><span class="k">class</span> <span class="nc">KSTestExtended</span><span class="p">(</span><span class="n">MultiSingleColumnMetric</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;KSTest variation that transforms everything to numerical before comparing the tables.</span>
+
+<span class="sd">    This is done by applying an ``rdt.HyperTransformer`` to the data with the</span>
+<span class="sd">    default values and afterwards applying a regular single_column ``KSTest``</span>
+<span class="sd">    metric to all the generated numerical columns.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">single_column_metric</span> <span class="o">=</span> <span class="n">single_column</span><span class="o">.</span><span class="n">statistical</span><span class="o">.</span><span class="n">KSTest</span>
+    <span class="n">field_types</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;numerical&#39;</span><span class="p">,</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="s1">&#39;boolean&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="KSTestExtended.compute"><a class="viewcode-back" href="../../../api/sdmetrics.single_table.multi_single_column.html#sdmetrics.multi_table.KSTestExtended.compute">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">real_data</span><span class="p">,</span> <span class="n">synthetic_data</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute this metric.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            real_data (pandas.DataFrame):</span>
+<span class="sd">                The values from the real dataset.</span>
+<span class="sd">            synthetic_data (pandas.DataFrame):</span>
+<span class="sd">                The values from the synthetic dataset.</span>
+<span class="sd">            metadata (dict):</span>
+<span class="sd">                Table metadata dict.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[float, tuple[float]]:</span>
+<span class="sd">                Metric output.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_validate_inputs</span><span class="p">(</span><span class="n">real_data</span><span class="p">,</span> <span class="n">synthetic_data</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+        <span class="n">transformer</span> <span class="o">=</span> <span class="n">HyperTransformer</span><span class="p">()</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_select_fields</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">field_types</span><span class="p">)</span>
+        <span class="n">real_data</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">real_data</span><span class="p">[</span><span class="n">fields</span><span class="p">])</span>
+        <span class="n">synthetic_data</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">synthetic_data</span><span class="p">[</span><span class="n">fields</span><span class="p">])</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">real_column</span> <span class="ow">in</span> <span class="n">real_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">real_column</span> <span class="o">=</span> <span class="n">real_column</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">synthetic_column</span> <span class="o">=</span> <span class="n">synthetic_data</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+            <span class="n">score</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">single_column_metric</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">real_column</span><span class="p">,</span> <span class="n">synthetic_column</span><span class="p">)</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">values</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, MIT Data To AI Lab.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

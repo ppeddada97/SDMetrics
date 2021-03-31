@@ -1,0 +1,7 @@
+sdmetrics.base module
+=====================
+
+.. automodule:: sdmetrics.base
+   :members:
+   :undoc-members:
+   :show-inheritance:

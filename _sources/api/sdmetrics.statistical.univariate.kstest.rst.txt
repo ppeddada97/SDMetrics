@@ -1,7 +1,0 @@
-sdmetrics.statistical.univariate.kstest module
-==============================================
-
-.. automodule:: sdmetrics.statistical.univariate.kstest
-   :members:
-   :undoc-members:
-   :show-inheritance:

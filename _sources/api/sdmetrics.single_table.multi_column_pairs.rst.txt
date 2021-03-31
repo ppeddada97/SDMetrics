@@ -1,0 +1,7 @@
+sdmetrics.single\_table.multi\_column\_pairs module
+===================================================
+
+.. automodule:: sdmetrics.single_table.multi_column_pairs
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+sdmetrics.multi\_table.multi\_single\_table module
+==================================================
+
+.. automodule:: sdmetrics.multi_table.multi_single_table
+   :members:
+   :undoc-members:
+   :show-inheritance:

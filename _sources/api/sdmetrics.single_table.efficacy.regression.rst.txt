@@ -1,0 +1,7 @@
+sdmetrics.single\_table.efficacy.regression module
+==================================================
+
+.. automodule:: sdmetrics.single_table.efficacy.regression
+   :members:
+   :undoc-members:
+   :show-inheritance:

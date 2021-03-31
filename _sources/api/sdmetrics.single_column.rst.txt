@@ -1,0 +1,21 @@
+sdmetrics.single\_column package
+================================
+
+.. automodule:: sdmetrics.single_column
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   sdmetrics.single_column.statistical
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.single_column.base

@@ -1,0 +1,22 @@
+sdmetrics.multi\_table package
+==============================
+
+.. automodule:: sdmetrics.multi_table
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   sdmetrics.multi_table.detection
+
+Submodules
+----------
+
+.. toctree::
+
+   sdmetrics.multi_table.base
+   sdmetrics.multi_table.multi_single_table

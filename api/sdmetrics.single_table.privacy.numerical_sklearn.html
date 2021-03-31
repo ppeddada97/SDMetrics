@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>sdmetrics.single_table.privacy.numerical_sklearn module &mdash; SDMetrics 0.3.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sdmetrics.single_table.privacy.radius_nearest_neighbor module" href="sdmetrics.single_table.privacy.radius_nearest_neighbor.html" />
+    <link rel="prev" title="sdmetrics.single_table.privacy.loss module" href="sdmetrics.single_table.privacy.loss.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SDMetrics
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#stable-release">Stable Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="sdmetrics.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sdmetrics.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.column_pairs.html">sdmetrics.column_pairs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.column_pairs.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.multi_table.html">sdmetrics.multi_table package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.multi_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.single_column.html">sdmetrics.single_column package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_column.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="sdmetrics.single_table.html">sdmetrics.single_table package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="sdmetrics.single_table.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.single_table.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.timeseries.html">sdmetrics.timeseries package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sdmetrics.timeseries.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sdmetrics.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.base.html">sdmetrics.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.demos.html">sdmetrics.demos module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.goal.html">sdmetrics.goal module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdmetrics.utils.html">sdmetrics.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#release-workflow">Release Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#release-candidates">Release Candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-3-0-2021-03-30">v0.3.0 - 2021-03-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#issues-closed">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-2-0-2021-02-24">v0.2.0 - 2021-02-24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-3-2021-02-13">v0.1.3 - 2021-02-13</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id3">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-2-2021-01-27">v0.1.2 - 2021-01-27</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id5">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-1-2020-12-30">v0.1.1 - 2020-12-30</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id10">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-1-0-2020-12-18">v0.1.0 - 2020-12-18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-4-2020-11-27">v0.0.4 - 2020-11-27</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-3-2020-11-20">v0.0.3 - 2020-11-20</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../history.html#id14">Issues closed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-2-2020-08-08">v0.0.2 - 2020-08-08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../history.html#v0-0-1-2020-06-26">v0.0.1 - 2020-06-26</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SDMetrics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="sdmetrics.html">sdmetrics package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_table.html">sdmetrics.single_table package</a> &raquo;</li>
+        
+          <li><a href="sdmetrics.single_table.privacy.html">sdmetrics.single_table.privacy package</a> &raquo;</li>
+        
+      <li>sdmetrics.single_table.privacy.numerical_sklearn module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/sdv-dev/SDMetrics/blob/master/docs/api/sdmetrics.single_table.privacy.numerical_sklearn.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-sdmetrics.single_table.privacy.numerical_sklearn">
+<span id="sdmetrics-single-table-privacy-numerical-sklearn-module"></span><h1>sdmetrics.single_table.privacy.numerical_sklearn module<a class="headerlink" href="#module-sdmetrics.single_table.privacy.numerical_sklearn" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LRAttacker</span></code></a>()</p></td>
+<td><p>The privacy attaker based on the Linear Regression model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLPAttacker</span></code></a>()</p></td>
+<td><p>The privacy attaker based on the MLP (Multi-layer Perceptron) regression model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumericalLR</span></code></a></p></td>
+<td><p>The Numerical Linear Regression privacy metric.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumericalMLP</span></code></a></p></td>
+<td><p>The Multi-layer Perceptron regression privacy metric.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumericalSVR</span></code></a></p></td>
+<td><p>The Numerical Support-vector Regression privacy metric.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumericalSklearnAttacker</span></code></a>()</p></td>
+<td><p>Base class for numerical attacker based on sklearn models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SVRAttacker</span></code></a>()</p></td>
+<td><p>The privacy attaker based on the SVR (Support-vector Regression) model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper" title="sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SVRWrapper</span></code></a>()</p></td>
+<td><p>A wrapper arround <cite>sklearn.svm.SVR</cite> to support multidimensional y.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.numerical_sklearn.</code><code class="sig-name descname">LRAttacker</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#LRAttacker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker</span></code></a></p>
+<p>The privacy attaker based on the Linear Regression model.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker.SKL_LEARNER" title="sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker.SKL_LEARNER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SKL_LEARNER</span></code></a></p></td>
+<td><p>Ordinary least squares Linear Regression.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker.SKL_LEARNER">
+<code class="sig-name descname">SKL_LEARNER</code><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker.SKL_LEARNER" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.linear_model._base.LinearRegression</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.numerical_sklearn.</code><code class="sig-name descname">MLPAttacker</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#MLPAttacker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker</span></code></a></p>
+<p>The privacy attaker based on the MLP (Multi-layer Perceptron) regression model.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker.SKL_LEARNER" title="sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker.SKL_LEARNER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SKL_LEARNER</span></code></a></p></td>
+<td><p>Multi-layer Perceptron regressor.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker.SKL_LEARNER">
+<code class="sig-name descname">SKL_LEARNER</code><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker.SKL_LEARNER" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.neural_network._multilayer_perceptron.MLPRegressor</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.numerical_sklearn.</code><code class="sig-name descname">NumericalLR</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#NumericalLR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.NumericalPrivacyMetric" title="sdmetrics.single_table.privacy.base.NumericalPrivacyMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.NumericalPrivacyMetric</span></code></a></p>
+<p>The Numerical Linear Regression privacy metric. Scored based on the LRAttacker.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR.MODEL" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR.MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MODEL</span></code></a></p></td>
+<td><p>The privacy attaker based on the Linear Regression model.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR.name" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR.MODEL">
+<code class="sig-name descname">MODEL</code><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.LRAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">LRAttacker</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR.name">
+<code class="sig-name descname">name</code><em class="property"> = 'Numerical Linear Regression'</em><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalLR.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.numerical_sklearn.</code><code class="sig-name descname">NumericalMLP</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#NumericalMLP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.NumericalPrivacyMetric" title="sdmetrics.single_table.privacy.base.NumericalPrivacyMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.NumericalPrivacyMetric</span></code></a></p>
+<p>The Multi-layer Perceptron regression privacy metric. Scored based on the MLPAttacker.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP.MODEL" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP.MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MODEL</span></code></a></p></td>
+<td><p>The privacy attaker based on the MLP (Multi-layer Perceptron) regression model.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP.name" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP.MODEL">
+<code class="sig-name descname">MODEL</code><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.MLPAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">MLPAttacker</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP.name">
+<code class="sig-name descname">name</code><em class="property"> = 'Multi-layer Perceptron Regression'</em><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalMLP.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.numerical_sklearn.</code><code class="sig-name descname">NumericalSVR</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#NumericalSVR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.NumericalPrivacyMetric" title="sdmetrics.single_table.privacy.base.NumericalPrivacyMetric"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.NumericalPrivacyMetric</span></code></a></p>
+<p>The Numerical Support-vector Regression privacy metric. Scored based on the SVRAttacker.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR.MODEL" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR.MODEL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MODEL</span></code></a></p></td>
+<td><p>The privacy attaker based on the SVR (Support-vector Regression) model.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR.name" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>str(object=’’) -&gt; str</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR.MODEL">
+<code class="sig-name descname">MODEL</code><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR.MODEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVRAttacker</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR.name">
+<code class="sig-name descname">name</code><em class="property"> = 'Numerical Support-vector Regression'</em><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSVR.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.numerical_sklearn.</code><code class="sig-name descname">NumericalSklearnAttacker</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#NumericalSklearnAttacker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sdmetrics.single_table.privacy.base.html#sdmetrics.single_table.privacy.base.PrivacyAttackerModel" title="sdmetrics.single_table.privacy.base.PrivacyAttackerModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.base.PrivacyAttackerModel</span></code></a></p>
+<p>Base class for numerical attacker based on sklearn models.</p>
+<p>It is used to train a model to predict sensitive attributes from key attributes
+using the synthetic data. Then, evaluate the privacy of the model by
+trying to predict the sensitive attributes of the real data.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.fit" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(synthetic_data, key, sensitive)</p></td>
+<td><p>Fit the NumericalSklearnAttacker on the synthetic data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.predict" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(key_data)</p></td>
+<td><p>Make a prediction of the sensitive data given keys.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.skl_learner">
+<code class="sig-name descname">skl_learner</code><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.skl_learner" title="Permalink to this definition">¶</a></dt>
+<dd><p>A (wrapped) sklearn classifier class that can be called with no arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.SKL_LEARNER">
+<code class="sig-name descname">SKL_LEARNER</code><em class="property"> = None</em><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.SKL_LEARNER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">synthetic_data</em>, <em class="sig-param">key</em>, <em class="sig-param">sensitive</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#NumericalSklearnAttacker.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the NumericalSklearnAttacker on the synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>synthetic_data</strong> (<em>pandas.DataFrame</em>) – The synthetic data table used for adverserial learning.</p></li>
+<li><p><strong>key_fields</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The names of the key columns.</p></li>
+<li><p><strong>sensitive_fields</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The names of the sensitive columns.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">key_data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#NumericalSklearnAttacker.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a prediction of the sensitive data given keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key_data</strong> (<em>tuple</em>) – The key data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The predicted sensitive data.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.numerical_sklearn.</code><code class="sig-name descname">SVRAttacker</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#SVRAttacker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker" title="sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">sdmetrics.single_table.privacy.numerical_sklearn.NumericalSklearnAttacker</span></code></a></p>
+<p>The privacy attaker based on the SVR (Support-vector Regression) model.</p>
+<p><strong>Classes</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker.SKL_LEARNER" title="sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker.SKL_LEARNER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SKL_LEARNER</span></code></a></p></td>
+<td><p>A wrapper arround <cite>sklearn.svm.SVR</cite> to support multidimensional y.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker.SKL_LEARNER">
+<code class="sig-name descname">SKL_LEARNER</code><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRAttacker.SKL_LEARNER" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper" title="sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">SVRWrapper</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper">
+<em class="property">class </em><code class="sig-prename descclassname">sdmetrics.single_table.privacy.numerical_sklearn.</code><code class="sig-name descname">SVRWrapper</code><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#SVRWrapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A wrapper arround <cite>sklearn.svm.SVR</cite> to support multidimensional y.</p>
+<p><strong>Methods</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper.fit" title="sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, Y)</p></td>
+<td><p>Fit the classifier to training data X and lables Y.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper.predict" title="sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X)</p></td>
+<td><p>Predict the labels corresponding to data X.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#SVRWrapper.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the classifier to training data X and lables Y.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.array</em>) – training data matrix of shape (n_samples, n_features).</p></li>
+<li><p><strong>Y</strong> (<em>np.array</em>) – label matrix of shape (n_samples, n_labels).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sdmetrics/single_table/privacy/numerical_sklearn.html#SVRWrapper.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sdmetrics.single_table.privacy.numerical_sklearn.SVRWrapper.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the labels corresponding to data X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>np.array</em>) – training data matrix of shape (n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>label matrix of shape (n_samples, n_labels)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sdmetrics.single_table.privacy.radius_nearest_neighbor.html" class="btn btn-neutral float-right" title="sdmetrics.single_table.privacy.radius_nearest_neighbor module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sdmetrics.single_table.privacy.loss.html" class="btn btn-neutral float-left" title="sdmetrics.single_table.privacy.loss module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, MIT Data To AI Lab.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

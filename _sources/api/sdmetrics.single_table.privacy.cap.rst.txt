@@ -1,0 +1,7 @@
+sdmetrics.single\_table.privacy.cap module
+==========================================
+
+.. automodule:: sdmetrics.single_table.privacy.cap
+   :members:
+   :undoc-members:
+   :show-inheritance:

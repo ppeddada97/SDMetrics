@@ -1,0 +1,7 @@
+sdmetrics.single\_table.gaussian\_mixture module
+================================================
+
+.. automodule:: sdmetrics.single_table.gaussian_mixture
+   :members:
+   :undoc-members:
+   :show-inheritance:
